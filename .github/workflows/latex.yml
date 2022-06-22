@@ -9,15 +9,16 @@ on:
     branches: [ "master" ]
     types:
       - opened
-  
+
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
-    steps: 
+    steps:
     - uses: actions/checkout@v3
-    
+
     - name: build pdf
+      working-directory: ./ebauches
       use: todo
-      run: 
+      run: make all

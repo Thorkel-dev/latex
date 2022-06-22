@@ -82,7 +82,7 @@ Pour cela, il faut renseigner ces définitions dans le fichier \verb=glossary.te
             text={ED},
         }
 \end{minted}
-    \caption{Définition d'en le dictionnaire}
+    \caption{Définition dans le dictionnaire}
 \end{code}
 
 Si un mot est utilisé plusieurs fois dans le document et que l'orthographe de cet acronyme doit être modifiée;
@@ -222,7 +222,132 @@ Les extraits de code seront colorisé en fonction du langage mit en paramètre c
 \end{code}
 
 Les extraits de code sont mis dans un environnement crée pour location \verb=code=.
-Le but etant d'ajouter des légendes et une mise en page particulière et de les listes par la suite à la fin du document,
+Le but étant d'ajouter des légendes et une mise en page particulière et de les listes par la suite à la fin du document,
 page \pageref{TableOfCode}.
 
 \subsubsection{xltabular}
+Il est possible de créer des tableaux pour qu'ils puissent sétaler sur l'ensemble de la page et sur plusieurs page.
+L'objectif de placer le tableau sur plusieurs page sans qu'une ligne ne soit diviser en deux.
+Voici un exemple pour un tableau à 5 colonnes:
+\begin{code}
+    \begin{minted}{latex}
+        \begin{xltabular}{\linewidth}{|l|X|r|c|p{0.15\linewidth}|}
+            % l = left, X = place restante et retour à la ligne, r = right, c = center, p = place
+            % Si aucune taille n'est donnée aux colonnes, elle se fait en fonction du texte dans la colonne
+
+            % Titre première page
+            \hline \textbf{Gauche} & \textbf{Retour à la ligne} & \textbf{Droite} & \textbf{Centre} & \textbf{Taille fixe}\\\hline
+            \endfirsthead
+
+            \multicolumn{5}{l}% Fusion des colones et texte à gauche
+            {\textbf{\dots\space suite de la page précédente}}\\
+            % Titre seconde page et plus
+            \hline \textbf{Gauche} & \textbf{Retour à la ligne} & \textbf{Droite} & \textbf{Centre} & \textbf{Taille fixe}\\\hline
+            \endhead
+
+            \multicolumn{5}{r}% Fusion des colones et texte à droite
+            {\textbf{Suite à la page suivante\dots}}\tabularnewline
+            \endfoot
+            \endlastfoot
+
+            Gauche & Retour à la ligne & Droite & Centre & Taille fixe\\ \hline
+        \end{xltabular}
+\end{minted}
+    \caption{Exemple tableau}
+\end{code}
+
+Ce qui donnera le résultat :
+\begin{xltabular}{\linewidth}{|l|X|r|c|p{0.15\linewidth}|}
+    % l = left, X = place restante et retour à la ligne, r = right, c = center, p = place
+    % Si aucune taille n'est donnée aux colonnes, elle se fait en fonction du texte dans la colonne
+
+    % Titre première page
+    \hline \textbf{Gauche} & \textbf{Retour à la ligne} & \textbf{Droite} & \textbf{Centre} & \textbf{Taille fixe}\\\hline
+    \endfirsthead
+
+    \multicolumn{5}{l}% Fusion des colones et texte à gauche
+    {\textbf{\dots\space suite de la page précédente}}\\
+    % Titre seconde page et plus
+    \hline \textbf{Gauche} & \textbf{Retour à la ligne} & \textbf{Droite} & \textbf{Centre} & \textbf{Taille fixe}\\\hline
+    \endhead
+
+    \multicolumn{5}{r}% Fusion des colones et texte à droite
+    {\textbf{Suite à la page suivante\dots}}\tabularnewline
+    \endfoot
+    \endlastfoot
+
+    Gauche & Retour à la ligne & Droite & Centre & Taille fixe\\ \hline
+    Gauche & \lipsum[1] & Droite & Centre & Taille fixe\\ \hline
+    Gauche & \lipsum[3] & Droite & Centre & Taille fixe\\ \hline
+    Gauche & \lipsum[5] & Droite & Centre & Taille fixe\\ \hline
+\end{xltabular}
+
+Si aucune taille n'est donné dans les colones \verb=Gauche Droite Centre=, la largueur de la colonne
+se fera en fonction du texte qui est mit dans la colonne. On riques d'avoir des tableaux trop large qui dépasse de la page
+comme ici :
+\begin{xltabular}{\linewidth}{|l|X|r|c|p{0.15\linewidth}|}
+    % l = left, X = place restante et retour à la ligne, r = right, c = center, p = place
+    % Si aucune taille n'est donnée aux colonnes, elle se fait en fonction du texte dans la colonne
+
+    % Titre première page
+    \hline \textbf{Gauche} & \textbf{Retour à la ligne} & \textbf{Droite} & \textbf{Centre} & \textbf{Taille fixe}\\\hline
+    \endfirsthead
+
+    \multicolumn{5}{l}% Fusion des colones et texte à gauche
+    {\textbf{\dots\space suite de la page précédente}}\\
+    % Titre seconde page et plus
+    \hline \textbf{Gauche} & \textbf{Retour à la ligne} & \textbf{Droite} & \textbf{Centre} & \textbf{Taille fixe}\\\hline
+    \endhead
+
+    \multicolumn{5}{r}% Fusion des colones et texte à droite
+    {\textbf{Suite à la page suivante\dots}}\tabularnewline
+    \endfoot
+    \endlastfoot
+
+    \lipsum[1] & Retour à la ligne & Droite & Centre & Taille fixe\\ \hline
+\end{xltabular}
+
+Sauf dans certain cas, voir Tableau des versions page \pageref{TableOfVersion}, il est préférable de tout fixer comme ici :
+\begin{code}
+    \begin{minted}{latex}
+        \begin{xltabular}{\linewidth}{|p{0.6\linewidth}|X|}
+            % La colonne fait 0,6 fois largueur d'une ligne
+            \hline \textbf{Colonne 1} & \textbf{Colonne 2} \\\hline
+            \endfirsthead
+
+            \multicolumn{2}{l}%
+            {\textbf{\dots\space suite de la page précédente}}\\
+            \hline \textbf{Colonne 1} & \textbf{Colonne 2} \\\hline
+            \endhead
+
+            \multicolumn{2}{r}% Fusion des colones et texte à droite
+            {\textbf{Suite à la page suivante\dots}}\tabularnewline
+            \endfoot
+            \endlastfoot
+
+            \lipsum[1] & \lipsum[2] \\ \hline
+        \end{xltabular}
+\end{minted}
+    \caption{Exemple tableau taille fixe}
+\end{code}
+
+\begin{xltabular}{\linewidth}{|p{0.6\linewidth}|X|}
+    % La colonne fait 0,6 fois largueur d'une ligne
+    \hline \textbf{Colonne 1} & \textbf{Colonne 2} \\\hline
+    \endfirsthead
+
+    \multicolumn{2}{l}%
+    {\textbf{\dots\space suite de la page précédente}}\\
+    \hline \textbf{Colonne 1} & \textbf{Colonne 2} \\\hline
+    \endhead
+
+    \multicolumn{2}{r}% Fusion des colones et texte à droite
+    {\textbf{Suite à la page suivante\dots}}\tabularnewline
+    \endfoot
+    \endlastfoot
+
+    \lipsum[1] & \lipsum[2] \\ \hline
+\end{xltabular}
+
+Ainsi on évite des débordements. À noter que si une colonne n'est pas assez large et que le texte à l'intérieur fait
+plus d'une longueur de page cela déborde aussi.

@@ -1,7 +1,6 @@
 \usepackage[french]{babel}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-
 \usepackage[pdftex]{graphicx}
 \usepackage{xspace}
 \usepackage{lastpage}
@@ -63,19 +62,21 @@
 %------------------------------------
 \pagenumbering{arabic}
 \pagestyle{fancy}
-
 \makeatletter
+
+% header
 \renewcommand{\headrulewidth}{0.4mm}
 \fancyhead[LO]{\includegraphics[height= 15pt]{eseo-logo.png} \\ \medskip {\projectName}}
-\fancyhead[CO]{\includegraphics[height= 15pt]{thorkel.jpg} \\ \medskip {\prose} équipe {\teamNumber} {\annee}}
-\fancyhead[RO]{\includegraphics[height= 15pt]{thorkel-logo.png} \\ \medskip {\small{Ref. {\documentNameAbrev}\_E{\teamNumber}}}}
-\fancyfoot[LO]{\textit{Version {\version} - Révision {\revision}}}
-\cfoot{\copyright {\annee} E. Gautier, {\teamName}}
-\fancyfoot[RO]{Page \thepage /{\pageref{Lastpage}} }
-\renewcommand{\footrulewidth}{0.4mm}
-
+\fancyhead[CO]{\includegraphics[height= 15pt]{thorkel-logo.png} \\ \medskip {\prose} équipe {\teamNumber} {\annee}}
+\fancyhead[RO]{\includegraphics[height= 15pt]{latex.png} \\ \medskip {\small{Ref. {\documentNameAbrev}\_E{\teamNumber}}}}
 \def\headrule{{\if@fancyplain\let\headrulewidth\plainheadrulewidth\fi
             \color{MidnightBlue}\hrule\@height\headrulewidth\@width\headwidth \vskip-\headrulewidth}}
+
+% footer
+\renewcommand{\footrulewidth}{0.4mm}
+\fancyfoot[LO]{\textit{Version {\version} - Révision {\revision}}}
+\fancyfoot[CO]{\copyright {\annee} E. Gautier, {\teamName}}
+\fancyfoot[RO]{Page \thepage /{\pageref{Lastpage}} }
 \def\footrule{{\if@fancyplain\let\footrulewidth\plainfootrulewidth\fi
             \vskip-\footruleskip\vskip-\footrulewidth
             \color{MidnightBlue}\hrule\@width\headwidth\@height\footrulewidth\vskip\footruleskip}}
@@ -89,11 +90,11 @@
 \renewcommand\thesubsubparagraph{%
     \thesubparagraph.\@arabic\c@subsubparagraph}
 \newcommand\subsubparagraph{%
-    \@startsection{subsubparagraph}     % counter
-    {6}                                 % level
-    {0em}                               % indent
-    {1em}                               % before title
-    {1em}                               % after title
+    \@startsection{subsubparagraph}               % counter
+    {6}                                           % level
+    {0em}                                         % indent
+    {1em}                                         % before title
+    {1em}                                         % after title
     {\normalsize\hspace{6em}\color{MidnightBlue}} % style (overload by title format)
 }
 \newcommand\l@subsubparagraph{\@dottedtocline{6}{13em}{6em}}
@@ -184,21 +185,24 @@
 
 % ---------------------------------------------------------------------------------------
 %
-% Minted personalization
+% Minted personnalisation
 %
 % ---------------------------------------------------------------------------------------
-\definecolor{vs}{HTML}{f0f0f0}
+
+\definecolor{vs}{rgb}{0.95,0.95,0.95}
 \setminted{
-    framesep=4mm, % 4mm before and after the line
-    autogobble=true,  % Aling first indent with the marge
-    numbers=left,  % Line number
-    fontsize=\footnotesize,  % Font size
     linenos=true,
-    bgcolor=vs,
-    tabsize=4,
-    fontfamily=courier,
-    breaklines
+    autogobble,
+    autogobble=true,         % Aligné avec la marge
+    numbers=left,            % Numéro de ligne
+    fontsize=\footnotesize,  % Taille de la police
+    bgcolor=vs,              % Couleur de fond
+    tabsize=4,               % Taille des tabulations
+    fontfamily=courier,      % Police d'écriture
+    breaklines,              % retour à la ligne auto
 }
+% Environnement pour lister le code
 \newenvironment{code}{\captionsetup{type=listing}}{\par\hspace{2em}}
-\SetupFloatingEnvironment{listing}{name=Source Code}
-\renewcommand*{\listlistingname}{Table des codes sources}
+
+\SetupFloatingEnvironment{listing}{name=Source Code} % Titre dans la légende
+\renewcommand*{\listlistingname}{Table des codes sources} % Titre de la liste
