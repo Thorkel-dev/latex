@@ -1,0 +1,7 @@
+@startuml Exemple
+
+skinparam shadowing false
+
+Bob -> Alice : hello
+
+@enduml

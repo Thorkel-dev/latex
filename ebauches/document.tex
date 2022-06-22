@@ -1,0 +1,61 @@
+\documentclass[a4paper,11pt,titlepage]{article}
+
+\input{param/parameter.tex}
+\newcommand{\version}{1.0}
+\newcommand{\revision}{0}
+\newcommand{\documentName}{Exemple}
+\newcommand{\teamName}{Nom d'équipe}
+\newcommand{\teamNumber}{Numéro d'équipe}
+\newcommand{\annee}{2022}
+\newcommand{\prose}{ProSE}
+\newcommand{\projectName}{Exemple de document}
+\newcommand{\documentNameAbrev}{ED}
+
+\tolerance=200
+\makeglossaries
+\loadglsentries{glossary.tex}
+\loadglsentries{acronyms.tex}
+
+%-----------------------------------------
+%      Document
+%-----------------------------------------
+
+\begin{document}
+\input{param/frontPage.tex}
+
+AVERTISSEMENT : \\
+Le présent document est un document à but pédagogique. Il a été réalisé par Edouard Gautier.
+Ce document est la propriété de  Edouard Gautier. En dehors des activités
+pédagogiques de l'ESEO, ce document ne peut être diffusé ou recopié sans l'autorisation écrite
+de son propriétaire.
+
+\input{tableauxVersion.tex}
+
+\newpage
+\tableofcontents
+\newpage
+
+%------------------------------------------------------
+%            Présentation
+%------------------------------------------------------
+
+\input{sections/presentation/presentation.tex}
+
+%------------------------------------------------------
+%            Exemple
+%------------------------------------------------------
+
+\input{sections/exemple.tex}
+
+
+\newpage
+\setglossarysection{section}
+\printglossary[title=Dictionnaire du domaine] \label{dictionnaireDomaine} % Display the glossary, see the documentation for the options
+\glsaddallunused
+
+\listoffigures \label{TableOfFigure}
+
+\listoflistings \label{TableOfCode}
+
+\label{Lastpage}
+\end{document}

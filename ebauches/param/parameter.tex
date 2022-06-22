@@ -1,0 +1,204 @@
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\usepackage[pdftex]{graphicx}
+\usepackage{xspace}
+\usepackage{lastpage}
+\usepackage{hyperref}
+\usepackage{subfiles}
+\usepackage{longtable}
+\usepackage{titlesec}
+\usepackage{float}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{fancyhdr}
+\usepackage{xltabular}
+\usepackage{enumitem}
+\usepackage[nottoc,numbib]{tocbibind}
+\usepackage[outputdir=build, newfloat]{minted}
+\usepackage{caption}
+
+\usepackage{lipsum}
+
+%------------------------------------
+%              Personnalisation des marges
+%------------------------------------
+
+\usepackage[left=2.5cm,
+    right=2.5cm,
+    top=2.5cm,
+    bottom=2.5cm
+]{geometry}
+\geometry{body={160mm,230mm},headheight=42pt,top=3cm}
+\RequirePackage{kvoptions}
+
+
+%------------------------------------
+%         Variables
+%------------------------------------
+
+\graphicspath{{../schemas/}{../figures/}}
+
+\hypersetup{
+    colorlinks  = true,
+    linkcolor   = black,
+    filecolor   = red,
+    urlcolor    = blue,
+    pdfborder=0 0 0
+}
+
+\definecolor{DesoutterRed}{RGB}{228, 5, 32}
+\definecolor{ESEORed}{RGB}{59,13,32}
+\definecolor{ESEOOrange}{RGB}{91,29,15}
+\definecolor{ESEOLightBlue}{RGB}{41,78,87}
+\definecolor{ESEODarkBlue}{RGB}{11,46,74}
+\definecolor{ESEOGrey}{RGB}{35,35,35}
+\definecolor{ESEOWhite}{RGB}{1,1,1}
+
+% itemize personalisation
+\setlist[itemize]{label=\textcolor{black}{\textbullet}}
+
+%------------------------------------
+%              Parameters for header and footer
+%------------------------------------
+\pagenumbering{arabic}
+\pagestyle{fancy}
+
+\makeatletter
+\renewcommand{\headrulewidth}{0.4mm}
+\fancyhead[LO]{\includegraphics[height= 15pt]{eseo-logo.png} \\ \medskip {\projectName}}
+\fancyhead[CO]{\includegraphics[height= 15pt]{thorkel.jpg} \\ \medskip {\prose} équipe {\teamNumber} {\annee}}
+\fancyhead[RO]{\includegraphics[height= 15pt]{thorkel-logo.png} \\ \medskip {\small{Ref. {\documentNameAbrev}\_E{\teamNumber}}}}
+\fancyfoot[LO]{\textit{Version {\version} - Révision {\revision}}}
+\cfoot{\copyright {\annee} E. Gautier, {\teamName}}
+\fancyfoot[RO]{Page \thepage /{\pageref{Lastpage}} }
+\renewcommand{\footrulewidth}{0.4mm}
+
+\def\headrule{{\if@fancyplain\let\headrulewidth\plainheadrulewidth\fi
+            \color{MidnightBlue}\hrule\@height\headrulewidth\@width\headwidth \vskip-\headrulewidth}}
+\def\footrule{{\if@fancyplain\let\footrulewidth\plainfootrulewidth\fi
+            \vskip-\footruleskip\vskip-\footrulewidth
+            \color{MidnightBlue}\hrule\@width\headwidth\@height\footrulewidth\vskip\footruleskip}}
+
+%------------------------------------
+%              Les titres de parties
+%------------------------------------
+
+% Add subsubparagraph level
+\newcounter{subsubparagraph}[subparagraph]
+\renewcommand\thesubsubparagraph{%
+    \thesubparagraph.\@arabic\c@subsubparagraph}
+\newcommand\subsubparagraph{%
+    \@startsection{subsubparagraph}     % counter
+    {6}                                 % level
+    {0em}                               % indent
+    {1em}                               % before title
+    {1em}                               % after title
+    {\normalsize\hspace{6em}\color{MidnightBlue}} % style (overload by title format)
+}
+\newcommand\l@subsubparagraph{\@dottedtocline{6}{13em}{6em}}
+\newcommand{\subsubparagraphmark}[1]{}
+\providecommand*{\toclevel@subsubparagraph}{6}
+\makeatother % @ is used normally again
+
+\setcounter{tocdepth}{6} % Allow subparagraph in table of content
+\setcounter{secnumdepth}{6} % Allow numbering the subparagraph
+
+% format des titres
+\titleformat{\section}[block]{\normalfont\bfseries\LARGE\color{MidnightBlue}}{{\thesubsection}}{1em}{}{}
+\titleformat{\subsection}[block]{\Large\hspace{2em}\Large\color{MidnightBlue}}{{\thesubsection}}{1em}{}{}
+\titleformat{\subsubsection}[block]{\hspace{3em}\large\color{MidnightBlue}}{{\thesubsubsection}}{1em}{}{}
+\titleformat{\paragraph}[block]{\normalsize\bfseries\hspace{4em}\color{MidnightBlue}}{{\theparagraph}}{1em}{}{}
+\titleformat{\subparagraph}[block]{\normalsize\hspace{5em}\color{MidnightBlue}}{{\thesubparagraph}}{1em}{}{}
+
+%------------------------------------
+%              Personnalisation de la liste des figures
+%------------------------------------
+
+\renewcommand{\listoffigures}{\begingroup
+    \tocsection
+    \tocfile{\listfigurename}{lof}
+    \endgroup}
+
+\newcounter{@secnumdepth}
+\let\oldsection\section
+\RenewDocumentCommand{\section}{s o m}{%
+    \IfBooleanTF{#1}
+    {%
+        \setcounter{@secnumdepth}{\value{secnumdepth}}% Store secnumdepth
+        \setcounter{secnumdepth}{-1}% Print only up to \part numbers
+        \phantomsection%
+        \oldsection{#3}% \section*
+        \setcounter{secnumdepth}{\value{@secnumdepth}}% Restore secnumdepth
+    }
+    {%
+        \IfValueTF{#2}% \section
+        {% \section[.]{..}
+            \oldsection[#2]{#3}%
+        }
+        {% \section{..}
+            \oldsection{#3}%
+        }
+    }
+}
+
+%------------------------------------
+%              Personnalisation du glossaire
+%------------------------------------
+
+\usepackage[acronym, numberedsection, nonumberlist, automake]{glossaries-extra} % To make a glossary
+
+\glstocfalse
+\glsenablehyper
+\setglossarystyle{altlistgroup}
+\setabbreviationstyle{short-postfootnote}
+
+\ProvideDocumentCommand{\printglossdef}{o m}{\footnote{#1: #2}}
+\GlsXtrEnableEntryUnitCounting{general}{0}{page} % Count number of occurrence by unit, by page of the group general
+\GlsXtrEnableEntryUnitCounting{abbreviation}{0}{page} % Count number of occurrence by unit, by page of the group abbrevation
+
+% If it first occurence of the label
+%   then suppress the hyperlink to the glossary
+% else
+%   if it's there is already occurence of the label in the page (see GlsXtrEnableEntryUnitCounting)
+%       then suppress the hyperlink
+%   else do nothing
+\renewcommand{\glslinkcheckfirsthyperhook}{%
+    \glsxtrifwasfirstuse%
+    {\setkeys{glslink}{hyper=false}}%
+    {%
+        \ifnum\glsentrycurrcount\glslabel>0%
+            \setkeys{glslink}{hyper=false}%
+        \fi
+    }%
+}
+
+% If it first occurence of the label
+%   then a foot note is added with the description linked to the label
+% else do nothing
+\renewcommand{\glsxtrpostlink}{%
+    \glsxtrifwasfirstuse%
+    {\printglossdef[\glsentryname{\glslabel}]{\glsentrydesc{\glslabel}}}%
+    {}%
+}
+
+% ---------------------------------------------------------------------------------------
+%
+% Minted personalization
+%
+% ---------------------------------------------------------------------------------------
+\definecolor{vs}{HTML}{f0f0f0}
+\setminted{
+    framesep=4mm, % 4mm before and after the line
+    autogobble=true,  % Aling first indent with the marge
+    numbers=left,  % Line number
+    fontsize=\footnotesize,  % Font size
+    linenos=true,
+    bgcolor=vs,
+    tabsize=4,
+    fontfamily=courier,
+    breaklines
+}
+\newenvironment{code}{\captionsetup{type=listing}}{\par\hspace{2em}}
+\SetupFloatingEnvironment{listing}{name=Source Code}
+\renewcommand*{\listlistingname}{Table des codes sources}

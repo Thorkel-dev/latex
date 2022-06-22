@@ -1,0 +1,5 @@
+@startuml ExempleFolder ' Titre du fichier générer
+skinparam shadowing false
+
+Alice -> Bob : hello
+@enduml ' Fin du document
