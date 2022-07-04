@@ -18,10 +18,11 @@
 \usepackage{caption}
 
 \usepackage{lipsum}
+\usepackage[outdir=build/, update]{epstopdf}
 
-%------------------------------------
-%              Personnalisation des marges
-%------------------------------------
+%-----------------------------------------------
+%   Personnalisation des marges
+%-----------------------------------------------
 
 \usepackage[left=2.5cm,
     right=2.5cm,
@@ -31,10 +32,9 @@
 \geometry{body={160mm,230mm},headheight=42pt,top=3cm}
 \RequirePackage{kvoptions}
 
-
-%------------------------------------
-%         Variables
-%------------------------------------
+%-----------------------------------------------
+%   Variables
+%-----------------------------------------------
 
 \graphicspath{{../schemas/}{../figures/}}
 
@@ -43,10 +43,9 @@
     linkcolor   = black,
     filecolor   = red,
     urlcolor    = blue,
-    pdfborder=0 0 0
+    pdfborder   = 0 0 0
 }
 
-\definecolor{DesoutterRed}{RGB}{228, 5, 32}
 \definecolor{ESEORed}{RGB}{59,13,32}
 \definecolor{ESEOOrange}{RGB}{91,29,15}
 \definecolor{ESEOLightBlue}{RGB}{41,78,87}
@@ -54,12 +53,13 @@
 \definecolor{ESEOGrey}{RGB}{35,35,35}
 \definecolor{ESEOWhite}{RGB}{1,1,1}
 
-% itemize personalisation
+% itemize personnalisation
 \setlist[itemize]{label=\textcolor{black}{\textbullet}}
 
-%------------------------------------
-%              Parameters for header and footer
-%------------------------------------
+%-----------------------------------------------
+%   Paramètres pour l'en-tête et le pied de page
+%-----------------------------------------------
+
 \pagenumbering{arabic}
 \pagestyle{fancy}
 \makeatletter
@@ -81,29 +81,29 @@
             \vskip-\footruleskip\vskip-\footrulewidth
             \color{MidnightBlue}\hrule\@width\headwidth\@height\footrulewidth\vskip\footruleskip}}
 
-%------------------------------------
-%              Les titres de parties
-%------------------------------------
+%-----------------------------------------------
+%   Les titres des parties
+%-----------------------------------------------
 
-% Add subsubparagraph level
+% Ajouter un niveau de sous-sous-paragraphe
 \newcounter{subsubparagraph}[subparagraph]
 \renewcommand\thesubsubparagraph{%
     \thesubparagraph.\@arabic\c@subsubparagraph}
 \newcommand\subsubparagraph{%
-    \@startsection{subsubparagraph}               % counter
-    {6}                                           % level
-    {0em}                                         % indent
-    {1em}                                         % before title
-    {1em}                                         % after title
-    {\normalsize\hspace{6em}\color{MidnightBlue}} % style (overload by title format)
+    \@startsection{subsubparagraph}               % compteur
+    {6}                                           % niveau
+    {0em}                                         % indentation
+    {1em}                                         % avant le titre
+    {1em}                                         % après le titre
+    {\normalsize\hspace{6em}\color{MidnightBlue}} % style (surcharge par le format du titre)
 }
 \newcommand\l@subsubparagraph{\@dottedtocline{6}{13em}{6em}}
 \newcommand{\subsubparagraphmark}[1]{}
 \providecommand*{\toclevel@subsubparagraph}{6}
-\makeatother % @ is used normally again
+\makeatother % est à nouveau utilisé normalement
 
-\setcounter{tocdepth}{6} % Allow subparagraph in table of content
-\setcounter{secnumdepth}{6} % Allow numbering the subparagraph
+\setcounter{tocdepth}{6}    % Autoriser l'alinéa dans la table des matières
+\setcounter{secnumdepth}{6} % Permettre la numérotation du sous-paragraphe
 
 % format des titres
 \titleformat{\section}[block]{\normalfont\bfseries\LARGE\color{MidnightBlue}}{{\thesubsection}}{1em}{}{}
@@ -112,9 +112,9 @@
 \titleformat{\paragraph}[block]{\normalsize\bfseries\hspace{4em}\color{MidnightBlue}}{{\theparagraph}}{1em}{}{}
 \titleformat{\subparagraph}[block]{\normalsize\hspace{5em}\color{MidnightBlue}}{{\thesubparagraph}}{1em}{}{}
 
-%------------------------------------
-%              Personnalisation de la liste des figures
-%------------------------------------
+%-----------------------------------------------
+%   Personnalisation de la liste des figures
+%-----------------------------------------------
 
 \renewcommand{\listoffigures}{\begingroup
     \tocsection
@@ -126,11 +126,11 @@
 \RenewDocumentCommand{\section}{s o m}{%
     \IfBooleanTF{#1}
     {%
-        \setcounter{@secnumdepth}{\value{secnumdepth}}% Store secnumdepth
-        \setcounter{secnumdepth}{-1}% Print only up to \part numbers
+        \setcounter{@secnumdepth}{\value{secnumdepth}}  % Stocke secnumdepth
+        \setcounter{secnumdepth}{-1}                    % Afficher seulement jusqu'aux numéros d'ordre \part
         \phantomsection%
         \oldsection{#3}% \section*
-        \setcounter{secnumdepth}{\value{@secnumdepth}}% Restore secnumdepth
+        \setcounter{secnumdepth}{\value{@secnumdepth}}  % Restaure secnumdepth
     }
     {%
         \IfValueTF{#2}% \section
@@ -143,11 +143,11 @@
     }
 }
 
-%------------------------------------
-%              Personnalisation du glossaire
-%------------------------------------
+%-----------------------------------------------
+%   Personnalisation du glossaire
+%-----------------------------------------------
 
-\usepackage[acronym, numberedsection, nonumberlist, automake]{glossaries-extra} % To make a glossary
+\usepackage[acronym, numberedsection, nonumberlist, automake]{glossaries-extra} % Pour faire un glossaire
 
 \glstocfalse
 \glsenablehyper
@@ -155,15 +155,15 @@
 \setabbreviationstyle{short-postfootnote}
 
 \ProvideDocumentCommand{\printglossdef}{o m}{\footnote{#1: #2}}
-\GlsXtrEnableEntryUnitCounting{general}{0}{page} % Count number of occurrence by unit, by page of the group general
-\GlsXtrEnableEntryUnitCounting{abbreviation}{0}{page} % Count number of occurrence by unit, by page of the group abbrevation
+\GlsXtrEnableEntryUnitCounting{general}{0}{page} % Compter le nombre d'occurrences par unité, par page du groupe général
+\GlsXtrEnableEntryUnitCounting{abbreviation}{0}{page} % Compter le nombre d'occurrences par unité, par page du groupe abréviation
 
-% If it first occurence of the label
-%   then suppress the hyperlink to the glossary
-% else
-%   if it's there is already occurence of the label in the page (see GlsXtrEnableEntryUnitCounting)
-%       then suppress the hyperlink
-%   else do nothing
+% S'il s'agit de la première occurrence de l'étiquette
+%   alors supprimer l'hyperlien vers le glossaire
+% sinon
+%   Si l'étiquette est déjà présente dans la page (voir GlsXtrEnableEntryUnitCounting)
+%       alors supprimer l'hyperlien
+%   sinon ne rien faire
 \renewcommand{\glslinkcheckfirsthyperhook}{%
     \glsxtrifwasfirstuse%
     {\setkeys{glslink}{hyper=false}}%
@@ -174,21 +174,18 @@
     }%
 }
 
-% If it first occurence of the label
-%   then a foot note is added with the description linked to the label
-% else do nothing
+% S'il s'agit de la première occurrence de l'étiquette
+%   alors une note de bas de page est ajoutée avec la description liée à l'étiquette
+% sinon ne rien faire
 \renewcommand{\glsxtrpostlink}{%
     \glsxtrifwasfirstuse%
     {\printglossdef[\glsentryname{\glslabel}]{\glsentrydesc{\glslabel}}}%
     {}%
 }
 
-% ---------------------------------------------------------------------------------------
-%
-% Minted personnalisation
-%
-% ---------------------------------------------------------------------------------------
-
+%-----------------------------------------------
+%   Minted personnalisation
+%-----------------------------------------------
 \definecolor{vs}{rgb}{0.95,0.95,0.95}
 \setminted{
     linenos=true,
@@ -199,10 +196,10 @@
     bgcolor=vs,              % Couleur de fond
     tabsize=4,               % Taille des tabulations
     fontfamily=courier,      % Police d'écriture
-    breaklines,              % retour à la ligne auto
+    breaklines,              % Retour à la ligne auto
 }
 % Environnement pour lister le code
 \newenvironment{code}{\captionsetup{type=listing}}{\par\hspace{2em}}
 
-\SetupFloatingEnvironment{listing}{name=Source Code} % Titre dans la légende
+\SetupFloatingEnvironment{listing}{name=Source Code}      % Titre dans la légende
 \renewcommand*{\listlistingname}{Table des codes sources} % Titre de la liste

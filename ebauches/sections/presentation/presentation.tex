@@ -1,4 +1,22 @@
 \section{Présentation}
 Ce document est un exemple simple d'un document généré par \gls{latex}. \newline
 Pour tout renseignement : edouar\_gautier@reseau.eseo.fr.
+
+\subsection{Installation minimale}
+Certains pakage sont nécessaires pour générer correctement le document.
+Il s'agit ici d'installer seulement les packages nécessaires.
+\begin{itemize}
+    \item latexmk, Pour automatiser les compilations du fichier
+    \item texlive-latex-base, contient des paquets qui sont mandatés par l'équipe principale de \gls{latex}
+    \item texlive-latex-extra, contient une très grande collection de paquets complémentaires
+    \item texlive-font-utils, pour la transformation et la manipulation d'image
+    \item texlive-lang-french, prise en charge du français
+\end{itemize}
+
+\subsubsection{Utilisation}
+L'ensemble des documents LateX suivent la même arborescence:
+
+Pour compiler le document LateX voulut il faut éxècuter la commande ``make`` dans le répertoire correspondant comme pour l'exemple suivant:
+
+Un fichier au format ``.pdf`` est généré au même niveau que le ``Makefile``
 \input{sections/presentation/package.tex}

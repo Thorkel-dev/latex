@@ -1,6 +1,15 @@
 \documentclass[a4paper,11pt,titlepage]{article}
 
-\input{param/parameter.tex}
+\input{param/parameter.tex} % Ajout du fichier avec les paramêtres
+
+\tolerance=200
+\makeglossaries
+\loadglsentries{glossary.tex} % On charge le dictionnaire
+\loadglsentries{acronyms.tex} % On charge les acronymes
+
+%-----------------------------------------
+%      Variable
+%-----------------------------------------
 \newcommand{\version}{1.0}
 \newcommand{\revision}{0}
 \newcommand{\documentName}{Exemple de document ProSe}
@@ -11,17 +20,12 @@
 \newcommand{\projectName}{Exemple de document}
 \newcommand{\documentNameAbrev}{ED}
 
-\tolerance=200
-\makeglossaries
-\loadglsentries{glossary.tex}
-\loadglsentries{acronyms.tex}
-
 %-----------------------------------------
 %      Document
 %-----------------------------------------
 
 \begin{document}
-\input{param/frontPage.tex}
+\input{param/frontPage.tex} % On ajoute la page de garde
 
 AVERTISSEMENT : \\
 Le présent document est un document à but pédagogique. Il a été réalisé par Edouard Gautier.
@@ -29,10 +33,10 @@ Ce document est la propriété de Edouard Gautier. En dehors des activités
 pédagogiques de l'ESEO, ce document ne peut être diffusé ou recopié sans l'autorisation écrite
 de son propriétaire.
 
-\input{tableauxVersion.tex} \label{TableOfVersion}
+\input{tableauxVersion.tex} \label{TableOfVersion} % On ajoute la page avec le tableaux de version
 
 \newpage
-\tableofcontents
+\tableofcontents % La table des matières
 \newpage
 
 %------------------------------------------------------
@@ -48,13 +52,13 @@ de son propriétaire.
 \input{sections/exemple.tex}
 
 \newpage
-\setglossarysection{section}
+\setglossarysection{section} % Type de titre
 \printglossary[title=Dictionnaire du domaine] \label{dictionnaireDomaine} % Afficher le glossaire
-\glsaddallunused
+\glsaddallunused % Même les mots non utilisé sont affichés
 
-\listoffigures \label{TableOfFigure}
+\listoffigures \label{TableOfFigure} % La table des figure
 
-\listoflistings \label{TableOfCode}
+\listoflistings \label{TableOfCode} % La table des codes sources
 
-\label{Lastpage}
+\label{Lastpage} % Pour compter le nombre de page
 \end{document}

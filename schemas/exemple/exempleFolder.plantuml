@@ -1,4 +1,5 @@
-@startuml ExempleFolder ' Titre du fichier générer
+@startuml
+
 skinparam shadowing false
 
 Alice -> Bob : hello
