@@ -6,6 +6,7 @@
 \makeglossaries
 \loadglsentries{glossary.tex} % On charge le dictionnaire
 \loadglsentries{acronyms.tex} % On charge les acronymes
+\addbibresource{biblio.bib}   % On charge la bibliographie
 
 %-----------------------------------------
 %      Variable
@@ -53,12 +54,15 @@ de son propriétaire.
 
 \newpage
 \setglossarysection{section} % Type de titre
-\printglossary[title=Dictionnaire du domaine] \label{dictionnaireDomaine} % Afficher le glossaire
-\glsaddallunused % Même les mots non utilisé sont affichés
+\printglossary[title=Dictionnaire du domaine] \label{dictionnaireDomaine} % Affiche le glossaire
+\glsaddallunused % Même les mots non utilisés sont affichés
 
-\listoffigures \label{TableOfFigure} % La table des figure
+\listoffigures \label{TableOfFigure} % La table des figures
 
 \listoflistings \label{TableOfCode} % La table des codes sources
+
+\printbibliography[title={Bibliographie}, heading=bibnumbered, label=bibliographie] % Affiche la bibliographie
+\nocite{*} % Même les référence non utilisées sont affichées
 
 \label{Lastpage} % Pour compter le nombre de page
 \end{document}

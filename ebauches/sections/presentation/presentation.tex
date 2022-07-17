@@ -1,10 +1,10 @@
 \section{Présentation}
 Ce document est un exemple simple d'un document généré par \gls{latex}. \newline
-Pour tout renseignement : edouar\_gautier@reseau.eseo.fr.
+Pour tout renseignement : \href{mailto:edouard\_gautier@reseau.eseo.fr}{Edouard Gautier}.
 
 \subsection{Installation minimale}
-Certains pakage sont nécessaires pour générer correctement le document.
-Il s'agit ici d'installer seulement les packages nécessaires.
+Certains paquetages sont nécessaires pour générer correctement le document.
+Il s'agit ici d'installer seulement les paquets qui nous seront utiles plutôt que d'installer l'ensemble de \gls{latex}.
 \begin{itemize}
     \item latexmk, Pour automatiser les compilations du fichier
     \item texlive-latex-base, contient des paquets qui sont mandatés par l'équipe principale de \gls{latex}
@@ -14,9 +14,10 @@ Il s'agit ici d'installer seulement les packages nécessaires.
 \end{itemize}
 
 \subsubsection{Utilisation}
-L'ensemble des documents LateX suivent la même arborescence:
+Pour compiler le document LateX voulut il faut éxècuter la commande \verb=make= dans le répertoire \verb=ebauches/=.
+Un fichier au format \verb=.pdf= est généré au même niveau que le \verb=Makefile=. \newline
 
-Pour compiler le document LateX voulut il faut éxècuter la commande ``make`` dans le répertoire correspondant comme pour l'exemple suivant:
-
-Un fichier au format ``.pdf`` est généré au même niveau que le ``Makefile``
+Un dossier \verb=build/= est créé, il contient l'ensemble des fichiers de compilation intermédiaire de \gls{latex}.
+Un fichier \verb=.dependLatex= et \verb=.dependPlantUML= sont créés dans lequel sont lister les dépendances de compilation.
+Ils permettront d'accélérer les prochaines compilations, en compilant que les fichiers modifiés.
 \input{sections/presentation/package.tex}

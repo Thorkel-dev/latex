@@ -1,10 +1,10 @@
-PAPER= document  # set the path to your TeX file here
+PAPER = document  						# définissez le chemin d'accès à votre fichier TeX ici
 SRC_PLANTUML = $(realpath ../schemas/)
+PLANTUML = ../plantuml.jar 				# définissez le chemin d'accès à votre plantuml.jar ici
 
 DEPEND_LATEX = .dependLatex
 OUTPUT_LATEX = ./build
 
-PLANTUML = ../plantuml.jar
 DEPEND_PLANTUML = .dependPlantUML
 OUTPUT_PLANTUML = $(SRC_PLANTUML)
 SRC_FILES := $(wildcard $(SRC_PLANTUML)/*.plantuml) $(wildcard $(SRC_PLANTUML)/**/*.plantuml)
@@ -33,15 +33,14 @@ $(DEPEND_PLANTUML): $(SRC_FILES)
 		printf "$(OUTPUT)/%s.eps: %s\n" "$$name" "$$includes"; \
 	done >> $@
 
-latex: ## Compile paper
+latex:
 	@latexmk -e '$$max_repeat=10' -time --shell-escape -auxdir=$(OUTPUT_LATEX) -output-directory=$(OUTPUT_LATEX) -pdf -deps -deps-out=$(DEPEND_LATEX) $(PAPER)
 	@cd $(OUTPUT_LATEX) && makeglossaries $(PAPER) && cd ../
 	@latexmk -e '$$max_repeat=10' -time --shell-escape -auxdir=$(OUTPUT_LATEX) -output-directory=$(OUTPUT_LATEX) -pdf -deps -deps-out=$(DEPEND_LATEX) $(PAPER)
 	mv build/$(join $(PAPER), .pdf) ./
 
 clean_eps:
-	@rm -rf $(OUTPUT_PLANTUML)/**/*.eps $(OUTPUT_PLANTUML)/**/*.pdf
-	@rm -rf $(OUTPUT_PLANTUML)/*.eps $(OUTPUT_PLANTUML)/*.pdf
+	@rm -rf $(OUTPUT_PLANTUML)/**/*.eps $(OUTPUT_PLANTUML)/*.eps
 	@rm -f $(DEPEND_PLANTUML)
 
 clean_latex:
@@ -50,7 +49,7 @@ clean_latex:
 clean_vscode:
 	@rm -f *.toc *.out *.log *.lof *.ist *.glo *.fls *.fdb_latexmk *.aux *.acn *.synctex.gz
 
-clean: clean_eps clean_latex clean_vscode ## Clean output files
+clean: clean_eps clean_latex clean_vscode
 
 .PHONY: all clean eps clean_eps latex clean_latex
 

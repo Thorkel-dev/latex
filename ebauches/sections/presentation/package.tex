@@ -1,4 +1,4 @@
-\subsection{Package}
+\subsection{Paquetages}
 
 \begin{itemize}
     \item \href{https://www.ctan.org/pkg/babel}{babel} Ce paquetage gère les règles
@@ -44,15 +44,19 @@
           utilisateur facile et flexible pour personnaliser la mise en page en mettant en œuvre des mécanismes
           d'auto-centrage et d'auto-équilibrage.
     \item \href{https://www.ctan.org/pkg/minted}{minted} Le paquetage qui facilite la coloration syntaxique expressive dans
-          LaTeX en utilisant la puissante bibliothèque Pygments
+          \gls{latex} en utilisant la puissante bibliothèque Pygments
     \item \href{https://www.ctan.org/pkg/caption}{caption} Le paquetage de légendes offre de nombreuses façons de
           personnaliser les légendes dans les environnements flottants comme les figures et les tableaux, et coopère
           avec de nombreux autres paquets.
+    \item \href{https://www.ctan.org/pkg/biblatex}{biblatex} BibLaTeX est une réimplémentation complète des fonctions
+          bibliographiques fournies par \gls{latex}. BibLaTeX utilise son propre programme de gestion des données appelé biber
+          pour lire et traiter les données bibliographiques. Grâce à biber, BibLaTeX dispose de nombreuses fonctionnalités
+          rivalisant avec les autres systèmes bibliographiques, voire les surpassant.
 \end{itemize}
 
 \subsubsection{Dictionnaire} \label{dictionnaire}
-Il est possible de créer un dictionnaire qui pourrat être réutilisé dans le document.
-Pour cela, il faut renseigner ces définitions dans le fichier \verb=glossary.tex= de la manière suivante :
+Il est possible de créer un dictionnaire qui pourra être réutilisé dans le document.
+Pour cela, il faut renseigner ses définitions dans le fichier \verb=glossary.tex= de la manière suivante :
 \begin{code}
     \begin{minted}{latex}
         \newglossaryentry{la clé pour appeller}
@@ -62,6 +66,7 @@ Pour cela, il faut renseigner ces définitions dans le fichier \verb=glossary.te
         first={La définition (Le mot)},
         text={Le mot},
         }
+
         % Par exemple
         \newglossaryentry{ed}
         {
@@ -74,7 +79,7 @@ Pour cela, il faut renseigner ces définitions dans le fichier \verb=glossary.te
     \caption{Définition dans le dictionnaire}
 \end{code}
 
-Si un mot est utilisé plusieurs fois dans le document et que l'orthographe de cet acronyme doit être modifiée;
+Si un mot est utilisé plusieurs fois dans le document et que l'orthographe de ce mot doit être modifié;
 cela peut se faire facilement et dans tout le document en le modifiant dans \verb=glossary.tex=.
 On utilise, pour appeler ce mot, la même manière que pour les acronymes, \ref{acronyme} page \pageref{acronyme}, :
 \begin{code}
@@ -85,18 +90,19 @@ On utilise, pour appeler ce mot, la même manière que pour les acronymes, \ref{
 \end{code}
 
 Si c'est la première fois que le mot est appelé c'est la définition dans l'option \verb=first= qui apparaît : \gls{ed}.
-Une note de bas de page apparaît aussi. \newline
+Une note de bas de page apparaît aussi avec la définition. \newline
 Si ça n'est pas la première fois: \gls{ed}. C'est le mot dans l'option \verb=text= qui apparaît et il n'y a pas de note de bas de page.
 
 Il est possible de faire apparaitre la liste des définitions. Ici c'est en fin de document,
 page \pageref{dictionnaireDomaine}, trié par ordre alphabétique:
 
 \subsubsection{Acronyme} \label{acronyme}
-Il est possible de créer une liste d'acronymes qui pourrat être réutilisé dans le document.
-Pour cela, il faut renseigner ces acronymes dans le fichier \verb=acronyms.tex= de la manière suivante :
+Il est possible de créer une liste d'acronymes qui pourra être réutilisée dans le document.
+Pour cela, il faut renseigner ses acronymes dans le fichier \verb=acronyms.tex= de la manière suivante :
 \begin{code}
     \begin{minted}{latex}
         \newacronym[first=Définition de l'acronyme (l'acronyme)]{la clé pour appeller}{l'acronyme}{Définition de l'acronyme}
+
         % Par exemple
         \newacronym[first=Définition de l'acronyme (ARC)]{acr}{ARC}{Définition de l'acronyme}
 \end{minted}
@@ -115,15 +121,16 @@ On utilise, pour appeler cet acronyme, la même manière que pour le dictionnair
 
 Si c'est la première fois que l'acronyme est appelé c'est la définition dans l'option \verb=first= qui apparaît : \gls{acr}.
 Une note de bas de page apparaît aussi. \newline
-Si ça n'est pas la première fois: \gls{acr}. C'est l'acronyme qui apparaît et il n'y a pas de note de bas de page.
+Si ça n'est pas la première fois: \gls{acr}. C'est l'acronyme qui apparaît et il n'y a pas de note de bas de page. \newline
 
 Il est possible de faire apparaitre la liste des acronymes défini. Ici c'est dans un tableau trié par ordre alphabétique:
 
+\newpage
 \setglossarysection{paragraph} % Type de titre
 \printglossary[type=\acronymtype,style=superheaderborder ,title={Définitions, acronymes et abréviations}]
-\glsaddallunused % Même les mots non utilisé sont affichés
+\glsaddallunused % Même les acronymes non utilisés sont affichés
 
-\subsubsection{PlantUMLs}
+\subsubsection{PlantUML}
 Pour la génération des PlantUMLs en images il est nécessaire d'avoir installé:
 \begin{itemize}
     \item Java, utilisation de \verb=plantuml.jar=. Le chemin relatif vers
@@ -131,7 +138,7 @@ Pour la génération des PlantUMLs en images il est nécessaire d'avoir install�
     \item Graphviz, génère un graphe à partir d'une description textuelle de PlantUML
 \end{itemize}
 
-Pour générer l'ensemble des diagrammes faire la commande :
+Pour générer l'ensemble des diagrammes il faut faire la commande :
 \begin{code}
     \begin{minted}{bash}
     make eps
@@ -149,7 +156,7 @@ Pour supprimer tout les fichiers générés par les diagrammes :
 
 La commande va récupérer l'ensemble des fichiers \verb=.plantuml=
 dans le dossier \verb=schémas/= pour les convertir en \verb=.eps=.
-Il s'agit d'un format d'image vectorielle supporté pas \gls{latex}.
+Il s'agit d'un format d'image vectorielle supporté par \gls{latex}.
 Garantissant une grande qualité d'image quelle que soit la taille.
 
 Les fichier sont de la forme suivant :
@@ -171,7 +178,7 @@ Les fichier sont de la forme suivant :
     \caption{Exemple de diagramme UML}
 \end{figure}
 
-Il est posible de rangers les diagrammes dans des sous-dossiers dont il faudra préciser le chemin relatif.
+Il est posible de ranger les diagrammes dans des sous-dossiers dont il faudra préciser le chemin relatif.
 \begin{figure}[H]
     \centering
     \includegraphics[width=2cm]{exemple/exempleFolder}
@@ -180,15 +187,16 @@ Il est posible de rangers les diagrammes dans des sous-dossiers dont il faudra p
 
 \subsubsection{Minted}
 Il est possible de mettre des extraits de code dans le document via le paquetage Minted.
-Ce paquetage utilise la librairie Python \verb=Pygments=. Il faut l'installer via la commande :
+Ce paquetage utilise la librairie Python \verb=Pygments=.
+Cette librairie doit être installée avec le gestionnaire de paquets \verb=pip= qui doit lui-même être installé.
 \begin{code}
     \begin{minted}{bash}
     pip install pygments
 \end{minted}
-    \caption{Hello World en C}
+    \caption{Commande d'installation de pygments}
 \end{code}
 
-Les extraits de code seront colorisé en fonction du langage mit en paramètre comme ci-dessous :
+Les extraits de code seront colorisés en fonction du langage mit en paramètre comme ci-dessous :
 
 \begin{code}
     \begin{minted}{c}
@@ -210,13 +218,13 @@ Les extraits de code seront colorisé en fonction du langage mit en paramètre c
     \caption{Hello World en Java}
 \end{code}
 
-Les extraits de code sont mis dans un environnement crée pour location \verb=code=.
-Le but étant d'ajouter des légendes et une mise en page particulière et de les listes par la suite à la fin du document,
+Les extraits de code sont mis dans un environnement crée pour l'occasion : \verb=code=.
+Le but étant d'ajouter des légendes et une mise en page particulière et de les lister par la suite à la fin du document,
 page \pageref{TableOfCode}.
 
-\subsubsection{xltabular}
-Il est possible de créer des tableaux pour qu'ils puissent sétaler sur l'ensemble de la page et sur plusieurs page.
-L'objectif de placer le tableau sur plusieurs page sans qu'une ligne ne soit diviser en deux.
+\subsubsection{Xltabular}
+Il est possible de créer des tableaux pour qu'ils puissent s'étaler sur l'ensemble de la page et sur plusieurs pages.
+L'objectif de placer le tableau sur plusieurs page sans qu'une ligne ne soit divisée en deux.
 Voici un exemple pour un tableau à 5 colonnes:
 \begin{code}
     \begin{minted}{latex}
@@ -271,8 +279,8 @@ Ce qui donnera le résultat :
     Gauche & \lipsum[5] & Droite & Centre & Taille fixe\\ \hline
 \end{xltabular}
 
-Si aucune taille n'est donné dans les colones \verb=Gauche Droite Centre=, la largueur de la colonne
-se fera en fonction du texte qui est mit dans la colonne. On riques d'avoir des tableaux trop large qui dépasse de la page
+Si aucune taille n'est donnée dans les colones \verb=Gauche Droite Centre=, la largueur de la colonne
+se fera en fonction du texte qui est mit dans la colonne. On riques d'avoir des tableaux trop large qui dépassent de la page
 comme ici :
 \begin{xltabular}{\linewidth}{|l|X|r|c|p{0.15\linewidth}|}
     % l = left, X = place restante et retour à la ligne, r = right, c = center, p = place
@@ -296,7 +304,7 @@ comme ici :
     \lipsum[1] & Retour à la ligne & Droite & Centre & Taille fixe\\ \hline
 \end{xltabular}
 
-Sauf dans certain cas, voir Tableau des versions page \pageref{TableOfVersion}, il est préférable de tout fixer comme ici :
+Sauf dans certain cas, voir page \pageref{TableOfVersion}, il est préférable de tout fixer comme ici :
 \begin{code}
     \begin{minted}{latex}
         \begin{xltabular}{\linewidth}{|p{0.6\linewidth}|X|}
@@ -338,5 +346,52 @@ Sauf dans certain cas, voir Tableau des versions page \pageref{TableOfVersion}, 
     \lipsum[1] & \lipsum[2] \\ \hline
 \end{xltabular}
 
-Ainsi on évite des débordements. À noter que si une colonne n'est pas assez large et que le texte à l'intérieur fait
+Ainsi, on évite des débordements. À noter que si une colonne n'est pas assez large et que le texte à l'intérieur fait
 plus d'une longueur de page cela déborde aussi.
+
+\subsubsection{Biblatex}
+Il est possible de créer une bibliographie qui pourra être réutilisée dans le document.
+Pour cela, il faut renseigner ses références dans le fichier \verb=biblio.bib= de la manière suivante :
+\begin{code}
+    \begin{minted}{latex}
+        @article{la clé pour appeller,
+            author  = {auteur},
+            title   = {Titre},
+            ...
+        }
+
+        % Par exemple
+        @article{CitekeyArticle,
+            author  = {P. J. Cohen},
+            title   = {The independence of the continuum hypothesis},
+            journal = {Proceedings of the National Academy of Sciences},
+            year    = 1963,
+            volume  = {50},
+            number  = {6},
+            pages   = {1143--1148}
+        }
+\end{minted}
+    \caption{Définition dans la bibliographie}
+\end{code}
+
+Si une référence, est utilisée plusieurs fois dans le document et que l’orthographe de cette référence
+doit être modifié ; cela peut se faire facilement et dans tout le document en le modifiant dans
+\verb=biblio.bib=.
+Pour appeler cette référence peut utiliser différentes manières:
+\begin{code}
+    \begin{minted}{latex}
+        \autocite{CitekeyArticle} % Ajoute la référence en note de bas de page
+        \cite{CitekeyArticle}     % Ajoute la référence à la suite
+\end{minted}
+    \caption{Utilisation de la bibliographie}
+\end{code}
+
+Ce qui donne le résultat suivant où l'on ajoute la note de bas de page \autocite{CitekeyArticle}.
+Et ici on a la fait apparaitre : \cite{CitekeyArticle}. \newline
+
+Dans notre exemple on affiche le nom de l'auteur et le titre. Il existe d'autres manière où l'on affiche d'autres informations.
+Voir la \href{https://mirror.ibcp.fr/pub/CTAN/macros/latex/contrib/biblatex/doc/biblatex.pdf#subsection.3.9}{documantation CTAN}. \newline
+
+Dans le fichier \verb=biblio.bib= se trouve, en exemple, l'ensemble des catégories de référence qui existe.
+En fonction de la catégorie, les informations demandées sont différentes et leurs affichage le sont aussi,
+voir page \pageref{bibliographie}.

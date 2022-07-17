@@ -85,7 +85,7 @@
 %   Les titres des parties
 %-----------------------------------------------
 
-% Ajouter un niveau de sous-sous-paragraphe
+% Ajoute un niveau de sous-sous-paragraphe
 \newcounter{subsubparagraph}[subparagraph]
 \renewcommand\thesubsubparagraph{%
     \thesubparagraph.\@arabic\c@subsubparagraph}
@@ -102,8 +102,8 @@
 \providecommand*{\toclevel@subsubparagraph}{6}
 \makeatother % est à nouveau utilisé normalement
 
-\setcounter{tocdepth}{6}    % Autoriser l'alinéa dans la table des matières
-\setcounter{secnumdepth}{6} % Permettre la numérotation du sous-paragraphe
+\setcounter{tocdepth}{6}    % Autorise l'alinéa dans la table des matières
+\setcounter{secnumdepth}{6} % Permet la numérotation du sous-paragraphe
 
 % format des titres
 \titleformat{\section}[block]{\normalfont\bfseries\LARGE\color{MidnightBlue}}{{\thesubsection}}{1em}{}{}
@@ -186,11 +186,11 @@
 %-----------------------------------------------
 %   Minted personnalisation
 %-----------------------------------------------
+
 \definecolor{vs}{rgb}{0.95,0.95,0.95}
 \setminted{
     linenos=true,
-    autogobble,
-    autogobble=true,         % Aligné avec la marge
+    autogobble=true,         % Aligne avec la marge
     numbers=left,            % Numéro de ligne
     fontsize=\footnotesize,  % Taille de la police
     bgcolor=vs,              % Couleur de fond
@@ -203,3 +203,17 @@
 
 \SetupFloatingEnvironment{listing}{name=Source Code}      % Titre dans la légende
 \renewcommand*{\listlistingname}{Table des codes sources} % Titre de la liste
+
+%-----------------------------------------------
+% Personnalisation de la bibliographie
+%-----------------------------------------------
+
+\usepackage[
+    backend=biber,
+    citestyle=verbose-note, % Style des citations
+    style=reading,          % Style de la bibliographie
+    entrykey = false,       % On n'affiche pas la clé
+    sorting = nty,          % Trie par name, title, year
+    hyperref = false,       % Lien entre la citation et la bibliographie
+    backref = false         % On n'affiche pas la page des citations
+]{biblatex}
