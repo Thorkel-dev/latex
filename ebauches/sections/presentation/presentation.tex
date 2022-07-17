@@ -1,6 +1,12 @@
 \section{Présentation}
 Ce document est un exemple simple d'un document généré par \gls{latex}. \newline
-Pour tout renseignement : \href{mailto:edouard\_gautier@reseau.eseo.fr}{Edouard Gautier}.
+
+Ce document ne montre que des options prêtes à être utilisés et pouvant être utile dans la réalisation de ProSE.
+Il est impossible de présenter toutes les options possibles avec \gls{latex} ni celles des paquetages utilisés
+dans ce document.
+Il existe d'autres manière de faire qu'il est possible de trouver par soi-même.
+
+Pour cela suivre la règle du RFD : \colorbox{yellow}{Read the Fucking Docs !}
 
 \subsection{Installation minimale}
 Certains paquetages sont nécessaires pour générer correctement le document.
@@ -20,4 +26,5 @@ Un fichier au format \verb=.pdf= est généré au même niveau que le \verb=Make
 Un dossier \verb=build/= est créé, il contient l'ensemble des fichiers de compilation intermédiaire de \gls{latex}.
 Un fichier \verb=.dependLatex= et \verb=.dependPlantUML= sont créés dans lequel sont lister les dépendances de compilation.
 Ils permettront d'accélérer les prochaines compilations, en compilant que les fichiers modifiés.
+
 \input{sections/presentation/package.tex}
