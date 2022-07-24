@@ -6,14 +6,21 @@ on:
     tags:
       - "*"
   pull_request:
-    branches: [ "master" ]
     types:
       - opened
-
+      - reopened
+      - closed
+      - review_requested
+      - ready_for_review
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/brinfer/latex-template/debian-texlive:latest
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.github_token }}
 
     steps:
     - uses: actions/checkout@v3
@@ -22,3 +29,23 @@ jobs:
       working-directory: ./ebauches
       use: todo
       run: make all
+
+    # Create an artifact that contains the output folder
+    - name: Archive output folder
+      if: github.event_name != 'push' # it's not a push
+      uses: actions/upload-artifact@v2 # https://github.com/actions/upload-artifact
+      with:
+        name: output
+        path: ebauches/*.pdf
+        retention-days: 7
+
+    # Create a release that contains the generated PDF, named according to the name of the tag
+    # The release is created only if the trigger is a pushed tag
+    - name: Create release
+      if: startsWith(github.ref, 'refs/tags/') # it's a pushed tag
+      uses: svenstaro/upload-release-action@v2 # https://github.com/svenstaro/upload-release-action
+      with:
+        repo_token: ${{ secrets.github_token }}
+        file: ebauches/*.pdf
+        file_glob: true
+        tag: ${{ github.ref }}
