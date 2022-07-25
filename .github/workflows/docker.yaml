@@ -3,8 +3,6 @@ name: Docker Build
 on:
   workflow_dispatch:
   push:
-    paths:
-      - "Dockerfile"
   schedule:
     - cron: "* * 1 */6 *" # Execute every 6 month at the 1
 

@@ -15,6 +15,11 @@ jobs:
         password: ${{ secrets.github_token }}
 
     steps:
+      - name: Set up Git repository
+        uses: actions/checkout@v3
+        with:
+          lfs: true
+
       - name: build pdf
         working-directory: ebauches
         run: make all
