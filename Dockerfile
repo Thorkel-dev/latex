@@ -22,3 +22,7 @@ RUN apt-get install texlive-font-utils -y
 RUN apt-get install texlive-lang-french -y
 RUN apt-get install texlive-bibtex-extra -y
 RUN apt-get install biber -y
+
+RUN useradd -ms /bin/bash docker
+
+USER docker
