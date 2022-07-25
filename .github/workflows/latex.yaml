@@ -15,6 +15,7 @@ jobs:
 
     steps:
       - name: build pdf
+        working-directory: ./ebauches
         run: ls -l
 
       # Create an artifact that contains the output folder
