@@ -17,7 +17,6 @@ jobs:
       # Checkout the branch.
       - name: Checkout
         uses: actions/checkout@v2
-        run: chmod -R 777 ebauches
 
       - name: build pdf
         working-directory: ebauches

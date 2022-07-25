@@ -15,7 +15,7 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ >/etc/timezone
 
 RUN apt-get update && apt autoclean
 
-RUN apt-get install -y default-jre graphviz make latexmk texlive-latex-base
+RUN apt-get install -y default-jre graphviz build-essential latexmk texlive-latex-base
 RUN apt-get install python3-pygments -y
 RUN apt-get install texlive-latex-extra -y
 RUN apt-get install texlive-font-utils -y
