@@ -15,14 +15,15 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v3
+    - name: Set up Git repository
+      uses: actions/checkout@v2
 
     - name: build pdf
       working-directory: ./ebauches
-      use: ghcr.io/thorkel-dev/latex/debian-texlive:latest
-      run: make all
+      uses: ghcr.io/thorkel-dev/latex/debian-texlive:latest
+      with:
+        run: make all
 
     # Create an artifact that contains the output folder
     - name: Archive output folder
