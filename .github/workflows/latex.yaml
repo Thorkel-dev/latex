@@ -9,14 +9,15 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: ghcr.io/brinfer/latex-template/debian-texlive:latest
+      options: --user root
       credentials:
         username: ${{ github.actor }}
         password: ${{ secrets.github_token }}
 
     steps:
       - name: build pdf
-        working-directory: ./ebauches
-        run: ls -l
+        working-directory: ebauches
+        run: make all
 
       # Create an artifact that contains the output folder
       - name: Archive output folder
