@@ -14,10 +14,13 @@ jobs:
         password: ${{ secrets.github_token }}
 
     steps:
-      - uses: actions/checkout@v3
+      # Checkout the branch.
+      - name: Checkout
+        uses: actions/checkout@v2
+
       - name: build pdf
         working-directory: ebauches
-        run: ls -l &&make all
+        run: ls -l && make all
 
       # Create an artifact that contains the output folder
       - name: Archive output folder
