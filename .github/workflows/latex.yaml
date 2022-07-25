@@ -6,6 +6,7 @@ on:
 
 jobs:
   build_latex:
+    permissions: write-all
     runs-on: ubuntu-latest
     container:
       image: ghcr.io/brinfer/latex-template/debian-texlive:latest
