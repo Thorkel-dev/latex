@@ -22,7 +22,7 @@ jobs:
 
       - name: build pdf
         working-directory: ebauches
-        run: make all
+        run: ls -l && make all
 
       # Create an artifact that contains the output folder
       - name: Archive output folder
