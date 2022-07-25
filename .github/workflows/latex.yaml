@@ -15,7 +15,7 @@ jobs:
 
     steps:
       - name: build pdf
-        run: ls -l && cd ebauches/ &&  make all
+        run: ls -l
 
       # Create an artifact that contains the output folder
       - name: Archive output folder
