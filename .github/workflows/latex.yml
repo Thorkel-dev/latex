@@ -2,7 +2,6 @@ name: Makefile CI
 
 on:
   push:
-    branches: [ "master" ]
     tags:
       - "*"
   pull_request:
@@ -16,18 +15,13 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container:
-      image: ghcr.io/brinfer/latex-template/debian-texlive:latest
-      credentials:
-        username: ${{ github.actor }}
-        password: ${{ secrets.github_token }}
 
     steps:
     - uses: actions/checkout@v3
 
     - name: build pdf
       working-directory: ./ebauches
-      use: todo
+      use: ghcr.io/thorkel-dev/latex/debian-texlive:latest
       run: make all
 
     # Create an artifact that contains the output folder

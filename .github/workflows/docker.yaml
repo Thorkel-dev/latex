@@ -10,6 +10,8 @@ on:
       - ready_for_review
     paths:
       - "Dockerfile"
+    schedule:
+      - cron: "* * 1 */12 *" # Execute every 12 month at the 1
 
 env:
   IMAGE_NAME: debian-texlive
