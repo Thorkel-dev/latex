@@ -46,7 +46,7 @@ clean_latex:
 	@rm -rf $(OUTPUT_LATEX) $(DEPEND_LATEX)
 
 clean_vscode:
-	@rm -f *.toc *.out *.log *.lof *.ist *.glo *.fls *.fdb_latexmk *.aux *.acn *.synctex.gz
+	@rm -f *.toc *.out *.log *.lof *.ist *.glo *.fls *.fdb_latexmk *.aux *.acn *.synctex.gz *.pyg *.lol *.bcf *.xml
 
 clean: clean_eps clean_latex clean_vscode
 
