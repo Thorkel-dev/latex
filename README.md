@@ -17,6 +17,10 @@ Voici une configuration minimale pour ce projet ;
   - texlive-latex-extra, contient une très grande collection de paquets complémentaires
   - texlive-font-utils, pour la transformation et la manipulation d'image
   - texlive-lang-french, prise en charge du français
+  - biber, bibliographiques pour LaTeX
+  - texlive-bibtex-extra, ajout de différent style pour BibLaTeX
+  - pygments, un surligneur syntaxique générique adapté à l'hébergement de code
+  - plantuml, composant qui permet de dessiner rapidement des diagramme
 
 ## Projet
 

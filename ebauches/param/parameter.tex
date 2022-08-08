@@ -52,9 +52,13 @@
 \definecolor{ESEODarkBlue}{RGB}{11,46,74}
 \definecolor{ESEOGrey}{RGB}{35,35,35}
 \definecolor{ESEOWhite}{RGB}{1,1,1}
+\definecolor{thorkelBlue}{RGB}{0, 0, 60}
 
 % itemize personnalisation
 \setlist[itemize]{label=\textcolor{black}{\textbullet}}
+
+% Ne fonctionne pas sur toute les distributions Debian
+\newcommand{\sectionbreak}{\clearpage}  % Nouvelle page pour chaque section
 
 %-----------------------------------------------
 %   Paramètres pour l'en-tête et le pied de page
@@ -70,7 +74,7 @@
 \fancyhead[CO]{\includegraphics[height= 15pt]{thorkel-logo.png} \\ \medskip {\prose} équipe {\teamNumber} {\annee}}
 \fancyhead[RO]{\includegraphics[height= 15pt]{latex.png} \\ \medskip {\small{Ref. {\documentNameAbrev}\_E{\teamNumber}}}}
 \def\headrule{{\if@fancyplain\let\headrulewidth\plainheadrulewidth\fi
-            \color{MidnightBlue}\hrule\@height\headrulewidth\@width\headwidth \vskip-\headrulewidth}}
+            \color{ESEOLightBlue}\hrule\@height\headrulewidth\@width\headwidth \vskip-\headrulewidth}}
 
 % footer
 \renewcommand{\footrulewidth}{0.4mm}
@@ -79,7 +83,7 @@
 \fancyfoot[RO]{Page \thepage /{\pageref{Lastpage}} }
 \def\footrule{{\if@fancyplain\let\footrulewidth\plainfootrulewidth\fi
             \vskip-\footruleskip\vskip-\footrulewidth
-            \color{MidnightBlue}\hrule\@width\headwidth\@height\footrulewidth\vskip\footruleskip}}
+            \color{ESEOLightBlue}\hrule\@width\headwidth\@height\footrulewidth\vskip\footruleskip}}
 
 %-----------------------------------------------
 %   Les titres des parties
@@ -95,7 +99,7 @@
     {0em}                                         % indentation
     {1em}                                         % avant le titre
     {1em}                                         % après le titre
-    {\normalsize\hspace{6em}\color{MidnightBlue}} % style (surcharge par le format du titre)
+    {\normalsize\hspace{6em}\color{thorkelBlue}} % style (surcharge par le format du titre)
 }
 \newcommand\l@subsubparagraph{\@dottedtocline{6}{13em}{6em}}
 \newcommand{\subsubparagraphmark}[1]{}
@@ -106,11 +110,11 @@
 \setcounter{secnumdepth}{6} % Permet la numérotation du sous-paragraphe
 
 % format des titres
-\titleformat{\section}[block]{\normalfont\bfseries\LARGE\color{MidnightBlue}}{{\thesubsection}}{1em}{}{}
-\titleformat{\subsection}[block]{\Large\hspace{2em}\Large\color{MidnightBlue}}{{\thesubsection}}{1em}{}{}
-\titleformat{\subsubsection}[block]{\hspace{3em}\large\color{MidnightBlue}}{{\thesubsubsection}}{1em}{}{}
-\titleformat{\paragraph}[block]{\normalsize\bfseries\hspace{4em}\color{MidnightBlue}}{{\theparagraph}}{1em}{}{}
-\titleformat{\subparagraph}[block]{\normalsize\hspace{5em}\color{MidnightBlue}}{{\thesubparagraph}}{1em}{}{}
+\titleformat{\section}[block]{\normalfont\bfseries\LARGE\color{thorkelBlue}}{{\thesection}}{1em}{}{}
+\titleformat{\subsection}[block]{\Large\hspace{2em}\Large\color{thorkelBlue}}{{\thesubsection}}{1em}{}{}
+\titleformat{\subsubsection}[block]{\hspace{3em}\large\color{thorkelBlue}}{{\thesubsubsection}}{1em}{}{}
+\titleformat{\paragraph}[block]{\normalsize\bfseries\hspace{4em}\color{thorkelBlue}}{{\theparagraph}}{1em}{}{}
+\titleformat{\subparagraph}[block]{\normalsize\hspace{5em}\color{thorkelBlue}}{{\thesubparagraph}}{1em}{}{}
 
 %-----------------------------------------------
 %   Personnalisation de la liste des figures
