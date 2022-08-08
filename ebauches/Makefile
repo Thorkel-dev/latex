@@ -1,6 +1,5 @@
 PAPER = document  						# définissez le chemin d'accès à votre fichier TeX ici
 SRC_PLANTUML = $(realpath ../schemas/)
-PLANTUML = ../plantuml.jar 				# définissez le chemin d'accès à votre plantuml.jar ici
 
 DEPEND_LATEX = .dependLatex
 OUTPUT_LATEX = ./build
@@ -15,7 +14,7 @@ eps : $(DEPEND_PLANTUML)
 	@$(MAKE) $(patsubst $(SRC)/%.plantuml,$(OUTPUT)/%.$@,$(shell ls -1t $(SRC_FILES)))
 
 $(OUTPUT)/%.eps: $(SRC)/%.plantuml
-	java -jar $(PLANTUML) -charset UTF-8 -teps -stdrpt:1 -recursive -teps $< -o $(OUTPUT)
+	plantuml -charset UTF-8 -teps -stdrpt:1 -recursive -teps $< -o $(OUTPUT)
 
 $(DEPEND_PLANTUML): $(SRC_FILES)
 	@find_includes() { \

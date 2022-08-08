@@ -6,8 +6,6 @@ Il est impossible de présenter toutes les options possibles avec \gls{latex} ni
 dans ce document.
 Il existe d'autres manière de faire qu'il est possible de trouver par soi-même.
 
-Pour cela suivre la règle du RFD : \colorbox{yellow}{Read the Fucking Docs !}
-
 \subsection{Installation minimale}
 Certains paquetages sont nécessaires pour générer correctement le document.
 Il s'agit ici d'installer seulement les paquets qui nous seront utiles plutôt que d'installer l'ensemble de \gls{latex}.
@@ -17,10 +15,14 @@ Il s'agit ici d'installer seulement les paquets qui nous seront utiles plutôt q
     \item texlive-latex-extra, contient une très grande collection de paquets complémentaires
     \item texlive-font-utils, pour la transformation et la manipulation d'image
     \item texlive-lang-french, prise en charge du français
+    \item biber, bibliographiques pour \gls{latex}
+    \item texlive-bibtex-extra, ajout de différent style pour BibLaTeX
+    \item pygments, un surligneur syntaxique générique adapté à l'hébergement de code
+    \item plantuml, composant qui permet de dessiner rapidement des diagramme
 \end{itemize}
 
 \subsubsection{Utilisation}
-Pour compiler le document LateX voulut il faut éxècuter la commande \verb=make= dans le répertoire \verb=ebauches/=.
+Pour compiler le document \gls{latex} voulut il faut éxècuter la commande \verb=make= dans le répertoire \verb=ebauches/=.
 Un fichier au format \verb=.pdf= est généré au même niveau que le \verb=Makefile=. \newline
 
 Un dossier \verb=build/= est créé, il contient l'ensemble des fichiers de compilation intermédiaire de \gls{latex}.

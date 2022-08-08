@@ -94,7 +94,9 @@ Une note de bas de page apparaît aussi avec la définition. \newline
 Si ça n'est pas la première fois: \gls{ed}. C'est le mot dans l'option \verb=text= qui apparaît et il n'y a pas de note de bas de page.
 
 Il est possible de faire apparaitre la liste des définitions. Ici c'est en fin de document,
-page \pageref{dictionnaireDomaine}, trié par ordre alphabétique:
+page \pageref{dictionnaireDomaine}, trié par ordre alphabétique.
+
+Il existe d'autre option pour le glossaire, voir \href{https://fr.overleaf.com/learn/latex/Glossaries}{Overleaf}.
 
 \subsubsection{Acronyme} \label{acronyme}
 Il est possible de créer une liste d'acronymes qui pourra être réutilisée dans le document.
@@ -123,18 +125,19 @@ Si c'est la première fois que l'acronyme est appelé c'est la définition dans 
 Une note de bas de page apparaît aussi. \newline
 Si ça n'est pas la première fois: \gls{acr}. C'est l'acronyme qui apparaît et il n'y a pas de note de bas de page. \newline
 
-Il est possible de faire apparaitre la liste des acronymes défini. Ici c'est dans un tableau trié par ordre alphabétique:
+Il est possible de faire apparaitre la liste des acronymes défini. Ici c'est dans un tableau trié par ordre alphabétique.
 
-\newpage
 \setglossarysection{paragraph} % Type de titre
 \printglossary[type=\acronymtype,style=superheaderborder ,title={Définitions, acronymes et abréviations}]
-\glsaddallunused % Même les acronymes non utilisés sont affichés
+\glsaddallunused \newline % Même les acronymes non utilisés sont affichés
+
+
+Il existe d'autre option pour le glossaire, voir \href{https://fr.overleaf.com/learn/latex/Glossaries}{Overleaf}.
 
 \subsubsection{PlantUML}
 Pour la génération des PlantUMLs en images il est nécessaire d'avoir installé:
 \begin{itemize}
-    \item Java, utilisation de \verb=plantuml.jar=. Le chemin relatif vers
-          \verb=plantuml.jar= doit être indiqué dans le \verb=makefile= via la variable \verb=PLANTUML=.
+    \item PlantUML, programme permettant de dessiner des diagrammes UML, en utilisant une simple description textuelle
     \item Graphviz, génère un graphe à partir d'une description textuelle de PlantUML
 \end{itemize}
 
@@ -156,8 +159,8 @@ Pour supprimer tout les fichiers générés par les diagrammes :
 
 La commande va récupérer l'ensemble des fichiers \verb=.plantuml=
 dans le dossier \verb=schémas/= pour les convertir en \verb=.eps=.
-Il s'agit d'un format d'image vectorielle supporté par \gls{latex}.
-Garantissant une grande qualité d'image quelle que soit la taille.
+Il s'agit d'un format d'image vectorielle supporté par \gls{latex},
+garantissant une grande qualité d'image quelle que soit la taille.
 
 Les fichier sont de la forme suivant :
 \begin{code}
@@ -188,13 +191,7 @@ Il est posible de ranger les diagrammes dans des sous-dossiers dont il faudra pr
 \subsubsection{Minted}
 Il est possible de mettre des extraits de code dans le document via le paquetage Minted.
 Ce paquetage utilise la librairie Python \verb=Pygments=.
-Cette librairie doit être installée avec le gestionnaire de paquets \verb=pip= qui doit lui-même être installé.
-\begin{code}
-    \begin{minted}{bash}
-    pip install pygments
-\end{minted}
-    \caption{Commande d'installation de pygments}
-\end{code}
+Cette librairie doit être installée via le paquet \verb=python3-pygments=.
 
 Les extraits de code seront colorisés en fonction du langage mit en paramètre comme ci-dessous :
 
@@ -221,6 +218,13 @@ Les extraits de code seront colorisés en fonction du langage mit en paramètre 
 Les extraits de code sont mis dans un environnement crée pour l'occasion : \verb=code=.
 Le but étant d'ajouter des légendes et une mise en page particulière et de les lister par la suite à la fin du document,
 page \pageref{TableOfCode}.
+Il est possible d'ajouter directement un ficher de code source dans le document, via la commande :
+\begin{code}
+    \begin{minted}{latex}
+        \inputminted{python}{hello.py}
+\end{minted}
+    \caption{Exemple d'intégration du fichier code source}
+\end{code}
 
 \subsubsection{Xltabular}
 Il est possible de créer des tableaux pour qu'ils puissent s'étaler sur l'ensemble de la page et sur plusieurs pages.
@@ -390,7 +394,7 @@ Ce qui donne le résultat suivant où l'on ajoute la note de bas de page \autoci
 Et ici on a la fait apparaitre : \cite{CitekeyArticle}. \newline
 
 Dans notre exemple on affiche le nom de l'auteur et le titre. Il existe d'autres manière où l'on affiche d'autres informations.
-Voir la \href{https://mirror.ibcp.fr/pub/CTAN/macros/latex/contrib/biblatex/doc/biblatex.pdf#subsection.3.9}{documantation CTAN}. \newline
+Voir la \href{https://mirror.ibcp.fr/pub/CTAN/macros/latex/contrib/biblatex/doc/biblatex.pdf#subsection.3.9}{documantation CTAN}, ou \href{https://fr.overleaf.com/learn/latex/Bibliography_management_with_bibtex}{Overleaf}. \newline
 
 Dans le fichier \verb=biblio.bib= se trouve, en exemple, l'ensemble des catégories de référence qui existe.
 En fonction de la catégorie, les informations demandées sont différentes et leurs affichage le sont aussi,
