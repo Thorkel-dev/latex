@@ -1,14 +1,13 @@
 FROM debian:stable-slim
 
-LABEL \
-    image.title="Docker Image of TeXLive" \
-    image.desc="Docker image to build PDF file with LaTeX" \
-    image.source=" ghcr.io/thorkel-dev/latex/debian-texlive:latest" \
-    authors.name="Thorkel-dev" \
-    authors.web="https://github.com/Thorkel-dev" \
-    image.buildDate=$buildDate \
-    base.name="debian:stable-slim" \
-    base.source="https://hub.docker.com/_/debian/?tab=tags"
+LABEL org.opencontainers.image.title="Docker Image of TeXLive"
+LABEL org.opencontainers.image.description="Docker image to build PDF file with LaTeX"
+LABEL org.opencontainers.image.url=" ghcr.io/thorkel-dev/latex/debian-texlive"
+LABEL org.opencontainers.image.authors="Thorkel-dev"
+LABEL org.opencontainers.image.authors.web="https://github.com/Thorkel-dev"
+LABEL org.opencontainers.image.created =$buildDate
+LABEL org.opencontainers.image.base.name="debian:stable-slim"
+LABEL org.opencontainers.image.base.source="https://hub.docker.com/_/debian/?tab=tags"
 
 ENV TZ=Europe/Paris
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ >/etc/timezone
