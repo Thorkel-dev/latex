@@ -25,3 +25,8 @@ RUN apt-get install texlive-font-utils -y
 RUN apt-get install texlive-lang-french -y
 RUN apt-get install texlive-bibtex-extra -y
 RUN apt-get install biber -y
+
+# Create a new user and log the shell on the new user
+RUN useradd -ms /bin/bash docker
+# Switch the docker image to the new user
+USER docker
