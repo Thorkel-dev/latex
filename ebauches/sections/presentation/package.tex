@@ -1,119 +1,93 @@
-\subsection{Paquetages}
+\subsection{Packages}
 
 \begin{itemize}
-    \item \href{https://www.ctan.org/pkg/babel}{babel} Ce paquetage gère les règles
-          typographiques culturellement déterminées. Ici en français.
-    \item \href{https://ctan.org/pkg/fontenc}{fontenc} Ce paquetage permet quant à lui d’afficher et de
-          prendre correctement en charge ces caractères accentués (du point de vue du fichier de sortie).
-    \item \href{https://www.ctan.org/pkg/inputenc}{inputenc} Ce paquetage sert à pouvoir taper les accents
-          directement dans le fichier source. il est impératif de préciser quel encodage est utilisé pour le fichier
-          source, ici UTF8.
-    \item \href{https://www.ctan.org/pkg/inputenc}{xspace} Ce paquetage fournit une commande unique qui regarde ce
-          qui vient après elle dans le flux de commandes, et décide s'il faut insérer un espace pour remplacer
-          celui qui a été "mangé" par le décodeur de commandes TeX
-    \item \href{https://www.ctan.org/pkg/graphicx}{graphicx} Ce paquetage s'appuie sur
-          le paquetage graphique et fournit une interface clé-valeur pour les arguments
-          facultatifs de la commande \verb=\includegraphics=. Cette interface fournit des
-          fonctionnalités qui vont bien au-delà de ce que le paquetage graphique offre par lui-même.
-    \item \href{https://www.ctan.org/pkg/lastpage}{lastpage} Référencez le nombre de pages de du
-          document \gls{latex} par l'intermédiaire de l'
-          l'introduction d'une nouvelle étiquette.
-    \item \href{https://www.ctan.org/pkg/hyperref}{hyperref} Ce paquetage est utilisé
-          pour gérer les commandes de référencement croisé dans les fichiers
-          \gls{latex} pour produire des liens hypertextes dans le document.
-    \item \href{https://www.ctan.org/pkg/subfiles}{subfiles} Ce paquetage, permet de gérer plus confortablement les projets
-          multi-fichiers, en permettant à la fois de traiter les fichiers subsidiaires par eux-mêmes et de traiter le
-          fichier principal qui les inclut, sans apporter de modifications à l'un ou l'autre.
-    \item \href{https://www.ctan.org/pkg/titlesec}{titlesec} Ce paquetage fournit une interface pour la sélection de
-          divers styles de titres.
-    \item \href{https://www.ctan.org/pkg/float}{float} Améliore l'interface de définition des objets flottants
-          tels que les figures et les tableaux.
-    \item \href{https://www.ctan.org/pkg/xcolor}{xcolor} Ce paquetage part des installations de base
-          du paquetage \textbf{color}, et fournit un accès facile et indépendant du pilote.
-    \item \href{https://www.ctan.org/pkg/fancyhdr}{fancyhdr} Le paquetage offre de nombreuses possibilités,
-          à la fois pour construire des en-têtes et des pieds de page, et pour contrôler leur
-          utilisation (par exemple, lorsque \gls{latex} change automatiquement le style d'en-tête utilisé).
-    \item \href{https://www.ctan.org/pkg/xltabular}{xltabular} Le nouvel environnement xltabular est une combinaison
-          de longtable et tabularx : Définitions d'en-tête et de pied de page, spécificateur de colonne X,
-          et avec des sauts de page possibles.
-    \item \href{https://www.ctan.org/pkg/enumitem}{enumitem} Ce paquetage permet à l'utilisateur de contrôler
-          la disposition des trois environnements de liste de base : enumerate, itemize et description.
-    \item \href{https://www.ctan.org/pkg/tocbibind}{tocbibind} Ajoute automatiquement la bibliographie et/ou
-          l'index et/ou le sommaire, etc., à la liste de la table des matières.
-    \item \href{https://www.ctan.org/pkg/geometry}{geometry} Le paquetage fournit une interface
-          utilisateur facile et flexible pour personnaliser la mise en page en mettant en œuvre des mécanismes
-          d'auto-centrage et d'auto-équilibrage.
-    \item \href{https://www.ctan.org/pkg/minted}{minted} Le paquetage qui facilite la coloration syntaxique expressive dans
-          \gls{latex} en utilisant la puissante bibliothèque Pygments
-    \item \href{https://www.ctan.org/pkg/caption}{caption} Le paquetage de légendes offre de nombreuses façons de
-          personnaliser les légendes dans les environnements flottants comme les figures et les tableaux, et coopère
-          avec de nombreux autres paquets.
-    \item \href{https://www.ctan.org/pkg/biblatex}{biblatex} BibLaTeX est une réimplémentation complète des fonctions
-          bibliographiques fournies par \gls{latex}. BibLaTeX utilise son propre programme de gestion des données appelé biber
-          pour lire et traiter les données bibliographiques. Grâce à biber, BibLaTeX dispose de nombreuses fonctionnalités
-          rivalisant avec les autres systèmes bibliographiques, voire les surpassant.
+    \item \href{https://www.ctan.org/pkg/babel}{babel} This package manages the culturally
+          determined typographical rules.
+    \item \href{https://ctan.org/pkg/fontenc}{fontenc} This package allows to display and
+          to take correctly in charge these accentuated characters (from the point of view of the output file).
+    \item \href{https://www.ctan.org/pkg/inputenc}{inputenc} This package is used to type the accents
+          directly in the source file. It is imperative to specify which encoding is used for the
+          source file, here UTF8.
+    \item \href{https://www.ctan.org/pkg/inputenc}{xspace} This package provides a single command which looks at what comes after it in the
+          that comes after it in the command stream, and decides whether to insert a space to replace
+          the one that has been "eaten" by the TeX command decoder
+    \item \href{https://www.ctan.org/pkg/graphicx}{graphicx} This package relies on
+          the graphical package and provides a key-value interface for the optional arguments
+          optional arguments to the \verb=\includegraphics= command. This interface provides
+          functionality that goes far beyond what the graphical package offers by itself.
+    \item \href{https://www.ctan.org/pkg/lastpage}{lastpage} Reference the number of pages in the
+          document via the introduction of a new label.
+    \item \href{https://www.ctan.org/pkg/hyperref}{hyperref} This package is used
+          to manage cross-referencing commands in \gls{latex} files to produce hypertext links in the document.
+    \item \href{https://www.ctan.org/pkg/subfiles}{subfiles} This package, allows to manage more comfortably the projects,
+          by allowing both to process the subsidiary files by themselves and to process the main file that
+          which includes them, without making any changes to either of them.
+    \item \href{https://www.ctan.org/pkg/titlesec}{titlesec} This package provides an interface for selecting
+          various title styles.
+    \item \href{https://www.ctan.org/pkg/float}{float} Improves the interface for defining floating objects
+          such as figures and tables.
+    \item \href{https://www.ctan.org/pkg/xcolor}{xcolor} This package starts from the basic facilities
+          of the \textbf{color} package, and provides easy, driver-independent access.
+    \item \href{https://www.ctan.org/pkg/fancyhdr}{fancyhdr} The package offers many possibilities,
+          both to build headers and footers, and to control their use (for example, when \gls{latex} automatically changes the header style used).
+    \item \href{https://www.ctan.org/pkg/xltabular}{xltabular} The new xltabular environment is a combination
+          of longtable and tabularx : Header and footer definitions, X column specifier,
+          and with possible page breaks.
+    \item \href{https://www.ctan.org/pkg/enumitem}{enumitem} This package allows the user to control
+          the layout of the three basic list environments: enumerate, itemize and description.
+    \item \href{https://www.ctan.org/pkg/tocbibind}{tocbibind} Automatically adds the bibliography and/or
+          index and/or table of contents, etc., to the table of contents list.
+    \item \href{https://www.ctan.org/pkg/geometry}{geometry} The package provides an easy and flexible
+          interface for customizing the layout by implementing auto-centering and auto-routing mechanisms.
+          and self-balancing mechanisms.
+    \item \href{https://www.ctan.org/pkg/minted}{minted} The package that facilitates expressive syntax coloring in
+          \gls{latex} using the powerful Pygments library
+    \item \href{https://www.ctan.org/pkg/caption}{caption} The caption package offers many ways to customize captions
+          in floating environments such as figures and tables, and cooperates with with many other packages.
+    \item \href{https://www.ctan.org/pkg/biblatex}{biblatex} BibLaTeX is a complete reimplementation of the bibliographic functions
+          functions provided by \gls{latex}. BibLaTeX uses its own data management program called biber
+          to read and process bibliographic data. Thanks to biber, BibLaTeX has many features that
+          that rival or surpass other bibliographic systems.
 \end{itemize}
 
-\subsubsection{Dictionnaire} \label{dictionnaire}
-Il est possible de créer un dictionnaire qui pourra être réutilisé dans le document.
-Pour cela, il faut renseigner ses définitions dans le fichier \verb=glossary.tex= de la manière suivante :
+\subsubsection{Dictionary} \label{dictionary}
+It is possible to create a dictionary that can be reused in the document.
+To do this, you must enter its definitions in the file \verb=glossary.tex= in the following way:
 \begin{code}
-    \begin{minted}{latex}
-        \newglossaryentry{la clé pour appeller}
-        {
-        name={Le mot à définir},
-        description={La définition},
-        first={La définition (Le mot)},
-        text={Le mot},
-        }
-
-        % Par exemple
-        \newglossaryentry{ed}
-        {
-            name={Exemple Dictionnaire},
-            description={Terme définissant le mot},
-            first={Exemple Dictionnaire (ED)},
-            text={ED},
-        }
-\end{minted}
-    \caption{Définition dans le dictionnaire}
+    \inputminted{latex}{glossary.tex}
+    \caption{Definition in the dictionary}
 \end{code}
 
-Si un mot est utilisé plusieurs fois dans le document et que l'orthographe de ce mot doit être modifié;
-cela peut se faire facilement et dans tout le document en le modifiant dans \verb=glossary.tex=.
-On utilise, pour appeler ce mot, la même manière que pour les acronymes, \ref{acronyme} page \pageref{acronyme}, :
+If a word is used several times in the document and the spelling of this word must be modified
+this can be done easily and throughout the document by changing it in \verb=glossary.tex=.
+To call this word, we use the same way as for acronyms, \ref{acronym} page \pageref{acronym}, :
 \begin{code}
     \begin{minted}{latex}
         \gls{ed}
 \end{minted}
-    \caption{Utilisation du dictionnaire}
+    \caption{Use of the dictionary}
 \end{code}
 
-Si c'est la première fois que le mot est appelé c'est la définition dans l'option \verb=first= qui apparaît : \gls{ed}.
-Une note de bas de page apparaît aussi avec la définition. \newline
-Si ça n'est pas la première fois: \gls{ed}. C'est le mot dans l'option \verb=text= qui apparaît et il n'y a pas de note de bas de page.
+If it is the first time that the word is called it is the definition in the option \verb=first= that appears: \gls{ed}.
+A footnote also appears with the definition. \newline
+If it's not the first time: \gls{ed}. It is the word in the \verb=text= option that appears and there is no footnote.
 
-Il est possible de faire apparaitre la liste des définitions. Ici c'est en fin de document,
-page \pageref{dictionnaireDomaine}, trié par ordre alphabétique.
+It is possible to display the list of definitions. Here it is at the end of the document,
+page \pageref{domaindictionary}, sorted alphabetically.
 
-Il existe d'autre option pour le glossaire, voir \href{https://fr.overleaf.com/learn/latex/Glossaries}{Overleaf}.
+There are other options for the glossary, see \href{https://fr.overleaf.com/learn/latex/Glossaries}{Overleaf}.
 
-\subsubsection{Acronyme} \label{acronyme}
+\subsubsection{Acronyme} \label{acronym}
 Il est possible de créer une liste d'acronymes qui pourra être réutilisée dans le document.
 Pour cela, il faut renseigner ses acronymes dans le fichier \verb=acronyms.tex= de la manière suivante :
 \begin{code}
-    \begin{minted}{latex}
-        \newacronym[first=Définition de l'acronyme (l'acronyme)]{la clé pour appeller}{l'acronyme}{Définition de l'acronyme}
-
-        % Par exemple
-        \newacronym[first=Définition de l'acronyme (ARC)]{acr}{ARC}{Définition de l'acronyme}
-\end{minted}
+    \inputminted{latex}{acronyms.tex}
     \caption{Définition d'un acronyme}
 \end{code}
 
 Si un acronyme est utilisé plusieurs fois dans le document et que l'orthographe de cet acronyme doit être modifiée;
 cela peut se faire facilement et dans tout le document en le modifiant dans \verb=acronyms.tex=.
-On utilise, pour appeler cet acronyme, la même manière que pour le dictionnaire, \ref{dictionnaire} page \pageref{dictionnaire}, :
+On utilise, pour appeler cet acronyme, la même manière que pour le dictionnaire, \ref{dictionary} page \pageref{dictionary}, :
 \begin{code}
     \begin{minted}{latex}
         \gls{acr}
@@ -164,14 +138,7 @@ garantissant une grande qualité d'image quelle que soit la taille.
 
 Les fichier sont de la forme suivant :
 \begin{code}
-    \begin{minted}{vim}
-        @startuml
-        skinparam shadowing false
-
-        Alice -> Bob : hello
-
-        @enduml ' Fin du document
-    \end{minted}
+    \inputminted{vim}{../schemas/exemple.plantuml}
     \caption{Exemple de fichier PlantUMLs}
 \end{code}
 
