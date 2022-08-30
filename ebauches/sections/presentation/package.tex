@@ -54,7 +54,24 @@
 It is possible to create a dictionary that can be reused in the document.
 To do this, you must enter its definitions in the file \verb=glossary.tex= in the following way:
 \begin{code}
-    \inputminted{latex}{glossary.tex}
+    \begin{minted}{latex}
+        \newglossaryentry{the key to call}
+        {
+        name={The word to define},
+        description={The definition},
+        first={The definition (The word)},
+        text={The word},
+        }
+
+        % For example
+        \newglossaryentry{ed}
+        {
+            name={Example Dictionary},
+            description={Word defining term},
+            first={Example Dictionary (ED)},
+            text={ED},
+        }
+\end{minted}
     \caption{Definition in the dictionary}
 \end{code}
 
@@ -77,36 +94,35 @@ page \pageref{domaindictionary}, sorted alphabetically.
 
 There are other options for the glossary, see \href{https://fr.overleaf.com/learn/latex/Glossaries}{Overleaf}.
 
-\subsubsection{Acronyme} \label{acronym}
-Il est possible de créer une liste d'acronymes qui pourra être réutilisée dans le document.
-Pour cela, il faut renseigner ses acronymes dans le fichier \verb=acronyms.tex= de la manière suivante :
+\subsubsection{Acronym} \label{acronym}
+It is possible to create a list of acronyms that can be reused in the document.
+To do this, you must enter your acronyms in the file \verb=acronyms.tex= in the following way:
 \begin{code}
-    \inputminted{latex}{acronyms.tex}
-    \caption{Définition d'un acronyme}
+    \inputminted{latex}{./acronyms.tex}
+    \caption{Definition of an acronym}
 \end{code}
 
-Si un acronyme est utilisé plusieurs fois dans le document et que l'orthographe de cet acronyme doit être modifiée;
-cela peut se faire facilement et dans tout le document en le modifiant dans \verb=acronyms.tex=.
-On utilise, pour appeler cet acronyme, la même manière que pour le dictionnaire, \ref{dictionary} page \pageref{dictionary}, :
+If an acronym is used several times in the document and the spelling of this acronym must be changed
+this can be done easily and throughout the document by modifying it in \verb=acronyms.tex=.
+To call this acronym, we use the same way as for the dictionary, \ref{dictionary} page \pageref{dictionary} :
 \begin{code}
     \begin{minted}{latex}
         \gls{acr}
 \end{minted}
-    \caption{Utilisation d'un acronyme}
+    \caption{Use of an acronym}
 \end{code}
 
-Si c'est la première fois que l'acronyme est appelé c'est la définition dans l'option \verb=first= qui apparaît : \gls{acr}.
-Une note de bas de page apparaît aussi. \newline
-Si ça n'est pas la première fois: \gls{acr}. C'est l'acronyme qui apparaît et il n'y a pas de note de bas de page. \newline
+If this is the first time the acronym is called, the definition in the \verb=first= option appears: \gls{acr}.
+A footnote also appears. \newline
+If it's not the first time: \gls{acr}. This is the acronym that appears and there is no footnote. \newline
 
-Il est possible de faire apparaitre la liste des acronymes défini. Ici c'est dans un tableau trié par ordre alphabétique.
+It is possible to display the list of defined acronyms. Here it is in a table sorted alphabetically.
 
-\setglossarysection{paragraph} % Type de titre
-\printglossary[type=\acronymtype,style=superheaderborder ,title={Définitions, acronymes et abréviations}]
-\glsaddallunused \newline % Même les acronymes non utilisés sont affichés
+\setglossarysection{paragraph} % Type of title
+\printglossary[type=\acronymtype,style=superheaderborder ,title={Definitions, acronyms and abbreviations}]
+\glsaddallunused \newline % Even unused acronyms are displayed
 
-
-Il existe d'autre option pour les acronymes, voir \href{https://fr.overleaf.com/learn/latex/Glossaries}{Overleaf}.
+There are other options for acronyms, see \href{https://fr.overleaf.com/learn/latex/Glossaries}{Overleaf}.
 
 \subsubsection{PlantUML}
 Pour la génération des PlantUMLs en images il est nécessaire d'avoir installé:
