@@ -1,17 +1,17 @@
-PAPER = document  						# définissez le chemin d'accès à votre fichier TeX ici
 SRC_PLANTUML = $(realpath ../schemas/)
-
-DEPEND_LATEX = .dependLatex
-OUTPUT_LATEX = ./build
 
 DEPEND_PLANTUML = .dependPlantUML
 OUTPUT_PLANTUML = $(SRC_PLANTUML)
 SRC_FILES := $(wildcard $(SRC_PLANTUML)/*.plantuml) $(wildcard $(SRC_PLANTUML)/**/*.plantuml)
 
-all: eps latex
+all: latex
 
 eps : $(DEPEND_PLANTUML)
+	@echo -e "\n================================================================================\n"
+	@echo "                               Start to generate EPS file"
+	@echo -e "\n================================================================================\n"
 	@$(MAKE) $(patsubst $(SRC)/%.plantuml,$(OUTPUT)/%.$@,$(shell ls -1t $(SRC_FILES)))
+
 
 $(OUTPUT)/%.eps: $(SRC)/%.plantuml
 	plantuml -charset UTF-8 -teps -stdrpt:1 -recursive -teps $< -o $(OUTPUT)
@@ -33,17 +33,17 @@ $(DEPEND_PLANTUML): $(SRC_FILES)
 	done >> $@
 
 latex:
-	@latexmk -e '$$max_repeat=10' -time --shell-escape -auxdir=$(OUTPUT_LATEX) -output-directory=$(OUTPUT_LATEX) -pdf -deps -deps-out=$(DEPEND_LATEX) $(PAPER)
-	@cd $(OUTPUT_LATEX) && makeglossaries $(PAPER) && cd ../
-	@latexmk -e '$$max_repeat=10' -time --shell-escape -auxdir=$(OUTPUT_LATEX) -output-directory=$(OUTPUT_LATEX) -pdf -deps -deps-out=$(DEPEND_LATEX) $(PAPER)
-	mv build/$(join $(PAPER), .pdf) ./
+	@echo -e "\n================================================================================\n"
+	@echo "                               Start to generate PDF file"
+	@echo -e "\n================================================================================\n"
+	@latexmk
 
 clean_eps:
 	@rm -rf $(OUTPUT_PLANTUML)/**/*.eps $(OUTPUT_PLANTUML)/*.eps
 	@rm -f $(DEPEND_PLANTUML)
 
 clean_latex:
-	@rm -rf $(OUTPUT_LATEX) $(DEPEND_LATEX)
+	latexmk -c
 
 clean_vscode:
 	@rm -f *.toc *.out *.log *.lof *.ist *.glo *.fls *.fdb_latexmk *.aux *.acn *.synctex.gz *.pyg *.lol *.bcf *.xml
@@ -52,4 +52,4 @@ clean: clean_eps clean_latex clean_vscode
 
 .PHONY: all clean eps clean_eps latex clean_latex
 
--include $(DEPEND_LATEX) $(DEPEND_PLANTUML)
+-include $(DEPEND_PLANTUML)
