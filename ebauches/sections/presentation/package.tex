@@ -1,191 +1,174 @@
-\subsection{Paquetages}
+\subsection{Packages}
 
 \begin{itemize}
-    \item \href{https://www.ctan.org/pkg/babel}{babel} Ce paquetage gère les règles
-          typographiques culturellement déterminées. Ici en français.
-    \item \href{https://ctan.org/pkg/fontenc}{fontenc} Ce paquetage permet quant à lui d’afficher et de
-          prendre correctement en charge ces caractères accentués (du point de vue du fichier de sortie).
-    \item \href{https://www.ctan.org/pkg/inputenc}{inputenc} Ce paquetage sert à pouvoir taper les accents
-          directement dans le fichier source. il est impératif de préciser quel encodage est utilisé pour le fichier
-          source, ici UTF8.
-    \item \href{https://www.ctan.org/pkg/inputenc}{xspace} Ce paquetage fournit une commande unique qui regarde ce
-          qui vient après elle dans le flux de commandes, et décide s'il faut insérer un espace pour remplacer
-          celui qui a été "mangé" par le décodeur de commandes TeX
-    \item \href{https://www.ctan.org/pkg/graphicx}{graphicx} Ce paquetage s'appuie sur
-          le paquetage graphique et fournit une interface clé-valeur pour les arguments
-          facultatifs de la commande \verb=\includegraphics=. Cette interface fournit des
-          fonctionnalités qui vont bien au-delà de ce que le paquetage graphique offre par lui-même.
-    \item \href{https://www.ctan.org/pkg/lastpage}{lastpage} Référencez le nombre de pages de du
-          document \gls{latex} par l'intermédiaire de l'
-          l'introduction d'une nouvelle étiquette.
-    \item \href{https://www.ctan.org/pkg/hyperref}{hyperref} Ce paquetage est utilisé
-          pour gérer les commandes de référencement croisé dans les fichiers
-          \gls{latex} pour produire des liens hypertextes dans le document.
-    \item \href{https://www.ctan.org/pkg/subfiles}{subfiles} Ce paquetage, permet de gérer plus confortablement les projets
-          multi-fichiers, en permettant à la fois de traiter les fichiers subsidiaires par eux-mêmes et de traiter le
-          fichier principal qui les inclut, sans apporter de modifications à l'un ou l'autre.
-    \item \href{https://www.ctan.org/pkg/titlesec}{titlesec} Ce paquetage fournit une interface pour la sélection de
-          divers styles de titres.
-    \item \href{https://www.ctan.org/pkg/float}{float} Améliore l'interface de définition des objets flottants
-          tels que les figures et les tableaux.
-    \item \href{https://www.ctan.org/pkg/xcolor}{xcolor} Ce paquetage part des installations de base
-          du paquetage \textbf{color}, et fournit un accès facile et indépendant du pilote.
-    \item \href{https://www.ctan.org/pkg/fancyhdr}{fancyhdr} Le paquetage offre de nombreuses possibilités,
-          à la fois pour construire des en-têtes et des pieds de page, et pour contrôler leur
-          utilisation (par exemple, lorsque \gls{latex} change automatiquement le style d'en-tête utilisé).
-    \item \href{https://www.ctan.org/pkg/xltabular}{xltabular} Le nouvel environnement xltabular est une combinaison
-          de longtable et tabularx : Définitions d'en-tête et de pied de page, spécificateur de colonne X,
-          et avec des sauts de page possibles.
-    \item \href{https://www.ctan.org/pkg/enumitem}{enumitem} Ce paquetage permet à l'utilisateur de contrôler
-          la disposition des trois environnements de liste de base : enumerate, itemize et description.
-    \item \href{https://www.ctan.org/pkg/tocbibind}{tocbibind} Ajoute automatiquement la bibliographie et/ou
-          l'index et/ou le sommaire, etc., à la liste de la table des matières.
-    \item \href{https://www.ctan.org/pkg/geometry}{geometry} Le paquetage fournit une interface
-          utilisateur facile et flexible pour personnaliser la mise en page en mettant en œuvre des mécanismes
-          d'auto-centrage et d'auto-équilibrage.
-    \item \href{https://www.ctan.org/pkg/minted}{minted} Le paquetage qui facilite la coloration syntaxique expressive dans
-          \gls{latex} en utilisant la puissante bibliothèque Pygments
-    \item \href{https://www.ctan.org/pkg/caption}{caption} Le paquetage de légendes offre de nombreuses façons de
-          personnaliser les légendes dans les environnements flottants comme les figures et les tableaux, et coopère
-          avec de nombreux autres paquets.
-    \item \href{https://www.ctan.org/pkg/biblatex}{biblatex} BibLaTeX est une réimplémentation complète des fonctions
-          bibliographiques fournies par \gls{latex}. BibLaTeX utilise son propre programme de gestion des données appelé biber
-          pour lire et traiter les données bibliographiques. Grâce à biber, BibLaTeX dispose de nombreuses fonctionnalités
-          rivalisant avec les autres systèmes bibliographiques, voire les surpassant.
+    \item \href{https://www.ctan.org/pkg/babel}{babel} This package manages the culturally
+          determined typographical rules.
+    \item \href{https://ctan.org/pkg/fontenc}{fontenc} This package allows to display and
+          to take correctly in charge these accentuated characters (from the point of view of the output file).
+    \item \href{https://www.ctan.org/pkg/inputenc}{inputenc} This package is used to type the accents
+          directly in the source file. It is imperative to specify which encoding is used for the
+          source file, here UTF8.
+    \item \href{https://www.ctan.org/pkg/inputenc}{xspace} This package provides a single command which looks at what comes after it in the
+          that comes after it in the command stream, and decides whether to insert a space to replace
+          the one that has been "eaten" by the TeX command decoder
+    \item \href{https://www.ctan.org/pkg/graphicx}{graphicx} This package relies on
+          the graphical package and provides a key-value interface for the optional arguments
+          optional arguments to the \verb=\includegraphics= command. This interface provides
+          functionality that goes far beyond what the graphical package offers by itself.
+    \item \href{https://www.ctan.org/pkg/lastpage}{lastpage} Reference the number of pages in the
+          document via the introduction of a new label.
+    \item \href{https://www.ctan.org/pkg/hyperref}{hyperref} This package is used
+          to manage cross-referencing commands in \gls{latex} files to produce hypertext links in the document.
+    \item \href{https://www.ctan.org/pkg/subfiles}{subfiles} This package, allows to manage more comfortably the projects,
+          by allowing both to process the subsidiary files by themselves and to process the main file that
+          which includes them, without making any changes to either of them.
+    \item \href{https://www.ctan.org/pkg/titlesec}{titlesec} This package provides an interface for selecting
+          various title styles.
+    \item \href{https://www.ctan.org/pkg/float}{float} Improves the interface for defining floating objects
+          such as figures and tables.
+    \item \href{https://www.ctan.org/pkg/xcolor}{xcolor} This package starts from the basic facilities
+          of the \textbf{color} package, and provides easy, driver-independent access.
+    \item \href{https://www.ctan.org/pkg/fancyhdr}{fancyhdr} The package offers many possibilities,
+          both to build headers and footers, and to control their use (for example, when \gls{latex} automatically changes the header style used).
+    \item \href{https://www.ctan.org/pkg/xltabular}{xltabular} The new xltabular environment is a combination
+          of longtable and tabularx : Header and footer definitions, X column specifier,
+          and with possible page breaks.
+    \item \href{https://www.ctan.org/pkg/enumitem}{enumitem} This package allows the user to control
+          the layout of the three basic list environments: enumerate, itemize and description.
+    \item \href{https://www.ctan.org/pkg/tocbibind}{tocbibind} Automatically adds the bibliography and/or
+          index and/or table of contents, etc., to the table of contents list.
+    \item \href{https://www.ctan.org/pkg/geometry}{geometry} The package provides an easy and flexible
+          interface for customizing the layout by implementing auto-centering and auto-routing mechanisms.
+          and self-balancing mechanisms.
+    \item \href{https://www.ctan.org/pkg/minted}{minted} The package that facilitates expressive syntax coloring in
+          \gls{latex} using the powerful Pygments library
+    \item \href{https://www.ctan.org/pkg/caption}{caption} The caption package offers many ways to customize captions
+          in floating environments such as figures and tables, and cooperates with with many other packages.
+    \item \href{https://www.ctan.org/pkg/biblatex}{biblatex} BibLaTeX is a complete reimplementation of the bibliographic functions
+          functions provided by \gls{latex}. BibLaTeX uses its own data management program called biber
+          to read and process bibliographic data. Thanks to biber, BibLaTeX has many features that
+          that rival or surpass other bibliographic systems.
 \end{itemize}
 
-\subsubsection{Dictionnaire} \label{dictionnaire}
-Il est possible de créer un dictionnaire qui pourra être réutilisé dans le document.
-Pour cela, il faut renseigner ses définitions dans le fichier \verb=glossary.tex= de la manière suivante :
+\subsubsection{Dictionary} \label{dictionary}
+It is possible to create a dictionary that can be reused in the document.
+To do this, you must enter its definitions in the file \verb=glossary.tex= in the following way:
 \begin{code}
     \begin{minted}{latex}
-        \newglossaryentry{la clé pour appeller}
+        \newglossaryentry{the key to call}
         {
-        name={Le mot à définir},
-        description={La définition},
-        first={La définition (Le mot)},
-        text={Le mot},
+        name={The word to define},
+        description={The definition},
+        first={The definition (The word)},
+        text={The word},
         }
 
-        % Par exemple
+        % For example
         \newglossaryentry{ed}
         {
-            name={Exemple Dictionnaire},
-            description={Terme définissant le mot},
-            first={Exemple Dictionnaire (ED)},
+            name={Example Dictionary},
+            description={Word defining term},
+            first={Example Dictionary (ED)},
             text={ED},
         }
 \end{minted}
-    \caption{Définition dans le dictionnaire}
+    \caption{Definition in the dictionary}
 \end{code}
 
-Si un mot est utilisé plusieurs fois dans le document et que l'orthographe de ce mot doit être modifié;
-cela peut se faire facilement et dans tout le document en le modifiant dans \verb=glossary.tex=.
-On utilise, pour appeler ce mot, la même manière que pour les acronymes, \ref{acronyme} page \pageref{acronyme}, :
+If a word is used several times in the document and the spelling of this word must be modified
+this can be done easily and throughout the document by changing it in \verb=glossary.tex=.
+To call this word, we use the same way as for acronyms, \ref{acronym} page \pageref{acronym}, :
 \begin{code}
     \begin{minted}{latex}
         \gls{ed}
 \end{minted}
-    \caption{Utilisation du dictionnaire}
+    \caption{Use of the dictionary}
 \end{code}
 
-Si c'est la première fois que le mot est appelé c'est la définition dans l'option \verb=first= qui apparaît : \gls{ed}.
-Une note de bas de page apparaît aussi avec la définition. \newline
-Si ça n'est pas la première fois: \gls{ed}. C'est le mot dans l'option \verb=text= qui apparaît et il n'y a pas de note de bas de page.
+If it is the first time that the word is called it is the definition in the option \verb=first= that appears: \gls{ed}.
+A footnote also appears with the definition. \newline
+If it's not the first time: \gls{ed}. It is the word in the \verb=text= option that appears and there is no footnote.
 
-Il est possible de faire apparaitre la liste des définitions. Ici c'est en fin de document,
-page \pageref{dictionnaireDomaine}, trié par ordre alphabétique.
+It is possible to display the list of definitions. Here it is at the end of the document,
+page \pageref{domaindictionary}, sorted alphabetically.
 
-Il existe d'autre option pour le glossaire, voir \href{https://fr.overleaf.com/learn/latex/Glossaries}{Overleaf}.
+There are other options for the glossary, see \href{https://fr.overleaf.com/learn/latex/Glossaries}{Overleaf}.
 
-\subsubsection{Acronyme} \label{acronyme}
-Il est possible de créer une liste d'acronymes qui pourra être réutilisée dans le document.
-Pour cela, il faut renseigner ses acronymes dans le fichier \verb=acronyms.tex= de la manière suivante :
+\subsubsection{Acronym} \label{acronym}
+It is possible to create a list of acronyms that can be reused in the document.
+To do this, you must enter your acronyms in the file \verb=acronyms.tex= in the following way:
 \begin{code}
-    \begin{minted}{latex}
-        \newacronym[first=Définition de l'acronyme (l'acronyme)]{la clé pour appeller}{l'acronyme}{Définition de l'acronyme}
-
-        % Par exemple
-        \newacronym[first=Définition de l'acronyme (ARC)]{acr}{ARC}{Définition de l'acronyme}
-\end{minted}
-    \caption{Définition d'un acronyme}
+    \inputminted{latex}{./acronyms.tex}
+    \caption{Definition of an acronym}
 \end{code}
 
-Si un acronyme est utilisé plusieurs fois dans le document et que l'orthographe de cet acronyme doit être modifiée;
-cela peut se faire facilement et dans tout le document en le modifiant dans \verb=acronyms.tex=.
-On utilise, pour appeler cet acronyme, la même manière que pour le dictionnaire, \ref{dictionnaire} page \pageref{dictionnaire}, :
+If an acronym is used several times in the document and the spelling of this acronym must be changed
+this can be done easily and throughout the document by modifying it in \verb=acronyms.tex=.
+To call this acronym, we use the same way as for the dictionary, \ref{dictionary} page \pageref{dictionary} :
 \begin{code}
     \begin{minted}{latex}
         \gls{acr}
 \end{minted}
-    \caption{Utilisation d'un acronyme}
+    \caption{Use of an acronym}
 \end{code}
 
-Si c'est la première fois que l'acronyme est appelé c'est la définition dans l'option \verb=first= qui apparaît : \gls{acr}.
-Une note de bas de page apparaît aussi. \newline
-Si ça n'est pas la première fois: \gls{acr}. C'est l'acronyme qui apparaît et il n'y a pas de note de bas de page. \newline
+If this is the first time the acronym is called, the definition in the \verb=first= option appears: \gls{acr}.
+A footnote also appears. \newline
+If it's not the first time: \gls{acr}. This is the acronym that appears and there is no footnote. \newline
 
-Il est possible de faire apparaitre la liste des acronymes défini. Ici c'est dans un tableau trié par ordre alphabétique.
+It is possible to display the list of defined acronyms. Here it is in a table sorted alphabetically.
 
-\setglossarysection{paragraph} % Type de titre
-\printglossary[type=\acronymtype,style=superheaderborder ,title={Définitions, acronymes et abréviations}]
-\glsaddallunused \newline % Même les acronymes non utilisés sont affichés
+\setglossarysection{paragraph} % Type of title
+\printglossary[type=\acronymtype,style=superheaderborder ,title={Definitions, acronyms and abbreviations}]
+\glsaddallunused \newline % Even unused acronyms are displayed
 
-
-Il existe d'autre option pour les acronymes, voir \href{https://fr.overleaf.com/learn/latex/Glossaries}{Overleaf}.
+There are other options for acronyms, see \href{https://fr.overleaf.com/learn/latex/Glossaries}{Overleaf}.
 
 \subsubsection{PlantUML}
-Pour la génération des PlantUMLs en images il est nécessaire d'avoir installé:
+For the generation of PlantUMLs in images it is necessary to have installed:
 \begin{itemize}
-    \item PlantUML, programme permettant de dessiner des diagrammes UML, en utilisant une simple description textuelle
-    \item Graphviz, génère un graphe à partir d'une description textuelle de PlantUML
+    \item PlantUML, program allowing to draw UML diagrams, using a simple textual description
+    \item Graphviz, generates a graph from a textual description of PlantUML
 \end{itemize}
 
-Pour générer l'ensemble des diagrammes il faut faire la commande :
+To generate the set of diagrams you need to issue the command :
 \begin{code}
     \begin{minted}{bash}
     make eps
 \end{minted}
-    \caption{Génération des diagrammes}
+    \caption{Generation of diagrams}
 \end{code}
 
-Pour supprimer tout les fichiers générés par les diagrammes :
+To delete all the files generated by the diagrams:
 \begin{code}
     \begin{minted}{bash}
     make clean_eps
 \end{minted}
-    \caption{Nettoyage des diagrammes}
+    \caption{Cleaning diagrams}
 \end{code}
 
-La commande va récupérer l'ensemble des fichiers \verb=.plantuml=
-dans le dossier \verb=schémas/= pour les convertir en \verb=.eps=.
-Il s'agit d'un format d'image vectorielle supporté par \gls{latex},
-garantissant une grande qualité d'image quelle que soit la taille.
+The command will recover all the \verb=.plantuml= files
+in the \verb=schémas/= folder to convert them into \verb=.eps=.
+It is a vector image format supported by \gls{latex},
+guaranteeing a great image quality whatever the size.
 
-Les fichier sont de la forme suivant :
+The files are of the following form:
 \begin{code}
-    \begin{minted}{vim}
-        @startuml
-        skinparam shadowing false
-
-        Alice -> Bob : hello
-
-        @enduml ' Fin du document
-    \end{minted}
-    \caption{Exemple de fichier PlantUMLs}
+    \inputminted{vim}{../schemas/example.plantuml}
+    \caption{Example PlantUMLs file}
 \end{code}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=2cm]{exemple}
-    \caption{Exemple de diagramme UML}
+    \includegraphics[width=2cm]{example}
+    \caption{Example UML diagram}
 \end{figure}
 
-Il est posible de ranger les diagrammes dans des sous-dossiers dont il faudra préciser le chemin relatif.
+It is possible to store the diagrams in subfolders whose relative path must be specified.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=2cm]{exemple/exempleFolder}
-    \caption{Exemple de diagramme UML dans un sous dossier }
+    \includegraphics[width=2cm]{example/exampleFolder}
+    \caption{Example UML diagram in a subfolder}
 \end{figure}
 
 \subsubsection{Minted}
@@ -215,159 +198,159 @@ Les extraits de code seront colorisés en fonction du langage mit en paramètre 
     \caption{Hello World en Java}
 \end{code}
 
-Les extraits de code sont mis dans un environnement crée pour l'occasion : \verb=code=.
-Le but étant d'ajouter des légendes et une mise en page particulière et de les lister par la suite à la fin du document,
+The code extracts are put in an environment created for the occasion: \verb=code=.
+The aim is to add legends and a particular layout and to list them at the end of the document,
 page \pageref{TableOfCode}.
-Il est possible d'ajouter directement un ficher de code source dans le document, via la commande :
+It is possible to add a source code file directly into the document, via the command :
 \begin{code}
     \begin{minted}{latex}
         \inputminted{python}{hello.py}
 \end{minted}
-    \caption{Exemple d'intégration du fichier code source}
+    \caption{Example of integration of source code file}
 \end{code}
 
 \subsubsection{Xltabular}
-Il est possible de créer des tableaux pour qu'ils puissent s'étaler sur l'ensemble de la page et sur plusieurs pages.
-L'objectif de placer le tableau sur plusieurs page sans qu'une ligne ne soit divisée en deux.
-Voici un exemple pour un tableau à 5 colonnes:
+It is possible to create tables so that they can be spread over the whole page and over several pages.
+The objective is to place the table on several pages without splitting a line in two.
+Here is an example of a table with 5 columns:
 \begin{code}
     \begin{minted}{latex}
         \begin{xltabular}{\linewidth}{|l|X|r|c|p{0.15\linewidth}|}
-            % l = left, X = place restante et retour à la ligne, r = right, c = center, p = place
-            % Si aucune taille n'est donnée aux colonnes, elle se fait en fonction du texte dans la colonne
+            % l = left, X = remaining space and line break, r = right, c = center, p = space
+            % If no size is given to the columns, it is done according to the text in the column
 
-            % Titre première page
-            \hline \textbf{Gauche} & \textbf{Retour à la ligne} & \textbf{Droite} & \textbf{Centre} & \textbf{Taille fixe}\\\hline
+            % Front page title
+            \hline \textbf{Left} & \textbf{Back to Line} & \textbf{Right} & \textbf{Center} & \textbf{Fixed Size}\\\hline
             \endfirsthead
 
-            \multicolumn{5}{l}% Fusion des colones et texte à gauche
-            {\textbf{\dots\space suite de la page précédente}}\\
+            \multicolumn{5}{l}% Merging of columns and text on the left
+            {\textbf{\dots\space continued from previous page}}\\
             % Titre seconde page et plus
-            \hline \textbf{Gauche} & \textbf{Retour à la ligne} & \textbf{Droite} & \textbf{Centre} & \textbf{Taille fixe}\\\hline
+            \hline \textbf{Left} & \textbf{Back to Line} & \textbf{Right} & \textbf{Center} & \textbf{Fixed Size}\\\hline
             \endhead
 
-            \multicolumn{5}{r}% Fusion des colones et texte à droite
-            {\textbf{Suite à la page suivante\dots}}\tabularnewline
+            \multicolumn{5}{r}% Merging of columns and text on the right
+            {\textbf{Continued on next page\dots}}\tabularnewline
             \endfoot
             \endlastfoot
 
-            Gauche & Retour à la ligne & Droite & Centre & Taille fixe\\ \hline
+            Left & Back to Line & Right & Center & Fixed Size\\ \hline
         \end{xltabular}
 \end{minted}
-    \caption{Exemple tableau}
+    \caption{Example table}
 \end{code}
 
 Ce qui donnera le résultat :
 \begin{xltabular}{\linewidth}{|l|X|r|c|p{0.15\linewidth}|}
-    % l = left, X = place restante et retour à la ligne, r = right, c = center, p = place
-    % Si aucune taille n'est donnée aux colonnes, elle se fait en fonction du texte dans la colonne
+    % l = left, X = remaining space and line break, r = right, c = center, p = space
+    % If no size is given to the columns, it is done according to the text in the column
 
-    % Titre première page
-    \hline \textbf{Gauche} & \textbf{Retour à la ligne} & \textbf{Droite} & \textbf{Centre} & \textbf{Taille fixe}\\\hline
+    % Front page title
+    \hline \textbf{Left} & \textbf{Back to Line} & \textbf{Right} & \textbf{Center} & \textbf{Fixed Size}\\\hline
     \endfirsthead
 
-    \multicolumn{5}{l}% Fusion des colones et texte à gauche
-    {\textbf{\dots\space suite de la page précédente}}\\
+    \multicolumn{5}{l}% Merging of columns and text on the left
+    {\textbf{\dots\space continued from previous page}}\\
     % Titre seconde page et plus
-    \hline \textbf{Gauche} & \textbf{Retour à la ligne} & \textbf{Droite} & \textbf{Centre} & \textbf{Taille fixe}\\\hline
+    \hline \textbf{Left} & \textbf{Back to Line} & \textbf{Right} & \textbf{Center} & \textbf{Fixed Size}\\\hline
     \endhead
 
-    \multicolumn{5}{r}% Fusion des colones et texte à droite
-    {\textbf{Suite à la page suivante\dots}}\tabularnewline
+    \multicolumn{5}{r}% Merging of columns and text on the right
+    {\textbf{Continued on next page\dots}}\tabularnewline
     \endfoot
     \endlastfoot
 
-    Gauche & Retour à la ligne & Droite & Centre & Taille fixe\\ \hline
-    Gauche & \lipsum[1] & Droite & Centre & Taille fixe\\ \hline
-    Gauche & \lipsum[3] & Droite & Centre & Taille fixe\\ \hline
-    Gauche & \lipsum[5] & Droite & Centre & Taille fixe\\ \hline
+    Left & Back to Line & Right & Center & Fixed Size\\ \hline
+    Left & \lipsum[1] & Right & Center & Fixed Size\\ \hline
+    Left & \lipsum[3] & Right & Center & Fixed Size\\ \hline
+    Left & \lipsum[5] & Right & Center & Fixed Size\\ \hline
 \end{xltabular}
 
-Si aucune taille n'est donnée dans les colones \verb=Gauche Droite Centre=, la largueur de la colonne
-se fera en fonction du texte qui est mit dans la colonne. On riques d'avoir des tableaux trop large qui dépassent de la page
-comme ici :
+If no size is given in the columns \verb=Left Right Center=, the width of the column
+will be made according to the text that is put in the column. There is a risk of having
+tables that are too wide and that protrude from the page like here :
 \begin{xltabular}{\linewidth}{|l|X|r|c|p{0.15\linewidth}|}
-    % l = left, X = place restante et retour à la ligne, r = right, c = center, p = place
-    % Si aucune taille n'est donnée aux colonnes, elle se fait en fonction du texte dans la colonne
+    % l = left, X = remaining space and line break, r = right, c = center, p = space
+    % If no size is given to the columns, it is done according to the text in the column
 
-    % Titre première page
-    \hline \textbf{Gauche} & \textbf{Retour à la ligne} & \textbf{Droite} & \textbf{Centre} & \textbf{Taille fixe}\\\hline
+    % Front page title
+    \hline \textbf{Left} & \textbf{Back to Line} & \textbf{Right} & \textbf{Center} & \textbf{Fixed Size}\\\hline
     \endfirsthead
 
-    \multicolumn{5}{l}% Fusion des colones et texte à gauche
-    {\textbf{\dots\space suite de la page précédente}}\\
-    % Titre seconde page et plus
-    \hline \textbf{Gauche} & \textbf{Retour à la ligne} & \textbf{Droite} & \textbf{Centre} & \textbf{Taille fixe}\\\hline
+    \multicolumn{5}{l}% Merging of columns and text on the left
+    {\textbf{\dots\space continued on next page}}\\
+    % Title second page and more
+    \hline \textbf{Left} & \textbf{Back to Line} & \textbf{Right} & \textbf{Center} & \textbf{Fixed Size}\\\hline
     \endhead
 
-    \multicolumn{5}{r}% Fusion des colones et texte à droite
-    {\textbf{Suite à la page suivante\dots}}\tabularnewline
+    \multicolumn{5}{r}% Merging of columns and text on the right
+    {\textbf{Continued on next page\dots}}\tabularnewline
     \endfoot
     \endlastfoot
 
-    \lipsum[1] & Retour à la ligne & Droite & Centre & Taille fixe\\ \hline
+    \lipsum[1] & Back to Line & Right & Center & Fixed Size\\ \hline
 \end{xltabular}
 
-Sauf dans certain cas, voir page \pageref{TableOfVersion}, il est préférable de tout fixer comme ici :
+Except in certain cases, see page \pageref{TableOfVersion}, it is preferable to fix everything as here:
 \begin{code}
     \begin{minted}{latex}
         \begin{xltabular}{\linewidth}{|p{0.6\linewidth}|X|}
-            % La colonne fait 0,6 fois largueur d'une ligne
-            \hline \textbf{Colonne 1} & \textbf{Colonne 2} \\\hline
+            % The column is 0.6 times the width of a line
+            \hline \textbf{Column 1} & \textbf{Column 2} \\\hline
             \endfirsthead
 
             \multicolumn{2}{l}%
-            {\textbf{\dots\space suite de la page précédente}}\\
-            \hline \textbf{Colonne 1} & \textbf{Colonne 2} \\\hline
+            {\textbf{\dots\space continued on next page}}\\
+            \hline \textbf{Column 1} & \textbf{Column 2} \\\hline
             \endhead
 
-            \multicolumn{2}{r}% Fusion des colones et texte à droite
-            {\textbf{Suite à la page suivante\dots}}\tabularnewline
+            \multicolumn{2}{r}% Merging of columns and text on the right
+            {\textbf{Continued on next page\dots}}\tabularnewline
             \endfoot
             \endlastfoot
 
             \lipsum[1] & \lipsum[2] \\ \hline
         \end{xltabular}
 \end{minted}
-    \caption{Exemple tableau taille fixe}
+    \caption{Example of a fixed size table}
 \end{code}
 
 \begin{xltabular}{\linewidth}{|p{0.6\linewidth}|X|}
-    % La colonne fait 0,6 fois largueur d'une ligne
-    \hline \textbf{Colonne 1} & \textbf{Colonne 2} \\\hline
+    % The column is 0.6 times the width of a line
+    \hline \textbf{Column 1} & \textbf{Column 2} \\\hline
     \endfirsthead
 
     \multicolumn{2}{l}%
-    {\textbf{\dots\space suite de la page précédente}}\\
-    \hline \textbf{Colonne 1} & \textbf{Colonne 2} \\\hline
+    {\textbf{\dots\space continued on next page}}\\
+    \hline \textbf{Column 1} & \textbf{Column 2} \\\hline
     \endhead
 
-    \multicolumn{2}{r}% Fusion des colones et texte à droite
-    {\textbf{Suite à la page suivante\dots}}\tabularnewline
+    \multicolumn{2}{r}% Merging of columns and text on the right
+    {\textbf{Continued on next page\dots}}\tabularnewline
     \endfoot
     \endlastfoot
 
     \lipsum[1] & \lipsum[2] \\ \hline
 \end{xltabular}
 
-Ainsi, on évite des débordements. À noter que si une colonne n'est pas assez large et que le texte à l'intérieur fait
-plus d'une longueur de page cela déborde aussi.
+This way, overflow is avoided. Note that if a column is not wide enough and the text inside is more than one page long
+more than one page length, it also overflows.
 
 \subsubsection{Biblatex}
-Il est possible de créer une bibliographie qui pourra être réutilisée dans le document.
-Pour cela, il faut renseigner ses références dans le fichier \verb=biblio.bib= de la manière suivante :
+It is possible to create a bibliography that can be reused in the document.
+To do this, you must enter the references in the file \verb=biblio.bib= in the following way:
 \begin{code}
     \begin{minted}{latex}
-        @article{la clé pour appeller,
-            author  = {auteur},
-            title   = {Titre},
+        @article{key to call,
+            author = {author},
+            title  = {Title},
             ...
         }
 
-        % Par exemple
+        % For example
         @article{CitekeyArticle,
             author  = {P. J. Cohen},
-            title   = {The independence of the continuum hypothesis},
+            title   = {Independence of the continuum hypothesis},
             journal = {Proceedings of the National Academy of Sciences},
             year    = 1963,
             volume  = {50},
@@ -375,27 +358,27 @@ Pour cela, il faut renseigner ses références dans le fichier \verb=biblio.bib=
             pages   = {1143--1148}
         }
 \end{minted}
-    \caption{Définition dans la bibliographie}
+    \caption{Definition in the bibliography}
 \end{code}
 
-Si une référence, est utilisée plusieurs fois dans le document et que l’orthographe de cette référence
-doit être modifié ; cela peut se faire facilement et dans tout le document en le modifiant dans
+If a reference, is used several times in the document and the spelling of this reference
+needs to be changed; this can be done easily and throughout the document by modifying it in
 \verb=biblio.bib=.
-Pour appeler cette référence peut utiliser différentes manières:
+To call this reference can use different ways:
 \begin{code}
     \begin{minted}{latex}
-        \autocite{CitekeyArticle} % Ajoute la référence en note de bas de page
-        \cite{CitekeyArticle}     % Ajoute la référence à la suite
+        \autocite{CitekeyArticle} % Adds the reference as a footnote
+        \cite{CitekeyArticle}     % Adds the reference to the suite
 \end{minted}
-    \caption{Utilisation de la bibliographie}
+    \caption{Use of the bibliography}
 \end{code}
 
-Ce qui donne le résultat suivant où l'on ajoute la note de bas de page \autocite{CitekeyArticle}.
-Et ici on a la fait apparaitre : \cite{CitekeyArticle}. \newline
+This gives the following result where we add the footnote \autocite{CitekeyArticle}.
+And here we have it appearing: \cite{CitekeyArticle}. \newline
 
-Dans notre exemple on affiche le nom de l'auteur et le titre. Il existe d'autres manière où l'on affiche d'autres informations.
-Voir la \href{https://mirror.ibcp.fr/pub/CTAN/macros/latex/contrib/biblatex/doc/biblatex.pdf#subsection.3.9}{documantation CTAN}, ou \href{https://fr.overleaf.com/learn/latex/Bibliography_management_with_bibtex}{Overleaf}. \newline
+In our example we display the author's name and the title. There are other ways to display other information.
+See \href{https://mirror.ibcp.fr/pub/CTAN/macros/latex/contrib/biblatex/doc/biblatex.pdf#subsection.3.9}{documantation CTAN}, or \href{https://fr.overleaf.com/learn/latex/Bibliography_management_with_bibtex}{Overleaf}. \newline
 
-Dans le fichier \verb=biblio.bib= se trouve, en exemple, l'ensemble des catégories de référence qui existe.
-En fonction de la catégorie, les informations demandées sont différentes et leurs affichage le sont aussi,
-voir page \pageref{bibliographie}.
+In the file \verb=biblio.bib= you will find, as an example, the set of reference categories that exists.
+Depending on the category, the information requested is different and their display is also different,
+see page \pageref{bibliography}.

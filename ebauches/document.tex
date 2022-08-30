@@ -1,21 +1,22 @@
 \documentclass[a4paper,11pt,titlepage]{article}
+\usepackage[english]{babel}
 
-\input{param/parameter.tex} % Ajout du fichier avec les paramêtres
+\input{param/parameter.tex} % Adding the file with the parameters
 
 \tolerance=200
 \makeglossaries
-\loadglsentries{glossary.tex} % On charge le dictionnaire
-\loadglsentries{acronyms.tex} % On charge les acronymes
-\addbibresource{biblio.bib}   % On charge la bibliographie
+\loadglsentries{glossary.tex} % We load the dictionary
+\loadglsentries{acronyms.tex} % We load the acronyms
+\addbibresource{biblio.bib}   % Load the bibliography
 
 %-----------------------------------------
-%      Variable
+%      Variables
 %-----------------------------------------
-\newcommand{\version}{2.0-eseo}
-\newcommand{\revision}{4}
-\newcommand{\documentName}{Exemple}
-\newcommand{\teamName}{Nom d'équipe}
-\newcommand{\teamNumber}{Numéro d'équipe}
+\newcommand{\version}{2.0}
+\newcommand{\revision}{2}
+\newcommand{\documentName}{Example}
+\newcommand{\teamName}{Team name}
+\newcommand{\teamNumber}{Team number}
 \newcommand{\annee}{2022}
 \newcommand{\prose}{ProSE}
 \newcommand{\projectName}{\LaTeX}
@@ -26,40 +27,40 @@
 %-----------------------------------------
 
 \begin{document}
-\input{param/frontPage.tex} % On ajoute la page de garde
+\input{param/frontPage.tex} % We add the cover page
 
-AVERTISSEMENT : \\
-Le présent document est un document à but pédagogique. Il a été réalisé par Edouard Gautier.
-Ce document est la propriété de Edouard Gautier. En dehors des activités
-pédagogiques de l'ESEO, ce document ne peut être diffusé ou recopié sans l'autorisation écrite
-de son propriétaire.
+DISCLAIMER
+This document is an educational document. It was produced by Edouard Gautier.
+This document is the property of Edouard Gautier. Outside of the educational activities of
+activities, this document may not be distributed or copied without the written authorization of its
+of its owner.
 
-\input{tableauxVersion.tex} \label{TableOfVersion} % On ajoute la page avec le tableaux de version
+\input{tablesVersion.tex} \label{TableOfVersion} % Add the page with the version tables
 
-\tableofcontents % La table des matières
+\tableofcontents % The table of contents
 
 %------------------------------------------------------
-%            Présentation
+%            Presentation
 %------------------------------------------------------
 
 \input{sections/presentation/presentation.tex}
 
 %------------------------------------------------------
-%            Exemple
+%            Example
 %------------------------------------------------------
 
 \input{sections/exemple.tex}
 
-\setglossarysection{section} % Type de titre
-\printglossary[title=Dictionnaire du domaine] \label{dictionnaireDomaine} % Affiche le glossaire
-\glsaddallunused % Même les mots non utilisés sont affichés
+\setglossarysection{section} % Type of title
+\printglossary[] \label{domaindictionary} % Display the glossary
+\glsaddallunused % Even unused words are displayed
 
-\listoffigures \label{TableOfFigure} % La table des figures
+\listoffigures \label{TableOfFigure} % The table of figures
 
-\listoflistings \label{TableOfCode} % La table des codes sources
+\listoflistings \label{TableOfCode} % Source code table
 
-\printbibliography[title={Bibliographie}, heading=bibnumbered, label=bibliographie] % Affiche la bibliographie
-\nocite{*} % Même les référence non utilisées sont affichées
+\printbibliography[heading=bibnumbered, label=bibliographie] % Display the bibliography
+\nocite{*} % Even unused references are displayed
 
-\label{Lastpage} % Pour compter le nombre de page
+\label{Lastpage} % To count the number of pages
 \end{document}
