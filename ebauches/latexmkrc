@@ -43,7 +43,7 @@ sub makeglo2gls {
 # Extension not cleaned by default:
 #
 # for latexmk -c
-$clean_ext = "bbl synctex.gz run.xml glg glo gls ist out aux dvi log tex~ glo-abr out.ps ac, acr alg acn fdb_latexmk lol";
+$clean_ext = "synctex.gz bbl run.xml glg glo gls ist out aux dvi log tex~ glo-abr out.ps ac, acr alg acn fdb_latexmk lol pdf pygtex pygstyle";
 # for latexmk -C
 $clean_full_ext = "output/* synctex.gz";
 

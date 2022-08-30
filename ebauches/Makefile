@@ -43,10 +43,10 @@ clean_eps:
 	@rm -f $(DEPEND_PLANTUML)
 
 clean_latex:
-	latexmk -c
+	@latexmk -c
 
 clean_vscode:
-	@rm -f *.toc *.out *.log *.lof *.ist *.glo *.fls *.fdb_latexmk *.aux *.acn *.synctex.gz *.pyg *.lol *.bcf *.xml
+	@rm -f *.toc *.out *.log *.lof *.ist *.glo *.fls *.fdb_latexmk *.aux *.acn *.synctex.gz *.pyg *.lol *.bcf *.xml *.acr *.alg *.bbl *.glg *.blg *.gls
 
 clean: clean_eps clean_latex clean_vscode
 
