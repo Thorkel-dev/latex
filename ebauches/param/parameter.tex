@@ -20,7 +20,7 @@
 \usepackage[outdir=build/, update]{epstopdf}
 
 %-----------------------------------------------
-%   Personnalisation des marges
+%   Customize margins
 %-----------------------------------------------
 
 \usepackage[left=2.5cm,
@@ -53,14 +53,14 @@
 \definecolor{ESEOWhite}{RGB}{1,1,1}
 \definecolor{thorkelBlue}{RGB}{0, 0, 60}
 
-% itemize personnalisation
+% itemize personalization
 \setlist[itemize]{label=\textcolor{black}{\textbullet}}
 
-% Ne fonctionne pas sur toute les distributions Debian
-\newcommand{\sectionbreak}{\clearpage}  % Nouvelle page pour chaque section
+% Does not work on all Debian distributions
+\newcommand{\sectionbreak}{\clearpage} % New page for each section
 
 %-----------------------------------------------
-%   Paramètres pour l'en-tête et le pied de page
+%   Settings for header and footer
 %-----------------------------------------------
 
 \pagenumbering{arabic}
@@ -77,7 +77,7 @@
 
 % footer
 \renewcommand{\footrulewidth}{0.4mm}
-\fancyfoot[LO]{\textit{Version {\version} - Révision {\revision}}}
+\fancyfoot[LO]{\textit{Version {\version} - Revision {\revision}}}
 \fancyfoot[CO]{\copyright {\annee} E. Gautier, {\teamName}}
 \fancyfoot[RO]{Page \thepage /{\pageref{Lastpage}} }
 \def\footrule{{\if@fancyplain\let\footrulewidth\plainfootrulewidth\fi
@@ -85,30 +85,30 @@
             \color{ESEOLightBlue}\hrule\@width\headwidth\@height\footrulewidth\vskip\footruleskip}}
 
 %-----------------------------------------------
-%   Les titres des parties
+%   The titles of the parts
 %-----------------------------------------------
 
-% Ajoute un niveau de sous-sous-paragraphe
+% Adds a sub-subparagraph level
 \newcounter{subsubparagraph}[subparagraph]
 \renewcommand\thesubsubparagraph{%
     \thesubparagraph.\@arabic\c@subsubparagraph}
 \newcommand\subsubparagraph{%
-    \@startsection{subsubparagraph}               % compteur
-    {6}                                           % niveau
+    \@startsection{subsubparagraph}               % counter
+    {6}                                           % level
     {0em}                                         % indentation
-    {1em}                                         % avant le titre
-    {1em}                                         % après le titre
-    {\normalsize\hspace{6em}\color{thorkelBlue}} % style (surcharge par le format du titre)
+    {1em}                                         % before the title
+    {1em}                                         % after the title
+    {\normalsize\hspace{6em}\color{thorkelBlue}} % style (overloaded by the title format)
 }
 \newcommand\l@subsubparagraph{\@dottedtocline{6}{13em}{6em}}
 \newcommand{\subsubparagraphmark}[1]{}
 \providecommand*{\toclevel@subsubparagraph}{6}
-\makeatother % est à nouveau utilisé normalement
+\makeatother % is used again normally
 
-\setcounter{tocdepth}{6}    % Autorise l'alinéa dans la table des matières
-\setcounter{secnumdepth}{6} % Permet la numérotation du sous-paragraphe
+\setcounter{tocdepth}{6}    % Allows the paragraph in the table of contents
+\setcounter{secnumdepth}{6} % Allows the numbering of the sub-paragraph
 
-% format des titres
+% title format
 \titleformat{\section}[block]{\normalfont\bfseries\LARGE\color{thorkelBlue}}{{\thesection}}{1em}{}{}
 \titleformat{\subsection}[block]{\Large\hspace{2em}\Large\color{thorkelBlue}}{{\thesubsection}}{1em}{}{}
 \titleformat{\subsubsection}[block]{\hspace{3em}\large\color{thorkelBlue}}{{\thesubsubsection}}{1em}{}{}
@@ -116,7 +116,7 @@
 \titleformat{\subparagraph}[block]{\normalsize\hspace{5em}\color{thorkelBlue}}{{\thesubparagraph}}{1em}{}{}
 
 %-----------------------------------------------
-%   Personnalisation de la liste des figures
+%   Customization of the list of figures
 %-----------------------------------------------
 
 \renewcommand{\listoffigures}{\begingroup
@@ -130,10 +130,10 @@
     \IfBooleanTF{#1}
     {%
         \setcounter{@secnumdepth}{\value{secnumdepth}}  % Stocke secnumdepth
-        \setcounter{secnumdepth}{-1}                    % Afficher seulement jusqu'aux numéros d'ordre \part
+        \setcounter{secnumdepth}{-1}                    % Show only up to order numbers
         \phantomsection%
         \oldsection{#3}% \section*
-        \setcounter{secnumdepth}{\value{@secnumdepth}}  % Restaure secnumdepth
+        \setcounter{secnumdepth}{\value{@secnumdepth}}  % Restore secnumdepth
     }
     {%
         \IfValueTF{#2}% \section
@@ -147,10 +147,10 @@
 }
 
 %-----------------------------------------------
-%   Personnalisation du glossaire
+%   Glossary customization
 %-----------------------------------------------
 
-\usepackage[acronym, numberedsection, nonumberlist, automake]{glossaries-extra} % Pour faire un glossaire
+\usepackage[acronym, numberedsection, nonumberlist, automake]{glossaries-extra} % To make a glossary
 
 \glstocfalse
 \glsenablehyper
@@ -158,15 +158,15 @@
 \setabbreviationstyle{short-postfootnote}
 
 \ProvideDocumentCommand{\printglossdef}{o m}{\footnote{#1: #2}}
-\GlsXtrEnableEntryUnitCounting{general}{0}{page} % Compter le nombre d'occurrences par unité, par page du groupe général
-\GlsXtrEnableEntryUnitCounting{abbreviation}{0}{page} % Compter le nombre d'occurrences par unité, par page du groupe abréviation
+\GlsXtrEnableEntryUnitCounting{general}{0}{page} % Count the number of occurrences per unit, per page of the general group
+\GlsXtrEnableEntryUnitCounting{abbreviation}{0}{page} % Count the number of occurrences per unit, per page of the general group
 
-% S'il s'agit de la première occurrence de l'étiquette
-%   alors supprimer l'hyperlien vers le glossaire
-% sinon
-%   Si l'étiquette est déjà présente dans la page (voir GlsXtrEnableEntryUnitCounting)
-%       alors supprimer l'hyperlien
-%   sinon ne rien faire
+% If this is the first occurrence of the label
+%   then delete the hyperlink to the glossary
+% otherwise
+%   If the label is already present in the page (see GlsXtrEnableEntryUnitCounting)
+%       then delete the hyperlink
+%    otherwise do nothing
 \renewcommand{\glslinkcheckfirsthyperhook}{%
     \glsxtrifwasfirstuse%
     {\setkeys{glslink}{hyper=false}}%
@@ -177,9 +177,9 @@
     }%
 }
 
-% S'il s'agit de la première occurrence de l'étiquette
-%   alors une note de bas de page est ajoutée avec la description liée à l'étiquette
-% sinon ne rien faire
+% If this is the first occurrence of the label
+%   then a footnote is added with the description linked to the tag
+% otherwise do nothing
 \renewcommand{\glsxtrpostlink}{%
     \glsxtrifwasfirstuse%
     {\printglossdef[\glsentryname{\glslabel}]{\glsentrydesc{\glslabel}}}%
@@ -187,25 +187,25 @@
 }
 
 %-----------------------------------------------
-%   Minted personnalisation
+%   Minted personalization
 %-----------------------------------------------
 
 \definecolor{vs}{rgb}{0.95,0.95,0.95}
 \setminted{
     linenos=true,
-    autogobble=true,         % Aligne avec la marge
-    numbers=left,            % Numéro de ligne
-    fontsize=\footnotesize,  % Taille de la police
-    bgcolor=vs,              % Couleur de fond
-    tabsize=4,               % Taille des tabulations
-    fontfamily=courier,      % Police d'écriture
-    breaklines,              % Retour à la ligne auto
+    autogobble=true,            % Align with margin
+    numbers=left,               % Line number
+    fontsize=\footnotesize,     % Font size
+    bgcolor=vs,                 % Background color
+    tabsize=4,                  % Tab size
+    fontfamily=courier,         % Font size
+    breaklines,                 % Auto line break
 }
-% Environnement pour lister le code
+% Environment to list the code
 \newenvironment{code}{\captionsetup{type=listing}}{\par\hspace{2em}}
 
-\SetupFloatingEnvironment{listing}{name=Source Code}      % Titre dans la légende
-\renewcommand*{\listlistingname}{Table des codes sources} % Titre de la liste
+\SetupFloatingEnvironment{listing}{name=Source Code}      % Title in the legend
+\renewcommand*{\listlistingname}{Source code table} % Title of the list
 
 %-----------------------------------------------
 % Personnalisation de la bibliographie
@@ -213,10 +213,10 @@
 
 \usepackage[
     backend=biber,
-    citestyle=verbose-note, % Style des citations
-    style=reading,          % Style de la bibliographie
-    entrykey = false,       % On n'affiche pas la clé
-    sorting = nty,          % Trie par name, title, year
-    hyperref = false,       % Lien entre la citation et la bibliographie
-    backref = false         % On n'affiche pas la page des citations
+    citestyle=verbose-note,     % Citation style
+    style=reading,              % Style of the bibliography
+    entrykey = false,           % The key is not displayed
+    sorting = nty,              % Sort by name, title, year
+    hyperref = false,           % Link between the citation and the bibliography
+    backref = false,            % Do not display the citations page
 ]{biblatex}
