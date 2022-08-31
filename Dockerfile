@@ -2,8 +2,8 @@ FROM debian:stable-slim
 
 LABEL org.opencontainers.image.title="Docker Image of TeXLive"
 LABEL org.opencontainers.image.description="Docker image to build PDF file with LaTeX"
-LABEL org.opencontainers.image.url=" ghcr.io/thorkel-dev/latex/debian-texlive"
-LABEL org.opencontainers.image.authors="Thorkel-dev"
+LABEL org.opencontainers.image.url="ghcr.io/thorkel-dev/latex/debian-texlive"
+LABEL org.opencontainers.image.authors.name="Thorkel-dev"
 LABEL org.opencontainers.image.authors.web="https://github.com/Thorkel-dev"
 LABEL org.opencontainers.image.created =$buildDate
 LABEL org.opencontainers.image.base.name="debian:stable-slim"
