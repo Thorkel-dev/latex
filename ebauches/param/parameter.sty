@@ -1,5 +1,28 @@
+%-----------------------------------------------
+%   LaTeX template parameters
+%-----------------------------------------------
+
+\ProvidesPackage{Parameter}
+\RequirePackage{kvoptions}
+
+\DeclareStringOption[]{imageHeaderRight}[]
+\DeclareStringOption[]{imageFooterRight}[]
+\DeclareStringOption[]{subject}[]
+\DeclareStringOption[]{keywords}[]
+\DeclareStringOption[utf8]{encoding}[]
+\DeclareStringOption[french]{language}[]
+\DeclareStringOption[thorkelBlue]{colorTitle}[]
+\DeclareStringOption[ESEOLightBlue]{colorRule}[]
+
+\ProcessKeyvalOptions*
+
+%-----------------------------------------------
+%   Packages
+%-----------------------------------------------
+
 \usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
+\usepackage[\Parameter@encoding]{inputenc}
+\usepackage[\Parameter@language]{babel}
 \usepackage[pdftex]{graphicx}
 \usepackage{xspace}
 \usepackage{lastpage}
@@ -15,8 +38,6 @@
 \usepackage[nottoc,numbib]{tocbibind}
 \usepackage[outputdir=build/, newfloat]{minted}
 \usepackage{caption}
-
-\usepackage{lipsum}
 \usepackage[outdir=build/epstopdf/, update]{epstopdf}
 
 %-----------------------------------------------
@@ -29,21 +50,31 @@
     bottom=2.5cm
 ]{geometry}
 \geometry{body={160mm,230mm},headheight=42pt,top=3cm}
-\RequirePackage{kvoptions}
 
 %-----------------------------------------------
 %   Variables
 %-----------------------------------------------
-
-\graphicspath{{../schemas/}{../figures/}}
 
 \hypersetup{
     colorlinks  = true,
     linkcolor   = black,
     filecolor   = red,
     urlcolor    = blue,
-    pdfborder   = 0 0 0
+    pdfborder   = 0 0 0,
 }
+
+% Adding metadata
+\makeatletter
+\AtBeginDocument{
+    \hypersetup{
+        pdftitle            = \@title,
+        pdfauthor           = \@author,
+        pdfsubject          = \Parameter@subject,
+        pdfkeywords         = \Parameter@keywords,
+        pdfdisplaydoctitle  = true, % Display document title instead of file name in title bar
+    }
+}
+\makeatother
 
 \definecolor{ESEORed}{RGB}{59,13,32}
 \definecolor{ESEOOrange}{RGB}{91,29,15}
@@ -63,31 +94,42 @@
 %   Settings for header and footer
 %-----------------------------------------------
 
-\pagenumbering{arabic}
-\pagestyle{fancy}
 \makeatletter
 
+\pagestyle{fancy}
+\fancyhf{} % clear all fields
+
 % header
-\renewcommand{\headrulewidth}{0.4mm}
-\fancyhead[LO]{\includegraphics[height= 15pt]{eseo-logo.png} \\ \medskip {\projectName}}
-\fancyhead[CO]{\includegraphics[height= 15pt]{thorkel-logo.png} \\ \medskip {\prose} équipe {\teamNumber} {\annee}}
-\fancyhead[RO]{\includegraphics[height= 15pt]{latex.png} \\ \medskip {\small{Ref. {\documentNameAbrev}\_E{\teamNumber}}}}
+\ifx\Parameter@imageHeaderRight\empty
+\else
+\fancyhead[LO]{\includegraphics[height=15pt]{\Parameter@imageHeaderRight}}
+\fi
+
+\renewcommand{\headrulewidth}{1pt}
+\fancyhead[CO]{\rightmark} % Current section
+\fancyhead[RO]{{\@date}}
 \def\headrule{{\if@fancyplain\let\headrulewidth\plainheadrulewidth\fi
-            \color{ESEOLightBlue}\hrule\@height\headrulewidth\@width\headwidth \vskip-\headrulewidth}}
+            \color{\Parameter@colorRule}\hrule\@height\headrulewidth\@width\headwidth \vskip-\headrulewidth}}
 
 % footer
-\renewcommand{\footrulewidth}{0.4mm}
-\fancyfoot[LO]{\textit{Version {\version} - Revision {\revision}}}
-\fancyfoot[CO]{\copyright {\annee} E. Gautier, {\teamName}}
+\ifx\Parameter@imageFooterRight\empty
+\else
+    \fancyfoot[LO]{\includegraphics[height=15pt]{\Parameter@imageFooterRight}}
+\fi
+
+\renewcommand{\footrulewidth}{1pt}
 \fancyfoot[RO]{Page \thepage /{\pageref{Lastpage}} }
 \def\footrule{{\if@fancyplain\let\footrulewidth\plainfootrulewidth\fi
             \vskip-\footruleskip\vskip-\footrulewidth
-            \color{ESEOLightBlue}\hrule\@width\headwidth\@height\footrulewidth\vskip\footruleskip}}
+            \color{\Parameter@colorRule}\hrule\@width\headwidth\@height\footrulewidth\vskip\footruleskip}}
+
+\makeatother
 
 %-----------------------------------------------
 %   The titles of the parts
 %-----------------------------------------------
 
+\makeatletter
 % Adds a sub-subparagraph level
 \newcounter{subsubparagraph}[subparagraph]
 \renewcommand\thesubsubparagraph{%
@@ -98,22 +140,23 @@
     {0em}                                         % indentation
     {1em}                                         % before the title
     {1em}                                         % after the title
-    {\normalsize\hspace{6em}\color{thorkelBlue}} % style (overloaded by the title format)
+    {\normalsize\hspace{6em}\color{\Parameter@colorTitle}} % style (overloaded by the title format)
 }
 \newcommand\l@subsubparagraph{\@dottedtocline{6}{13em}{6em}}
 \newcommand{\subsubparagraphmark}[1]{}
 \providecommand*{\toclevel@subsubparagraph}{6}
-\makeatother % is used again normally
 
 \setcounter{tocdepth}{6}    % Allows the paragraph in the table of contents
 \setcounter{secnumdepth}{6} % Allows the numbering of the sub-paragraph
 
 % title format
-\titleformat{\section}[block]{\normalfont\bfseries\LARGE\color{thorkelBlue}}{{\thesection}}{1em}{}{}
-\titleformat{\subsection}[block]{\Large\hspace{2em}\Large\color{thorkelBlue}}{{\thesubsection}}{1em}{}{}
-\titleformat{\subsubsection}[block]{\hspace{3em}\large\color{thorkelBlue}}{{\thesubsubsection}}{1em}{}{}
-\titleformat{\paragraph}[block]{\normalsize\bfseries\hspace{4em}\color{thorkelBlue}}{{\theparagraph}}{1em}{}{}
-\titleformat{\subparagraph}[block]{\normalsize\hspace{5em}\color{thorkelBlue}}{{\thesubparagraph}}{1em}{}{}
+\titleformat{\section}[block]{\normalfont\bfseries\LARGE\color{\Parameter@colorTitle}}{{\thesection}}{1em}{}{}
+\titleformat{\subsection}[block]{\Large\hspace{2em}\Large\color{\Parameter@colorTitle}}{{\thesubsection}}{1em}{}{}
+\titleformat{\subsubsection}[block]{\hspace{3em}\large\color{\Parameter@colorTitle}}{{\thesubsubsection}}{1em}{}{}
+\titleformat{\paragraph}[block]{\normalsize\bfseries\hspace{4em}\color{\Parameter@colorTitle}}{{\theparagraph}}{1em}{}{}
+\titleformat{\subparagraph}[block]{\normalsize\hspace{5em}\color{\Parameter@colorTitle}}{{\thesubparagraph}}{1em}{}{}
+
+\makeatother
 
 %-----------------------------------------------
 %   Customization of the list of figures
@@ -164,17 +207,9 @@
 % If this is the first occurrence of the label
 %   then delete the hyperlink to the glossary
 % otherwise
-%   If the label is already present in the page (see GlsXtrEnableEntryUnitCounting)
-%       then delete the hyperlink
-%    otherwise do nothing
 \renewcommand{\glslinkcheckfirsthyperhook}{%
     \glsxtrifwasfirstuse%
     {\setkeys{glslink}{hyper=false}}%
-    {%
-        \ifnum\glsentrycurrcount\glslabel>0%
-            \setkeys{glslink}{hyper=false}%
-        \fi
-    }%
 }
 
 % If this is the first occurrence of the label
@@ -190,13 +225,15 @@
 %   Minted personalization
 %-----------------------------------------------
 
-\definecolor{vs}{rgb}{0.95,0.95,0.95}
+\definecolor{vs}{RGB}{255,250,250}
 \setminted{
     linenos=true,
     autogobble=true,            % Align with margin
     numbers=left,               % Line number
     fontsize=\footnotesize,     % Font size
-    bgcolor=vs,                 % Background color
+    % bgcolor=vs,                 % Background color
+    frame=single,               % Line section before and after the code
+    framesep=2mm,               % Before and after the line
     tabsize=4,                  % Tab size
     fontfamily=courier,         % Font size
     breaklines,                 % Auto line break
@@ -205,10 +242,10 @@
 \newenvironment{code}{\captionsetup{type=listing}}{\par\hspace{2em}}
 
 \SetupFloatingEnvironment{listing}{name=Source Code}      % Title in the legend
-\renewcommand*{\listlistingname}{Source code table} % Title of the list
+\renewcommand*{\listlistingname}{Source code table}       % Title of the list
 
 %-----------------------------------------------
-% Personnalisation de la bibliographie
+% Customization of the bibliography
 %-----------------------------------------------
 
 \usepackage[
@@ -217,6 +254,6 @@
     style=reading,              % Style of the bibliography
     entrykey = false,           % The key is not displayed
     sorting = nty,              % Sort by name, title, year
-    hyperref = false,           % Link between the citation and the bibliography
+    hyperref = true,            % Link between the citation and the bibliography
     backref = false,            % Do not display the citations page
 ]{biblatex}

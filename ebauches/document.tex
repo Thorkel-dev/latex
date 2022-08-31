@@ -1,7 +1,17 @@
 \documentclass[a4paper,11pt,titlepage]{article}
-\usepackage[english]{babel}
 
-\input{param/parameter.tex} % Adding the file with the parameters
+\usepackage[
+            imageFooterRight     =  {latex.png},
+            imageHeaderRight     =  {thorkel-logo.png},
+            subject              =  {{Subject of the document}},
+            keywords             =  {{Example, Template, LaTeX}},
+            language             =  {english},
+            encoding             =  {utf8},
+            % colorTitle          =   {},
+            % colorRule           =   {},
+            ]{Parameter}
+
+\usepackage{lipsum}
 
 \tolerance=200
 \makeglossaries
@@ -12,15 +22,21 @@
 %-----------------------------------------
 %      Variables
 %-----------------------------------------
+\author{Thorkel-dev}
+\title{Template \LaTeX}
+\date{\normalsize\today}
+
 \newcommand{\version}{2.0}
 \newcommand{\revision}{2}
 \newcommand{\documentName}{Example}
 \newcommand{\teamName}{Team name}
-\newcommand{\teamNumber}{Team number}
 \newcommand{\annee}{2022}
-\newcommand{\prose}{ProSE}
 \newcommand{\projectName}{\LaTeX}
-\newcommand{\documentNameAbrev}{ED}
+
+\newcommand{\prose}{ProSE}
+\newcommand{\teamNumber}{Team number}
+
+\graphicspath{{../schemas/}{../figures/}}
 
 %-----------------------------------------
 %      Document
@@ -59,7 +75,7 @@ of its owner.
 
 \listoflistings \label{TableOfCode} % Source code table
 
-\printbibliography[heading=bibnumbered, label=bibliographie] % Display the bibliography
+\printbibliography[heading=bibnumbered, label=bibliography] % Display the bibliography
 \nocite{*} % Even unused references are displayed
 
 \label{Lastpage} % To count the number of pages
