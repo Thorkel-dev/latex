@@ -8,6 +8,10 @@ on:
       - 'master'
   pull_request:
     types: [opened, synchronize, reopened]
+  workflow_run:
+    workflows: ["Docker Build"]
+    types:
+      - completed
 
 jobs:
   build_latex:

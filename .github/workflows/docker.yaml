@@ -5,6 +5,7 @@ on:
   push:
     paths:
       - "Dockerfile"
+      - ".github/workflows/**"
   schedule:
     - cron: "* * 1 */6 *" # Execute every 6 month at the 1
 
