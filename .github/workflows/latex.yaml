@@ -5,6 +5,7 @@ on:
     workflows: ["Docker Build"]
     types:
       - completed
+  push:
 
 jobs:
   build_latex:
