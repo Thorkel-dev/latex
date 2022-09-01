@@ -61,6 +61,7 @@
     filecolor   = red,
     urlcolor    = blue,
     pdfborder   = 0 0 0,
+    citecolor   = black
 }
 
 % Adding metadata
@@ -107,14 +108,16 @@
 
 \renewcommand{\headrulewidth}{1pt}
 \fancyhead[CO]{\rightmark} % Current section
-\fancyhead[RO]{{\@date}}
+\fancyhead[RO]{{\@author}}
 \def\headrule{{\if@fancyplain\let\headrulewidth\plainheadrulewidth\fi
             \color{\Parameter@colorRule}\hrule\@height\headrulewidth\@width\headwidth \vskip-\headrulewidth}}
 
 % footer
 \ifx\Parameter@imageFooterLeft\empty
 \else
-    \fancyfoot[LO]{\includegraphics[height=15pt]{\Parameter@imageFooterLeft}}
+    \fancyfoot[LO]{\begingroup
+    \setbox0=\hbox{\includegraphics[height=15pt]{\Parameter@imageFooterLeft}}%
+    \parbox{\wd0}{\box0}\endgroup}
 \fi
 
 \renewcommand{\footrulewidth}{1pt}

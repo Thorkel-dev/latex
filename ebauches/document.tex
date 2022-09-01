@@ -1,28 +1,29 @@
 \documentclass[a4paper,11pt,titlepage]{article}
 
 \usepackage[
-            imageFooterLeft      =  {latex.png},
-            imageHeaderLeft      =  {thorkel-logo.png},
-            subject              =  {{Subject of the document}},
-            keywords             =  {{Example, Template, LaTeX}},
-            language             =  {english},
-            % encoding            =  {},
-            % colorTitle          =  {},
-            % colorRule           =  {},
+            imageFooterLeft      =  {latex.png},                    % Optional
+            imageHeaderLeft      =  {thorkel-logo.png},             % Optional
+            subject              =  {{Subject of the document}},    % Optional
+            keywords             =  {{Example, Template, LaTeX}},   % Optional
+            language             =  {english},                      % Defaut french
+            % encoding            =  {},                            % Defaut utf8
+            % colorTitle          =  {},                            % Defaut RGB{0, 0, 60}
+            % colorRule           =  {},                            % Defaut RGB{0, 0, 60}
             ]{Parameter}
 
 \usepackage[
-            logoRight      =   {thorkel.png},
-            logoLeft      =   {eseo.png},
-            logoCenter  =   {latex.png},
-            subject   =  {{Subject of the document}},
-            projectName = {Project Name},
-            entrepriseName = {Entreprise Name}
+            logoRight       =   {thorkel.png},                  % Optional
+            logoLeft        =   {eseo.png},                     % Optional
+            logoCenter      =   {latex.png},                    % Optional
+            subject         =   {{Subject of the document}},    % Optional
+            projectName     =   {Project Name},                 % Optional
+            entrepriseName  =   {Entreprise Name}               % Optional
+            % textColor      =   {},                             % Defaut RGB{0, 0, 60}
+            % colorRule      =   {},                             % Defaut RGB{0, 0, 60}
             ]{FrontPage}
 
-\usepackage{lipsum}
+\usepackage{lipsum} % For text generation, to be removed
 
-\tolerance=200
 \makeglossaries
 \loadglsentries{glossary.tex} % We load the dictionary
 \loadglsentries{acronyms.tex} % We load the acronyms
@@ -31,9 +32,9 @@
 %-----------------------------------------
 %      Variables
 %-----------------------------------------
-\author{Thorkel-dev}
-\title{Template \LaTeX}
-\date{\normalsize\today}
+\author{Thorkel-dev}        % Mandatory
+\title{Template \LaTeX}     % Mandatory
+\date{\normalsize\today}    % Mandatory, today's date
 
 \graphicspath{{../schemas/}{../figures/}}
 
