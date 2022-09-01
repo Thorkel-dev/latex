@@ -1,0 +1,87 @@
+\ProvidesPackage{FrontPage}
+\RequirePackage{Parameter}
+\RequirePackage{kvoptions}
+\usepackage{colortbl}
+\RequirePackage[export]{adjustbox} % http://ctan.org/pkg/adjustbox
+
+\DeclareStringOption[]{logoRight}[]
+\DeclareStringOption[]{logoLeft}[]
+\DeclareStringOption[]{logoCenter}[]
+\DeclareStringOption[]{projectName}[]
+\DeclareStringOption[]{subject}[]
+\DeclareStringOption[]{entrepriseName}[]
+\DeclareStringOption[thorkelBlue]{textColor}[]
+\DeclareStringOption[thorkelBlue]{colorRule}[]
+
+\ProcessKeyvalOptions*
+
+\fancypagestyle{} % No header and footer for this page
+{
+    \fancyhf{}
+    \fancyrf{}
+}
+
+\makeatletter
+\renewcommand\maketitle{
+    \thispagestyle{empty}
+
+    \begin{figure}[t]
+        \ifx\FrontPage@logoLeft\empty
+        \else
+            \includegraphics[height=50pt, valign=t]{\FrontPage@logoLeft}
+        \fi
+        \hspace*{\fill}
+        \ifx\FrontPage@logoRight\empty
+        \else
+            \includegraphics[height=50pt, valign=t]{\FrontPage@logoRight}
+        \fi
+    \end{figure}
+
+    \vspace*{\fill}
+    \noindent\textcolor{\FrontPage@colorRule}{\rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{3.2pt} % Thick horizontal rule
+	\rule{\textwidth}{0.4pt}}\\
+
+    \begin{center}
+        \textcolor{\FrontPage@textColor}{
+            {\Huge \textsc{\bf \@title}}
+            \vspace{0.5cm}\\
+            \ifx\FrontPage@subject\empty
+            \else
+                {\large\bf {\FrontPage@subject}}\\
+            \fi
+        }
+    \end{center}
+
+    \noindent\textcolor{\FrontPage@colorRule}{\rule{\textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt} % Thin horizontal rule
+	\rule{\textwidth}{1.6pt}}\\
+    \vspace*{\fill}
+
+    \ifx\FrontPage@logoCenter\empty
+    \else
+        \begin{figure}[ht]
+            \centering
+            \includegraphics[height=0.2\linewidth]{\FrontPage@logoCenter}
+        \end{figure}
+    \fi
+    \vspace*{\fill}
+
+    \noindent
+    \textcolor{\FrontPage@colorRule}{\vrule}\hspace{0.25cm}\begin{minipage}{\textwidth-0.25cm}
+            \textcolor{\FrontPage@textColor}{
+                \textbf{\@author}
+                \ifx\FrontPage@projectName\empty
+                \else
+                    \\{\FrontPage@projectName}
+                \fi
+                \ifx\FrontPage@entrepriseName\empty
+                \else
+                    \\{\FrontPage@entrepriseName}
+                \fi
+                \hspace*{\fill}
+                \@date
+            }
+        \end{minipage}
+    \newpage
+}
+
+\makeatother

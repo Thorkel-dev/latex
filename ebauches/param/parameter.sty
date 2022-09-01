@@ -5,14 +5,14 @@
 \ProvidesPackage{Parameter}
 \RequirePackage{kvoptions}
 
-\DeclareStringOption[]{imageHeaderRight}[]
-\DeclareStringOption[]{imageFooterRight}[]
+\DeclareStringOption[]{imageHeaderLeft}[]
+\DeclareStringOption[]{imageFooterLeft}[]
 \DeclareStringOption[]{subject}[]
 \DeclareStringOption[]{keywords}[]
 \DeclareStringOption[utf8]{encoding}[]
 \DeclareStringOption[french]{language}[]
 \DeclareStringOption[thorkelBlue]{colorTitle}[]
-\DeclareStringOption[ESEOLightBlue]{colorRule}[]
+\DeclareStringOption[thorkelBlue]{colorRule}[]
 
 \ProcessKeyvalOptions*
 
@@ -100,9 +100,9 @@
 \fancyhf{} % clear all fields
 
 % header
-\ifx\Parameter@imageHeaderRight\empty
+\ifx\Parameter@imageHeaderLeft\empty
 \else
-\fancyhead[LO]{\includegraphics[height=15pt]{\Parameter@imageHeaderRight}}
+\fancyhead[LO]{\includegraphics[height=15pt]{\Parameter@imageHeaderLeft}}
 \fi
 
 \renewcommand{\headrulewidth}{1pt}
@@ -112,9 +112,9 @@
             \color{\Parameter@colorRule}\hrule\@height\headrulewidth\@width\headwidth \vskip-\headrulewidth}}
 
 % footer
-\ifx\Parameter@imageFooterRight\empty
+\ifx\Parameter@imageFooterLeft\empty
 \else
-    \fancyfoot[LO]{\includegraphics[height=15pt]{\Parameter@imageFooterRight}}
+    \fancyfoot[LO]{\includegraphics[height=15pt]{\Parameter@imageFooterLeft}}
 \fi
 
 \renewcommand{\footrulewidth}{1pt}
