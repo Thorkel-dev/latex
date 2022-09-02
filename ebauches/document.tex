@@ -1,9 +1,36 @@
+%-----------------------------------------------
+%   LaTeX template
+%   Written By: Thorkel-dev
+%-----------------------------------------------
+
 \documentclass[a4paper,11pt,titlepage]{article}
-\usepackage[english]{babel}
 
-\input{param/parameter.tex} % Adding the file with the parameters
+\usepackage{lipsum} % For text generation, to be removed
 
-\tolerance=200
+\usepackage[
+            imageFooterLeft      =  {latex.png},                    % Optional
+            imageHeaderLeft      =  {thorkel-logo.png},             % Optional
+            subject              =  {{Subject of the document}},    % Optional
+            keywords             =  {{Example, Template, LaTeX}},   % Optional
+            language             =  {english},                      % Defaut french
+            % encoding            =  {},                            % Defaut utf8
+            % colorTitle          =  {},                            % Defaut RGB{0, 0, 60}
+            % colorRule           =  {},                            % Defaut RGB{0, 0, 60}
+            ]{Parameter}
+
+\usepackage[
+            logoRight       =   {thorkel.png},                  % Optional
+            logoLeft        =   {eseo.png},                     % Optional
+            logoCenter      =   {latex.png},                    % Optional
+            subject         =   {{Subject of the document}},    % Optional
+            projectName     =   {Project Name},                 % Optional
+            entrepriseName  =   {Entreprise Name},              % Optional
+            revision        =   {4},                            % Optional
+            version         =   {2},                            % Optional
+            % textColor      =   {},                             % Defaut RGB{0, 0, 60}
+            % colorRule      =   {},                             % Defaut RGB{0, 0, 60}
+            ]{FrontPage}
+
 \makeglossaries
 \loadglsentries{glossary.tex} % We load the dictionary
 \loadglsentries{acronyms.tex} % We load the acronyms
@@ -12,22 +39,19 @@
 %-----------------------------------------
 %      Variables
 %-----------------------------------------
-\newcommand{\version}{2.0}
-\newcommand{\revision}{2}
-\newcommand{\documentName}{Example}
-\newcommand{\teamName}{Team name}
-\newcommand{\teamNumber}{Team number}
-\newcommand{\annee}{2022}
-\newcommand{\prose}{ProSE}
-\newcommand{\projectName}{\LaTeX}
-\newcommand{\documentNameAbrev}{ED}
+\author{Thorkel-dev}        % Mandatory
+\title{Template \LaTeX}     % Mandatory
+\date{\normalsize\today}    % Mandatory, today's date
+
+\graphicspath{{../schemas/}{../figures/}}
 
 %-----------------------------------------
 %      Document
 %-----------------------------------------
 
 \begin{document}
-\input{param/frontPage.tex} % We add the cover page
+
+\maketitle
 
 DISCLAIMER
 This document is an educational document. It was produced by Edouard Gautier.
@@ -59,7 +83,7 @@ of its owner.
 
 \listoflistings \label{TableOfCode} % Source code table
 
-\printbibliography[heading=bibnumbered, label=bibliographie] % Display the bibliography
+\printbibliography[heading=bibnumbered, label=bibliography] % Display the bibliography
 \nocite{*} % Even unused references are displayed
 
 \label{Lastpage} % To count the number of pages

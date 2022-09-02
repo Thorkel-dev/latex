@@ -20,7 +20,6 @@ Here is a minimal configuration for this project;
   - biber, bibliography for LaTeX
   - texlive-bibtex-extra, adding different styles for BibLaTeX
   - pygments, a generic syntax highlighter adapted to code hosting
-  - plantuml, component that allows to draw diagrams quickly
 
 ## Project
 
