@@ -1,4 +1,11 @@
+%-----------------------------------------------
+%   LaTeX template
+%   Written By: Thorkel-dev
+%-----------------------------------------------
+
 \documentclass[a4paper,11pt,titlepage]{article}
+
+\usepackage{lipsum} % For text generation, to be removed
 
 \usepackage[
             imageFooterLeft      =  {latex.png},                    % Optional
@@ -17,12 +24,12 @@
             logoCenter      =   {latex.png},                    % Optional
             subject         =   {{Subject of the document}},    % Optional
             projectName     =   {Project Name},                 % Optional
-            entrepriseName  =   {Entreprise Name}               % Optional
+            entrepriseName  =   {Entreprise Name},              % Optional
+            revision        =   {4},                            % Optional
+            version         =   {2},                            % Optional
             % textColor      =   {},                             % Defaut RGB{0, 0, 60}
             % colorRule      =   {},                             % Defaut RGB{0, 0, 60}
             ]{FrontPage}
-
-\usepackage{lipsum} % For text generation, to be removed
 
 \makeglossaries
 \loadglsentries{glossary.tex} % We load the dictionary

@@ -1,3 +1,8 @@
+%-----------------------------------------------
+%   LaTeX template front page
+%   Written By: Thorkel-dev
+%-----------------------------------------------
+
 \ProvidesPackage{FrontPage}
 \RequirePackage{Parameter}
 \RequirePackage{kvoptions}
@@ -12,6 +17,8 @@
 \DeclareStringOption[]{entrepriseName}[]
 \DeclareStringOption[thorkelBlue]{textColor}[]
 \DeclareStringOption[thorkelBlue]{colorRule}[]
+\DeclareStringOption[]{revision}[]
+\DeclareStringOption[]{version}[]
 
 \ProcessKeyvalOptions*
 
@@ -66,21 +73,35 @@
     \vspace*{\fill}
 
     \noindent
-    \textcolor{\FrontPage@colorRule}{\vrule}\hspace{0.25cm}\begin{minipage}{\textwidth-0.25cm}
-            \textcolor{\FrontPage@textColor}{
-                \textbf{\@author}
-                \ifx\FrontPage@projectName\empty
-                \else
-                    \\{\FrontPage@projectName}
-                \fi
-                \ifx\FrontPage@entrepriseName\empty
-                \else
-                    \\{\FrontPage@entrepriseName}
-                \fi
-                \hspace*{\fill}
-                \@date
-            }
-        \end{minipage}
+    \textcolor{\FrontPage@colorRule}{\vrule}\hspace{0.25cm}\begin{minipage}[b]{0.5\textwidth-0.25cm}
+        \raggedright
+        \textcolor{\FrontPage@textColor}{
+            \textbf{\@author}
+            \ifx\FrontPage@projectName\empty
+            \else
+                \\{\FrontPage@projectName}
+            \fi
+            \ifx\FrontPage@entrepriseName\empty
+            \else
+                \\{\FrontPage@entrepriseName}
+            \fi
+        }
+    \end{minipage}
+    \hspace*{\fill}
+    \begin{minipage}[b]{0.5\textwidth-0.25cm}
+        \raggedleft
+        \textcolor{\FrontPage@textColor}{
+            \ifx\FrontPage@version\empty
+            \else
+                Version : {\FrontPage@version}\\
+            \fi
+            \ifx\FrontPage@revision\empty
+            \else
+                Revison : {\FrontPage@revision}\\
+            \fi
+            \@date
+        }
+    \end{minipage}
     \newpage
 }
 
