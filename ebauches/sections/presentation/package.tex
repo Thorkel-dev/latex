@@ -48,6 +48,9 @@
           functions provided by \gls{latex}. BibLaTeX uses its own data management program called biber
           to read and process bibliographic data. Thanks to biber, BibLaTeX has many features that
           that rival or surpass other bibliographic systems.
+    \item \href{https://ctan.org/pkg/pdflscape}{pdflscape} The package adds PDF support to the landscape
+          environment of package lscape, by setting the PDF /Rotate page attribute. Pages with this attribute will be displayed
+          in landscape orientation by conforming PDF viewers.
 \end{itemize}
 
 \subsubsection{Dictionary} \label{dictionary}
@@ -431,3 +434,20 @@ See \href{https://mirror.ibcp.fr/pub/CTAN/macros/latex/contrib/biblatex/doc/bibl
 In the file \verb=biblio.bib= you will find, as an example, the set of reference categories that exists.
 Depending on the category, the information requested is different and their display is also different,
 see page \pageref{bibliography}.
+
+\subsection{Page layout}
+
+\begin{landscape}
+    \subsubsection{Page in landscape}
+    Depending on the needs, it may be necessary to have a longer line length. In particular to display images.
+    It is very easy to do thanks to the package pdflscape which offers the landscape environment. Environment where you can put what you want as with a normal page
+    As here for example:
+    \begin{code}
+        \begin{minted}{latex}
+            \begin{landscape}
+                Texts, images, tables, etc.
+            \end{landscape}
+    \end{minted}
+        \caption{Use of landscape}
+    \end{code}
+\end{landscape}
