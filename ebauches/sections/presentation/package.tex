@@ -55,21 +55,27 @@ It is possible to create a dictionary that can be reused in the document.
 To do this, you must enter its definitions in the file \verb=glossary.tex= in the following way:
 \begin{code}
     \begin{minted}{latex}
-        \newglossaryentry{the key to call}
+        \newglossaryentry{label}
         {
-        name={The word to define},
-        description={The definition},
-        first={The definition (The word)},
-        text={The word},
+            name={The word to define},      % Mandatory
+            description={The definition},   % Mandatory
+            first={The definition (The word)},
+            text={The word},
+            short={short form},
+            plural={plural form},
+            symbol={Symbol of the word}
         }
 
         % For example
         \newglossaryentry{ed}
         {
             name={Example Dictionary},
-            description={Word defining term},
-            first={Example Dictionary (ED)},
-            text={ED},
+            description={Term defining the word},
+            first={Example Dictionary, first time},
+            text={example dictionary},
+            short={example},
+            plural={examples dictionaries},
+            symbol={ED}
         }
 \end{minted}
     \caption{Definition in the dictionary}
@@ -88,11 +94,43 @@ To call this word, we use the same way as for acronyms, \ref{acronym} page \page
 If it is the first time that the word is called it is the definition in the option \verb=first= that appears: \gls{ed}.
 A footnote also appears with the definition. \newline
 If it's not the first time: \gls{ed}. It is the word in the \verb=text= option that appears and there is no footnote.
+If the \verb=first= option is not filled, the \verb=name= text is displayed.
 
-It is possible to display the list of definitions. Here it is at the end of the document,
+It is possible to display the list of definitions, only the name and description appear. Here it is at the end of the document,
 page \pageref{domaindictionary}, sorted alphabetically.
 
 There are other options for the glossary, see \href{https://fr.overleaf.com/learn/latex/Glossaries}{Overleaf}.
+
+\paragraph{All options}
+
+\begin{code}
+    \begin{minted}{latex}
+    \gls{<label>}
+    To print the term, lowercase. For example, \gls{ed} prints example dictionary when used.
+
+    \Gls{<label>}
+    The same as \gls but the first letter will be printed in uppercase. Example: \Gls{ed} prints Example dictionary
+
+    \glspl{<label>}
+    The same as \gls but the term is put in its plural form. For instance, \glspl{ed} will write examples dictionarys in your final document.
+
+    \Glspl{<label>}
+    The same as \Gls but the term is put in its plural form. For example, \Glspl{ed} renders as Examples dictionarys.
+
+    \glsentryname{<label>}
+    Displays the term without a link to the glossary or footnote. Only the name. To be used especially in titles and captions. \glsentryname{ed} prints Example Dictionary
+
+    \glslink{<label>}{<alternate text>}
+    This command creates the link as usual, but typesets the alternate text instead. It can also take several options which changes its default behavior (see the documentation).
+
+    \glssymbol{<label>}
+    This command prints what ever is defined in symbol=, \glssymbol{ed} renders as ED.
+
+    \glsdesc{<label>}
+    This command prints what ever is defined in description=, \glsdesc{ed} will write Term defining the word.
+    \end{minted}
+    \caption{All options}
+\end{code}
 
 \subsubsection{Acronym} \label{acronym}
 It is possible to create a list of acronyms that can be reused in the document.
@@ -116,13 +154,24 @@ If this is the first time the acronym is called, the definition in the \verb=fir
 A footnote also appears. \newline
 If it's not the first time: \gls{acr}. This is the acronym that appears and there is no footnote. \newline
 
-It is possible to display the list of defined acronyms. Here it is in a table sorted alphabetically.
-
-\setglossarysection{paragraph} % Type of title
-\printglossary[type=\acronymtype,style=superheaderborder ,title={Definitions, acronyms and abbreviations}]
-\glsaddallunused \newline % Even unused acronyms are displayed
-
+It is possible to display the list of defined acronyms. Page \pageref{acronym} is in a table sorted alphabetically.
 There are other options for acronyms, see \href{https://fr.overleaf.com/learn/latex/Glossaries}{Overleaf}.
+
+\paragraph{All options}
+
+\begin{code}
+    \begin{minted}{latex}
+    \acrlong{<label>}
+    Displays the phrase which the acronyms stands for. Put the label of the acronym inside the braces. In the example, \acrlong{gcd} prints Greatest Common Divisor.
+
+    \acrshort{<label>} or \gls{<label>}
+    Prints the acronym whose label is passed as parameter. For instance, \acrshort{acr} renders as ACR.
+
+    \acrfull{<label>}
+    Prints both, the acronym and its definition. In the example the output of \acrfull{acr} is Definition of the acronym (ACR). Different of first option
+    \end{minted}
+    \caption{All options}
+\end{code}
 
 \subsubsection{PlantUML}
 For the generation of PlantUMLs in images it is necessary to have installed:

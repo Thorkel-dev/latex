@@ -75,6 +75,9 @@ of its owner.
 
 \input{sections/exemple.tex}
 
+\printglossary[type=\acronymtype,style=superheaderborder] \label{acronym}
+\glsaddallunused \newline % Even unused acronyms are displayed
+
 \setglossarysection{section} % Type of title
 \printglossary[] \label{domaindictionary} % Display the glossary
 \glsaddallunused % Even unused words are displayed
