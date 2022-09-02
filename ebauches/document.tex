@@ -89,5 +89,10 @@ of its owner.
 \printbibliography[heading=bibnumbered, label=bibliography] % Display the bibliography
 \nocite{*} % Even unused references are displayed
 
-\label{Lastpage} % To count the number of pages
+% Add an empty page
+\clearpage
+\null
+\thispagestyle{empty}%
+\addtocounter{page}{-1}%
+
 \end{document}

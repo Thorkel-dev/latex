@@ -124,7 +124,7 @@
 \fi
 
 \renewcommand{\footrulewidth}{1pt}
-\fancyfoot[RO]{Page \thepage /{\pageref{Lastpage}} }
+\fancyfoot[RO]{Page \thepage /\pageref*{LastPage}}
 \def\footrule{{\if@fancyplain\let\footrulewidth\plainfootrulewidth\fi
             \vskip-\footruleskip\vskip-\footrulewidth
             \color{\Parameter@colorRule}\hrule\@width\headwidth\@height\footrulewidth\vskip\footruleskip}}
@@ -263,3 +263,11 @@
     hyperref = true,            % Link between the citation and the bibliography
     backref = false,            % Do not display the citations page
 ]{biblatex}
+
+\AtEveryCite{\color{darkgray}}
+\renewbibmacro*{prenote}{%
+    \iffieldundef{prenote}
+        {\printtext{référence}}
+        {\printfield{prenote}}%
+    \setunit{\prenotedelim}%
+}

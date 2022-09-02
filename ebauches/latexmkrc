@@ -15,7 +15,7 @@ ensure_path("TEXINPUTS", "./param//:", "./../figures//", , "./schemas//:");
 $out_dir = "build";
 
 # Whether to show CPU time used.
-$show_time = 1;
+$show_time = 4;
 
 # Whether to run silently.
 $silent = 1;
@@ -25,6 +25,9 @@ $pdf_previewer = "start xdg-open %S";
 
 # use pdflatex command
 $pdf_mode = 1;
+
+# Increase the number of rules, required by the use of pgfgantt, so the compilation succeeded at the first attempt
+$max_repeat = 10;
 
 # Argument passed to all *latex commands
 set_tex_cmds("-file-line-error -interaction=nonstopmode -shell-escape %O %S");
@@ -43,7 +46,7 @@ sub makeglo2gls {
 # Extension not cleaned by default:
 #
 # for latexmk -c
-$clean_ext = "synctex.gz bbl run.xml glg glo gls ist out aux dvi log tex~ glo-abr out.ps ac, acr alg acn fdb_latexmk lol pdf pygtex pygstyle";
+$clean_ext = "bbl lol synctex.gz run.xml glg glo gls ist out aux dvi log tex~ glo-abr out.ps ac, acr alg acn fdb_latexmk";
 # for latexmk -C
 $clean_full_ext = "output/* synctex.gz";
 
