@@ -13,7 +13,7 @@
 \DeclareStringOption[utf8]{encoding}[]
 \DeclareStringOption[french]{language}[]
 \DeclareStringOption[thorkelBlue]{colorTitle}[]
-\DeclareStringOption[thorkelBlue]{colorRule}[]
+\DeclareStringOption[thorkelBlue]{ruleColor}[]
 
 \ProcessKeyvalOptions*
 
@@ -113,7 +113,7 @@
 \fancyhead[CO]{\rightmark} % Current section
 \fancyhead[RO]{{\@author}}
 \def\headrule{{\if@fancyplain\let\headrulewidth\plainheadrulewidth\fi
-            \color{\Parameter@colorRule}\hrule\@height\headrulewidth\@width\headwidth \vskip-\headrulewidth}}
+            \color{\Parameter@ruleColor}\hrule\@height\headrulewidth\@width\headwidth \vskip-\headrulewidth}}
 
 % footer
 \ifx\Parameter@imageFooterLeft\empty
@@ -127,7 +127,7 @@
 \fancyfoot[RO]{Page \thepage /\pageref*{LastPage}}
 \def\footrule{{\if@fancyplain\let\footrulewidth\plainfootrulewidth\fi
             \vskip-\footruleskip\vskip-\footrulewidth
-            \color{\Parameter@colorRule}\hrule\@width\headwidth\@height\footrulewidth\vskip\footruleskip}}
+            \color{\Parameter@ruleColor}\hrule\@width\headwidth\@height\footrulewidth\vskip\footruleskip}}
 
 \makeatother
 

@@ -13,9 +13,9 @@
             subject              =  {{Subject of the document}},    % Optional
             keywords             =  {{Example, Template, LaTeX}},   % Optional
             language             =  {english},                      % Defaut french
-            % encoding            =  {},                            % Defaut utf8
-            % colorTitle          =  {},                            % Defaut RGB{0, 0, 60}
-            % colorRule           =  {},                            % Defaut RGB{0, 0, 60}
+            % encoding             =  {},                            % Defaut utf8
+            % colorTitle           =  {},                            % Defaut RGB{0, 0, 60}
+            % colorRule            =  {},                            % Defaut RGB{0, 0, 60}
             ]{Parameter}
 
 \usepackage[
@@ -24,11 +24,11 @@
             logoCenter      =   {latex.png},                    % Optional
             subject         =   {{Subject of the document}},    % Optional
             projectName     =   {Project Name},                 % Optional
-            entrepriseName  =   {Entreprise Name},              % Optional
+            enterpriseName  =   {Entreprise Name},              % Optional
             revision        =   {4},                            % Optional
             version         =   {2},                            % Optional
-            % textColor      =   {},                             % Defaut RGB{0, 0, 60}
-            % colorRule      =   {},                             % Defaut RGB{0, 0, 60}
+            % textColor       =   {},                             % Defaut RGB{0, 0, 60}
+            % colorRule       =   {},                             % Defaut RGB{0, 0, 60}
             ]{FrontPage}
 
 \makeglossaries
@@ -74,9 +74,6 @@ of its owner.
 %------------------------------------------------------
 
 \input{sections/exemple.tex}
-
-\printglossary[type=\acronymtype,style=superheaderborder] \label{acronym}
-\glsaddallunused \newline % Even unused acronyms are displayed
 
 \setglossarysection{section} % Type of title
 \printglossary[] \label{domaindictionary} % Display the glossary

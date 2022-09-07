@@ -27,7 +27,7 @@
     \item \href{https://www.ctan.org/pkg/float}{float} Improves the interface for defining floating objects
           such as figures and tables.
     \item \href{https://www.ctan.org/pkg/xcolor}{xcolor} This package starts from the basic facilities
-          of the \textbf{color} package, and provides easy, driver-independent access.
+          of the \textbf{color} package, and provides easy, driver-independent access. \label{color}
     \item \href{https://www.ctan.org/pkg/fancyhdr}{fancyhdr} The package offers many possibilities,
           both to build headers and footers, and to control their use (for example, when \gls{latex} automatically changes the header style used).
     \item \href{https://www.ctan.org/pkg/xltabular}{xltabular} The new xltabular environment is a combination
@@ -44,7 +44,7 @@
           \gls{latex} using the powerful Pygments library
     \item \href{https://www.ctan.org/pkg/caption}{caption} The caption package offers many ways to customize captions
           in floating environments such as figures and tables, and cooperates with with many other packages.
-    \item \href{https://www.ctan.org/pkg/biblatex}{biblatex} BibLaTeX is a complete reimplementation of the bibliographic functions
+    \item \href{https://www.ctan.org/pkg/biblatex}{biblatex} BibLaTeX is a complete re-implementation of the bibliographic functions
           functions provided by \gls{latex}. BibLaTeX uses its own data management program called biber
           to read and process bibliographic data. Thanks to biber, BibLaTeX has many features that
           that rival or surpass other bibliographic systems.
@@ -55,7 +55,7 @@
 
 \subsubsection{Dictionary} \label{dictionary}
 It is possible to create a dictionary that can be reused in the document.
-To do this, you must enter its definitions in the file \verb=glossary.tex= in the following way:
+To do this, you must enter its definitions in the file \textbf{glossary.tex} in the following way:
 \begin{code}
     \begin{minted}{latex}
         \newglossaryentry{label}
@@ -85,7 +85,7 @@ To do this, you must enter its definitions in the file \verb=glossary.tex= in th
 \end{code}
 
 If a word is used several times in the document and the spelling of this word must be modified
-this can be done easily and throughout the document by changing it in \verb=glossary.tex=.
+this can be done easily and throughout the document by changing it in \textbf{glossary.tex}.
 To call this word, we use the same way as for acronyms, \ref{acronym} page \pageref{acronym}, :
 \begin{code}
     \begin{minted}{latex}
@@ -94,10 +94,10 @@ To call this word, we use the same way as for acronyms, \ref{acronym} page \page
     \caption{Use of the dictionary}
 \end{code}
 
-If it is the first time that the word is called it is the definition in the option \verb=first= that appears: \gls{ed}.
+If it is the first time that the word is called it is the definition in the option \textbf{first} that appears: \gls{ed}.
 A footnote also appears with the definition. \newline
-If it's not the first time: \gls{ed}. It is the word in the \verb=text= option that appears and there is no footnote.
-If the \verb=first= option is not filled, the \verb=name= text is displayed.
+If it's not the first time: \gls{ed}. It is the word in the \textbf{text} option that appears and there is no footnote.
+If the \textbf{first} option is not filled, the \textbf{name} text is displayed.
 
 It is possible to display the list of definitions, only the name and description appear. Here it is at the end of the document,
 page \pageref{domaindictionary}, sorted alphabetically.
@@ -115,10 +115,10 @@ There are other options for the glossary, see \href{https://fr.overleaf.com/lear
     The same as \gls but the first letter will be printed in uppercase. Example: \Gls{ed} prints Example dictionary
 
     \glspl{<label>}
-    The same as \gls but the term is put in its plural form. For instance, \glspl{ed} will write examples dictionarys in your final document.
+    The same as \gls but the term is put in its plural form. For instance, \glspl{ed} will write examples dictionaries in your final document.
 
     \Glspl{<label>}
-    The same as \Gls but the term is put in its plural form. For example, \Glspl{ed} renders as Examples dictionarys.
+    The same as \Gls but the term is put in its plural form. For example, \Glspl{ed} renders as Examples dictionaries.
 
     \glsentryname{<label>}
     Displays the term without a link to the glossary or footnote. Only the name. To be used especially in titles and captions. \glsentryname{ed} prints Example Dictionary
@@ -137,14 +137,14 @@ There are other options for the glossary, see \href{https://fr.overleaf.com/lear
 
 \subsubsection{Acronym} \label{acronym}
 It is possible to create a list of acronyms that can be reused in the document.
-To do this, you must enter your acronyms in the file \verb=acronyms.tex= in the following way:
+To do this, you must enter your acronyms in the file \textbf{acronyms.tex} in the following way:
 \begin{code}
     \inputminted{latex}{./acronyms.tex}
     \caption{Definition of an acronym}
 \end{code}
 
 If an acronym is used several times in the document and the spelling of this acronym must be changed
-this can be done easily and throughout the document by modifying it in \verb=acronyms.tex=.
+this can be done easily and throughout the document by modifying it in \textbf{acronyms.tex}.
 To call this acronym, we use the same way as for the dictionary, \ref{dictionary} page \pageref{dictionary} :
 \begin{code}
     \begin{minted}{latex}
@@ -153,11 +153,17 @@ To call this acronym, we use the same way as for the dictionary, \ref{dictionary
     \caption{Use of an acronym}
 \end{code}
 
-If this is the first time the acronym is called, the definition in the \verb=first= option appears: \gls{acr}.
+If this is the first time the acronym is called, the definition in the \textbf{first} option appears: \gls{acr}.
 A footnote also appears. \newline
 If it's not the first time: \gls{acr}. This is the acronym that appears and there is no footnote. \newline
 
-It is possible to display the list of defined acronyms. Page \pageref{acronym} is in a table sorted alphabetically.
+It is possible to display the list of defined acronyms. Here is in a table sorted alphabetically.
+
+% BUG Title in the header, abnormal as at the right level. But at the right level in the table of contents and in the document
+\setglossarysection{paragraph} % Type of title
+\printglossary[type=\acronymtype,style=superheaderborder]
+\glsaddallunused \newline % Even unused acronyms are displayed
+
 There are other options for acronyms, see \href{https://fr.overleaf.com/learn/latex/Glossaries}{Overleaf}.
 
 \paragraph{All options}
@@ -199,8 +205,8 @@ To delete all the files generated by the diagrams:
     \caption{Cleaning diagrams}
 \end{code}
 
-The command will recover all the \verb=.plantuml= files
-in the \verb=schémas/= folder to convert them into \verb=.eps=.
+The command will recover all the \textbf{.plantuml} files
+in the \textbf{schemas/} folder to convert them into \textbf{.eps}.
 It is a vector image format supported by \gls{latex},
 guaranteeing a great image quality whatever the size.
 
@@ -224,11 +230,11 @@ It is possible to store the diagrams in subfolders whose relative path must be s
 \end{figure}
 
 \subsubsection{Minted}
-Il est possible de mettre des extraits de code dans le document via le paquetage Minted.
-Ce paquetage utilise la librairie Python \verb=Pygments=.
-Cette librairie doit être installée via le paquet \verb=python3-pygments=.
+It is possible to put code fragments in the document via the Minted package.
+This package uses the Python library \textbf{Pygments}.
+This library must be installed via the package \textbf{python3-pygments}.
 
-Les extraits de code seront colorisés en fonction du langage mit en paramètre comme ci-dessous :
+The code snippets will be colorized according to the language set as parameter as below:
 
 \begin{code}
     \begin{minted}{c}
@@ -250,7 +256,7 @@ Les extraits de code seront colorisés en fonction du langage mit en paramètre 
     \caption{Hello World en Java}
 \end{code}
 
-The code extracts are put in an environment created for the occasion: \verb=code=.
+The code extracts are put in an environment created for the occasion: \textbf{code}.
 The aim is to add legends and a particular layout and to list them at the end of the document,
 page \pageref{TableOfCode}.
 It is possible to add a source code file directly into the document, via the command :
@@ -292,7 +298,7 @@ Here is an example of a table with 5 columns:
     \caption{Example table}
 \end{code}
 
-Ce qui donnera le résultat :
+This will give the result:
 \begin{xltabular}{\linewidth}{|l|X|r|c|p{0.15\linewidth}|}
     % l = left, X = remaining space and line break, r = right, c = center, p = space
     % If no size is given to the columns, it is done according to the text in the column
@@ -318,7 +324,7 @@ Ce qui donnera le résultat :
     Left & \lipsum[5] & Right & Center & Fixed Size\\ \hline
 \end{xltabular}
 
-If no size is given in the columns \verb=Left Right Center=, the width of the column
+If no size is given in the columns \textbf{Left Right Center}, the width of the column
 will be made according to the text that is put in the column. There is a risk of having
 tables that are too wide and that protrude from the page like here :
 \begin{xltabular}{\linewidth}{|l|X|r|c|p{0.15\linewidth}|}
@@ -390,7 +396,7 @@ more than one page length, it also overflows.
 
 \subsubsection{Biblatex}
 It is possible to create a bibliography that can be reused in the document.
-To do this, you must enter the references in the file \verb=biblio.bib= in the following way:
+To do this, you must enter the references in the file \textbf{biblio.bib} in the following way:
 \begin{code}
     \begin{minted}{latex}
         @article{key to call,
@@ -415,7 +421,7 @@ To do this, you must enter the references in the file \verb=biblio.bib= in the f
 
 If a reference, is used several times in the document and the spelling of this reference
 needs to be changed; this can be done easily and throughout the document by modifying it in
-\verb=biblio.bib=.
+\textbf{biblio.bib}.
 To call this reference can use different ways:
 \begin{code}
     \begin{minted}{latex}
@@ -431,11 +437,9 @@ And here we have it appearing: \cite{CitekeyArticle}. \newline
 In our example we display the author's name and the title. There are other ways to display other information.
 See \href{https://mirror.ibcp.fr/pub/CTAN/macros/latex/contrib/biblatex/doc/biblatex.pdf#subsection.3.9}{documentation CTAN}, or \href{https://fr.overleaf.com/learn/latex/Bibliography_management_with_bibtex}{Overleaf}. \newline
 
-In the file \verb=biblio.bib= you will find, as an example, the set of reference categories that exists.
+In the file \textbf{biblio.bib} you will find, as an example, the set of reference categories that exists.
 Depending on the category, the information requested is different and their display is also different,
 see page \pageref{bibliography}.
-
-\subsection{Page layout}
 
 \begin{landscape}
     \subsubsection{Page in landscape}
