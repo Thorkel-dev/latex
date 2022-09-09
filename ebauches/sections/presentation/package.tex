@@ -51,6 +51,7 @@
     \item \href{https://ctan.org/pkg/pdflscape}{pdflscape} The package adds PDF support to the landscape
           environment of package lscape, by setting the PDF /Rotate page attribute. Pages with this attribute will be displayed
           in landscape orientation by conforming PDF viewers.
+    \item \href{https://ctan.org/pkg/csquotes}{csquotes} The package provides advanced facilities for inline and display quotations. .
 \end{itemize}
 
 \subsubsection{Dictionary} \label{dictionary}
@@ -441,8 +442,41 @@ In the file \textbf{biblio.bib} you will find, as an example, the set of referen
 Depending on the category, the information requested is different and their display is also different,
 see page \pageref{bibliography}.
 
+\subsubsection{Csquote}
+We may need to quote some excerpts from a document. Here is an example of a quote.
+\begin{displayquote}[\cite{CitekeyArticle}]
+    It is now known that the truth or falsity of the continuum hypothesis
+    and other related conjecture cannot be determined by set theory as we know it today.
+\end{displayquote}
+
+For this we use the displayquote environment. This one allows to have a particular layout.
+By adding the biblatex reference as an option, we can make the link with the references.
+\begin{code}
+    \begin{minted}{latex}
+        \begin{displayquote}[\cite{CitekeyArticle}]
+            It is now known that the truth or falsity of the continuum hypothesis
+            and other related conjecture cannot be determined by set theory as we know it today.
+        \end{displayquote}
+\end{minted}
+    \caption{Use of displayquote}
+\end{code}
+Otherwise, we can simply add the quote in the text as here. \enquote{It is now known that the truth or falsity of the continuum hypothesis
+    and other related conjecture cannot be determined by set theory as we know it today.}\autocite{CitekeyArticle}
+\begin{code}
+    \begin{minted}{latex}
+\enquote{It is now known that the truth or falsity of the continuum hypothesis and other related conjecture cannot be determined by set theory as we know it today.}\autocite{CitekeyArticle}
+\end{minted}
+    \caption{Use of enquote}
+\end{code}
+
+It is interesting to note that this package manages quotes within quotes.
+And when depending on the language chosen with the \textbf{language} parameter, see \ref{language} page \pageref{language}
+the quotation marks will not be the same. They will follow the typography rules of the language.
+
+\enquote{quotes \enquote{quotes within quotes}}
+
 \begin{landscape}
-    \subsubsection{Page in landscape}
+    \subsubsection{Landscape}
     Depending on the needs, it may be necessary to have a longer line length. In particular to display images.
     It is very easy to do thanks to the package pdflscape which offers the landscape environment. Environment where you can put what you want as with a normal page
     As here for example:

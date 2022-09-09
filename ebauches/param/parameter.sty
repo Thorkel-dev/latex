@@ -110,7 +110,7 @@
 \fi
 
 \renewcommand{\headrulewidth}{1pt}
-\fancyhead[CO]{\rightmark} % Current section
+\fancyhead[CO]{\rightmark} % Current subsection
 \fancyhead[RO]{{\@author}}
 \def\headrule{{\if@fancyplain\let\headrulewidth\plainheadrulewidth\fi
             \color{\Parameter@ruleColor}\hrule\@height\headrulewidth\@width\headwidth \vskip-\headrulewidth}}
@@ -264,10 +264,24 @@
     backref = false,            % Do not display the citations page
 ]{biblatex}
 
-\AtEveryCite{\color{darkgray}}
+\AtEveryCite{}
 \renewbibmacro*{prenote}{%
     \iffieldundef{prenote}
-        {\printtext{référence}}
+        {\itshape\bfseries}
         {\printfield{prenote}}%
     \setunit{\prenotedelim}%
 }
+
+%-----------------------------------------------
+% Quote personalization
+%-----------------------------------------------
+
+\usepackage[autostyle=true
+            ]{csquotes}
+
+\makeatletter
+%Take the original environment definition and change the font style to italic and bold
+\renewenvironment*{displayquote}
+    {\begingroup\csq@getcargs{\csq@bdquote{\itshape\color{darkgray}}{}}}
+    {\\\raggedleft\csq@edquote\endgroup}
+\makeatother
