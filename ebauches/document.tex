@@ -45,6 +45,16 @@
 
 \graphicspath{{../schemas/}{../figures/}}
 
+% We prepare a background page.
+\backgroundsetup{
+    scale=1,
+    opacity=0.05,
+    angle=0,
+    contents={%
+            \includegraphics[width=\textwidth]{thorkel-logo.png}
+        }%
+}
+
 %-----------------------------------------
 %      Document
 %-----------------------------------------
@@ -53,13 +63,20 @@
 
 \maketitle
 
-DISCLAIMER
-This document is an educational document. It was produced by Edouard Gautier.
-This document is the property of Edouard Gautier. Outside of the educational activities of
+\BgThispage % We use the background for this page only
+\vspace*{\fill}
+\noindent
+DISCLAIMER \\
+This document is an educational document. It was produced by Thorkel-dev.
+This document is the property of Thorkel-dev. Outside of the educational activities of
 activities, this document may not be distributed or copied without the written authorization of its
 of its owner.
+\vspace*{\fill}
+\clearpage
 
+\section*{Table of versions}
 \input{tablesVersion.tex} \label{TableOfVersion} % Add the page with the version tables
+\clearpage
 
 \tableofcontents % The table of contents
 
@@ -91,5 +108,5 @@ of its owner.
 \null
 \thispagestyle{empty}%
 \addtocounter{page}{-1}%
-
+\BgThispage
 \end{document}

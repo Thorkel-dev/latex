@@ -34,7 +34,7 @@ jobs:
         uses: actions/upload-artifact@v2 # https://github.com/actions/upload-artifact
         with:
           name: output
-          path: ebauches/*.pdf
+          path: ebauches/output/*.pdf
           retention-days: 7
 
       # Create a release that contains the generated PDF, named according to the name of the tag

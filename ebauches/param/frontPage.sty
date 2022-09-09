@@ -30,6 +30,7 @@
 
 \makeatletter
 \renewcommand\maketitle{
+    \addtocounter{page}{-1} % Not count as page 1
     \thispagestyle{empty}
 
     \begin{figure}[t]
@@ -102,7 +103,12 @@
             \@date
         }
     \end{minipage}
-    \newpage
+    \clearpage
+    % Add an empty page, for printing
+    % \null
+    % \thispagestyle{empty}%
+    % \addtocounter{page}{-1}%
+    % \newpage
 }
 
 \makeatother
