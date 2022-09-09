@@ -21,24 +21,38 @@ The idea here is to install only the packages that will be useful to us rather t
     \item plantuml, component that allows to draw quickly diagrams
 \end{itemize}
 
-\subsubsection{Use} % TODO to be redone
-To compile the desired document, you must execute the command \textbf{make} in the directory \textbf{ebauches/}.
-A file with the format \textbf{.pdf} is generated at the same level as the \textbf{Makefile}. \newline
+\subsubsection{Use}
+To compile the desired document, you must execute,in the directory \textbf{ebauches/}, the command :
+\begin{code}
+    \begin{minted}{bash}
+    make
+    or
+    latexmk
+\end{minted}
+    \caption{Generation of document}
+\end{code}
+
+A file with the format \textbf{.pdf} is generated is generated in the \textbf{output/} folder.
+Using the \textbf{make} or \textbf{latexmk} command gives the same result.
+\textbf{make} will launch the \textbf{latexmk} command which will itself launch the \textbf{make eps} command, see \ref{plamtuml}, page \pageref{plamtuml}.\newline
 
 A \textbf{build/} folder is created, it contains all the intermediate compilation files of \gls{latex}.
-A file \textbf{.dependLatex} and \textbf{.dependPlantUML} are created in which the compilation dependencies are listed.
+A file \textbf{.dependPlantUML} are created in which the compilation dependencies are listed.
 They will allow to speed up the next compilations, by compiling only the modified files.
 
-\paragraph{Parameters}
+\paragraph{Template customization}
 The template uses its own packages for the layout.
 They are located in the \textbf{param/} folder.
 One is for the front page and the other for the document layout.
 
 These two packages have their own options that will allow you to customize the document.
 However, some information must absolutely be filled in. Indeed, they are reused by the packages afterwards.
+\begin{itemize}
+    \item \verb=\author{ }=, defines the author of the document
+    \item \verb=\title{ }=, defines the title of the document
+    \item \verb=\date{ }=, defines the date of the document, today's date is set as default
+\end{itemize}
 
-% TODO review the mandatory parameters
-% TODO review title
 \subparagraph{FrontPage}
 Allows customization of the front page. If the parameters are optional, an empty space is put in place
 The parameters are :
