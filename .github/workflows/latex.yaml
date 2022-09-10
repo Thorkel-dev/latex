@@ -44,6 +44,6 @@ jobs:
         uses: svenstaro/upload-release-action@v2 # https://github.com/svenstaro/upload-release-action
         with:
           repo_token: ${{ secrets.github_token }}
-          file: ebauches/*.pdf
+          file: ebauches/output/*.pdf
           file_glob: true
           tag: ${{ github.ref }}
