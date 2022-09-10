@@ -13,7 +13,7 @@
 \DeclareStringOption[utf8]{encoding}[]
 \DeclareStringOption[french]{language}[]
 \DeclareStringOption[thorkelBlue]{colorTitle}[]
-\DeclareStringOption[thorkelBlue]{colorRule}[]
+\DeclareStringOption[thorkelBlue]{ruleColor}[]
 
 \ProcessKeyvalOptions*
 
@@ -40,7 +40,8 @@
 \usepackage[outputdir=build/, newfloat]{minted}
 \usepackage{caption}
 \usepackage[outdir=build/epstopdf/, update]{epstopdf}
-
+\usepackage{pdflscape}
+\usepackage[pages=some]{background} % He is prevented from posting any
 %-----------------------------------------------
 %   Customize margins
 %-----------------------------------------------
@@ -110,10 +111,10 @@
 \fi
 
 \renewcommand{\headrulewidth}{1pt}
-\fancyhead[CO]{\rightmark} % Current section
+\fancyhead[CO]{\rightmark} % Current subsection
 \fancyhead[RO]{{\@author}}
 \def\headrule{{\if@fancyplain\let\headrulewidth\plainheadrulewidth\fi
-            \color{\Parameter@colorRule}\hrule\@height\headrulewidth\@width\headwidth \vskip-\headrulewidth}}
+            \color{\Parameter@ruleColor}\hrule\@height\headrulewidth\@width\headwidth \vskip-\headrulewidth}}
 
 % footer
 \ifx\Parameter@imageFooterLeft\empty
@@ -124,10 +125,10 @@
 \fi
 
 \renewcommand{\footrulewidth}{1pt}
-\fancyfoot[RO]{Page \thepage /{\pageref{Lastpage}} }
+\fancyfoot[RO]{Page \thepage /\pageref*{LastPage}}
 \def\footrule{{\if@fancyplain\let\footrulewidth\plainfootrulewidth\fi
             \vskip-\footruleskip\vskip-\footrulewidth
-            \color{\Parameter@colorRule}\hrule\@width\headwidth\@height\footrulewidth\vskip\footruleskip}}
+            \color{\Parameter@ruleColor}\hrule\@width\headwidth\@height\footrulewidth\vskip\footruleskip}}
 
 \makeatother
 
@@ -263,3 +264,25 @@
     hyperref = true,            % Link between the citation and the bibliography
     backref = false,            % Do not display the citations page
 ]{biblatex}
+
+\AtEveryCite{}
+\renewbibmacro*{prenote}{%
+    \iffieldundef{prenote}
+        {\itshape\bfseries}
+        {\printfield{prenote}}%
+    \setunit{\prenotedelim}%
+}
+
+%-----------------------------------------------
+% Quote personalization
+%-----------------------------------------------
+
+\usepackage[autostyle=true
+            ]{csquotes}
+
+\makeatletter
+%Take the original environment definition and change the font style to italic and bold
+\renewenvironment*{displayquote}
+    {\begingroup\csq@getcargs{\csq@bdquote{\itshape\color{darkgray}}{}}}
+    {\\\raggedleft\csq@edquote\endgroup}
+\makeatother

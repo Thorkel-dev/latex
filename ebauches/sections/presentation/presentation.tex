@@ -22,11 +22,65 @@ The idea here is to install only the packages that will be useful to us rather t
 \end{itemize}
 
 \subsubsection{Use}
-To compile the desired document, you must execute the command \verb=make= in the directory \verb=ebauches/=.
-A file with the format \verb=.pdf= is generated at the same level as the \verb=Makefile=. \newline
+To compile the desired document, you must execute,in the directory \textbf{ebauches/}, the command :
+\begin{code}
+    \begin{minted}{bash}
+    make
+    or
+    latexmk
+\end{minted}
+    \caption{Generation of document}
+\end{code}
 
-A \verb=build/= folder is created, it contains all the intermediate compilation files of \gls{latex}.
-A file \verb=.dependLatex= and \verb=.dependPlantUML= are created in which the compilation dependencies are listed.
+A file with the format \textbf{.pdf} is generated is generated in the \textbf{output/} folder.
+Using the \textbf{make} or \textbf{latexmk} command gives the same result.
+\textbf{make} will launch the \textbf{latexmk} command which will itself launch the \textbf{make eps} command, see \ref{plamtuml}, page \pageref{plamtuml}.\newline
+
+A \textbf{build/} folder is created, it contains all the intermediate compilation files of \gls{latex}.
+A file \textbf{.dependPlantUML} are created in which the compilation dependencies are listed.
 They will allow to speed up the next compilations, by compiling only the modified files.
+
+\paragraph{Template customization}
+The template uses its own packages for the layout.
+They are located in the \textbf{param/} folder.
+One is for the front page and the other for the document layout.
+
+These two packages have their own options that will allow you to customize the document.
+However, some information must absolutely be filled in. Indeed, they are reused by the packages afterwards.
+\begin{itemize}
+    \item \verb=\author{ }=, defines the author of the document
+    \item \verb=\title{ }=, defines the title of the document
+    \item \verb=\date{ }=, defines the date of the document, today's date is set as default
+\end{itemize}
+
+\subparagraph{FrontPage}
+Allows customization of the front page. If the parameters are optional, an empty space is put in place
+The parameters are :
+\begin{itemize}
+    \item logoRight, optional, image on top right
+    \item logoLeft, optional, image on top left
+    \item logoCenter, optional, image in the center
+    \item subject, optional, the subject of the document or the subtitle
+    \item projectName, optional, the name of the project, is at the bottom left
+    \item enterpriseName, optional, the name of the enterprise, is at the bottom left
+    \item revision, optional, the revision number of the document, located at the bottom right
+    \item version, optional, the version number of the document, located at the bottom right
+    \item textColor, The font color of the cover page. By default the color is 0, 0, 60, in rgb. See \textbf{xcolor} \ref{color}, page \pageref{color} to change the color
+    \item ruleColor, The rule color of the cover page. By default the color is 0, 0, 60, in rgb. See \textbf{xcolor} \ref{color}, page \pageref{color} to change the color
+\end{itemize}
+
+\subparagraph{Parameter}
+Allows you to customize the footer, header, title...
+The parameters are :
+\begin{itemize}
+    \item imageFooterLeft, optional, image at the bottom left in the footer
+    \item imageHeaderLeft, optional, image on top left in the header
+    \item subject, optional, the subject of the document, will be in the document metadata
+    \item keywords, optional, the keywords of the document, will be in the document metadata
+    \item language, choice of language for culturally determined typographic rules, by default in french \label{language}
+    \item encoding, the encoding of the document, by default in utf8
+    \item colorTitle, The font color of the title. By default the color is 0, 0, 60, in rgb. See \textbf{xcolor} \ref{color}, page \pageref{color} to change the color
+    \item ruleColor, The rule color of the cover page. By default the color is 0, 0, 60, in rgb. See \textbf{xcolor} \ref{color}, page \pageref{color} to change the color
+\end{itemize}
 
 \input{sections/presentation/package.tex}

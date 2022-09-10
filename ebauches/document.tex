@@ -13,9 +13,9 @@
             subject              =  {{Subject of the document}},    % Optional
             keywords             =  {{Example, Template, LaTeX}},   % Optional
             language             =  {english},                      % Defaut french
-            % encoding            =  {},                            % Defaut utf8
-            % colorTitle          =  {},                            % Defaut RGB{0, 0, 60}
-            % colorRule           =  {},                            % Defaut RGB{0, 0, 60}
+            % encoding             =  {},                            % Defaut utf8
+            % colorTitle           =  {},                            % Defaut RGB{0, 0, 60}
+            % colorRule            =  {},                            % Defaut RGB{0, 0, 60}
             ]{Parameter}
 
 \usepackage[
@@ -24,11 +24,11 @@
             logoCenter      =   {latex.png},                    % Optional
             subject         =   {{Subject of the document}},    % Optional
             projectName     =   {Project Name},                 % Optional
-            entrepriseName  =   {Entreprise Name},              % Optional
+            enterpriseName  =   {Entreprise Name},              % Optional
             revision        =   {4},                            % Optional
             version         =   {2},                            % Optional
-            % textColor      =   {},                             % Defaut RGB{0, 0, 60}
-            % colorRule      =   {},                             % Defaut RGB{0, 0, 60}
+            % textColor       =   {},                             % Defaut RGB{0, 0, 60}
+            % colorRule       =   {},                             % Defaut RGB{0, 0, 60}
             ]{FrontPage}
 
 \makeglossaries
@@ -45,6 +45,16 @@
 
 \graphicspath{{../schemas/}{../figures/}}
 
+% We prepare a background page.
+\backgroundsetup{
+    scale=1,
+    opacity=0.05,
+    angle=0,
+    contents={%
+            \includegraphics[width=\textwidth]{thorkel-logo.png}
+        }%
+}
+
 %-----------------------------------------
 %      Document
 %-----------------------------------------
@@ -53,13 +63,20 @@
 
 \maketitle
 
-DISCLAIMER
-This document is an educational document. It was produced by Edouard Gautier.
-This document is the property of Edouard Gautier. Outside of the educational activities of
+\BgThispage % We use the background for this page only
+\vspace*{\fill}
+\noindent
+DISCLAIMER \\
+This document is an educational document. It was produced by Thorkel-dev.
+This document is the property of Thorkel-dev. Outside of the educational activities of
 activities, this document may not be distributed or copied without the written authorization of its
 of its owner.
+\vspace*{\fill}
+\clearpage
 
+\section*{Table of versions}
 \input{tablesVersion.tex} \label{TableOfVersion} % Add the page with the version tables
+\clearpage
 
 \tableofcontents % The table of contents
 
@@ -75,7 +92,9 @@ of its owner.
 
 \input{sections/exemple.tex}
 
-\setglossarysection{section} % Type of title
+\printglossary[type=\acronymtype] \label{acronyms}
+\glsaddallunused % Even unused acronyms are displayed
+
 \printglossary[] \label{domaindictionary} % Display the glossary
 \glsaddallunused % Even unused words are displayed
 
@@ -86,5 +105,10 @@ of its owner.
 \printbibliography[heading=bibnumbered, label=bibliography] % Display the bibliography
 \nocite{*} % Even unused references are displayed
 
-\label{Lastpage} % To count the number of pages
+% Add an empty page
+\clearpage
+\null
+\thispagestyle{empty}%
+\addtocounter{page}{-1}%
+\BgThispage
 \end{document}

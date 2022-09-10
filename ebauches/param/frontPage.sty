@@ -14,9 +14,9 @@
 \DeclareStringOption[]{logoCenter}[]
 \DeclareStringOption[]{projectName}[]
 \DeclareStringOption[]{subject}[]
-\DeclareStringOption[]{entrepriseName}[]
+\DeclareStringOption[]{enterpriseName}[]
 \DeclareStringOption[thorkelBlue]{textColor}[]
-\DeclareStringOption[thorkelBlue]{colorRule}[]
+\DeclareStringOption[thorkelBlue]{ruleColor}[]
 \DeclareStringOption[]{revision}[]
 \DeclareStringOption[]{version}[]
 
@@ -30,6 +30,7 @@
 
 \makeatletter
 \renewcommand\maketitle{
+    \addtocounter{page}{-1} % Not count as page 1
     \thispagestyle{empty}
 
     \begin{figure}[t]
@@ -45,7 +46,7 @@
     \end{figure}
 
     \vspace*{\fill}
-    \noindent\textcolor{\FrontPage@colorRule}{\rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{3.2pt} % Thick horizontal rule
+    \noindent\textcolor{\FrontPage@ruleColor}{\rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{3.2pt} % Thick horizontal rule
 	\rule{\textwidth}{0.4pt}}\\
 
     \begin{center}
@@ -59,7 +60,7 @@
         }
     \end{center}
 
-    \noindent\textcolor{\FrontPage@colorRule}{\rule{\textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt} % Thin horizontal rule
+    \noindent\textcolor{\FrontPage@ruleColor}{\rule{\textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt} % Thin horizontal rule
 	\rule{\textwidth}{1.6pt}}\\
     \vspace*{\fill}
 
@@ -73,7 +74,7 @@
     \vspace*{\fill}
 
     \noindent
-    \textcolor{\FrontPage@colorRule}{\vrule}\hspace{0.25cm}\begin{minipage}[b]{0.5\textwidth-0.25cm}
+    \textcolor{\FrontPage@ruleColor}{\vrule}\hspace{0.25cm}\begin{minipage}[b]{0.5\textwidth-0.25cm}
         \raggedright
         \textcolor{\FrontPage@textColor}{
             \textbf{\@author}
@@ -81,9 +82,9 @@
             \else
                 \\{\FrontPage@projectName}
             \fi
-            \ifx\FrontPage@entrepriseName\empty
+            \ifx\FrontPage@enterpriseName\empty
             \else
-                \\{\FrontPage@entrepriseName}
+                \\{\FrontPage@enterpriseName}
             \fi
         }
     \end{minipage}
@@ -102,7 +103,12 @@
             \@date
         }
     \end{minipage}
-    \newpage
+    \clearpage
+    % Add an empty page, for printing
+    % \null
+    % \thispagestyle{empty}%
+    % \addtocounter{page}{-1}%
+    % \newpage
 }
 
 \makeatother

@@ -27,7 +27,7 @@
     \item \href{https://www.ctan.org/pkg/float}{float} Improves the interface for defining floating objects
           such as figures and tables.
     \item \href{https://www.ctan.org/pkg/xcolor}{xcolor} This package starts from the basic facilities
-          of the \textbf{color} package, and provides easy, driver-independent access.
+          of the \textbf{color} package, and provides easy, driver-independent access. \label{color}
     \item \href{https://www.ctan.org/pkg/fancyhdr}{fancyhdr} The package offers many possibilities,
           both to build headers and footers, and to control their use (for example, when \gls{latex} automatically changes the header style used).
     \item \href{https://www.ctan.org/pkg/xltabular}{xltabular} The new xltabular environment is a combination
@@ -44,39 +44,49 @@
           \gls{latex} using the powerful Pygments library
     \item \href{https://www.ctan.org/pkg/caption}{caption} The caption package offers many ways to customize captions
           in floating environments such as figures and tables, and cooperates with with many other packages.
-    \item \href{https://www.ctan.org/pkg/biblatex}{biblatex} BibLaTeX is a complete reimplementation of the bibliographic functions
+    \item \href{https://www.ctan.org/pkg/biblatex}{biblatex} BibLaTeX is a complete re-implementation of the bibliographic functions
           functions provided by \gls{latex}. BibLaTeX uses its own data management program called biber
           to read and process bibliographic data. Thanks to biber, BibLaTeX has many features that
           that rival or surpass other bibliographic systems.
+    \item \href{https://ctan.org/pkg/pdflscape}{pdflscape} The package adds PDF support to the landscape
+          environment of package lscape, by setting the PDF /Rotate page attribute. Pages with this attribute will be displayed
+          in landscape orientation by conforming PDF viewers.
+    \item \href{https://ctan.org/pkg/csquotes}{csquotes} The package provides advanced facilities for inline and display quotations. .
 \end{itemize}
 
 \subsubsection{Dictionary} \label{dictionary}
 It is possible to create a dictionary that can be reused in the document.
-To do this, you must enter its definitions in the file \verb=glossary.tex= in the following way:
+To do this, you must enter its definitions in the file \textbf{glossary.tex} in the following way:
 \begin{code}
     \begin{minted}{latex}
-        \newglossaryentry{the key to call}
+        \newglossaryentry{label}
         {
-        name={The word to define},
-        description={The definition},
-        first={The definition (The word)},
-        text={The word},
+            name={The word to define},      % Mandatory
+            description={The definition},   % Mandatory
+            first={The definition (The word)},
+            text={The word},
+            short={short form},
+            plural={plural form},
+            symbol={Symbol of the word}
         }
 
         % For example
         \newglossaryentry{ed}
         {
             name={Example Dictionary},
-            description={Word defining term},
-            first={Example Dictionary (ED)},
-            text={ED},
+            description={Term defining the word},
+            first={Example Dictionary, first time},
+            text={example dictionary},
+            short={example},
+            plural={examples dictionaries},
+            symbol={ED}
         }
 \end{minted}
     \caption{Definition in the dictionary}
 \end{code}
 
 If a word is used several times in the document and the spelling of this word must be modified
-this can be done easily and throughout the document by changing it in \verb=glossary.tex=.
+this can be done easily and throughout the document by changing it in \textbf{glossary.tex}.
 To call this word, we use the same way as for acronyms, \ref{acronym} page \pageref{acronym}, :
 \begin{code}
     \begin{minted}{latex}
@@ -85,25 +95,57 @@ To call this word, we use the same way as for acronyms, \ref{acronym} page \page
     \caption{Use of the dictionary}
 \end{code}
 
-If it is the first time that the word is called it is the definition in the option \verb=first= that appears: \gls{ed}.
+If it is the first time that the word is called it is the definition in the option \textbf{first} that appears: \gls{ed}.
 A footnote also appears with the definition. \newline
-If it's not the first time: \gls{ed}. It is the word in the \verb=text= option that appears and there is no footnote.
+If it's not the first time: \gls{ed}. It is the word in the \textbf{text} option that appears and there is no footnote.
+If the \textbf{first} option is not filled, the \textbf{name} text is displayed.
 
-It is possible to display the list of definitions. Here it is at the end of the document,
+It is possible to display the list of definitions, only the name and description appear. Here it is at the end of the document,
 page \pageref{domaindictionary}, sorted alphabetically.
 
 There are other options for the glossary, see \href{https://fr.overleaf.com/learn/latex/Glossaries}{Overleaf}.
 
+\paragraph{All options}
+
+\begin{code}
+    \begin{minted}{latex}
+    \gls{<label>}
+    To print the term, lowercase. For example, \gls{ed} prints example dictionary when used.
+
+    \Gls{<label>}
+    The same as \gls but the first letter will be printed in uppercase. Example: \Gls{ed} prints Example dictionary
+
+    \glspl{<label>}
+    The same as \gls but the term is put in its plural form. For instance, \glspl{ed} will write examples dictionaries in your final document.
+
+    \Glspl{<label>}
+    The same as \Gls but the term is put in its plural form. For example, \Glspl{ed} renders as Examples dictionaries.
+
+    \glsentryname{<label>}
+    Displays the term without a link to the glossary or footnote. Only the name. To be used especially in titles and captions. \glsentryname{ed} prints Example Dictionary
+
+    \glslink{<label>}{<alternate text>}
+    This command creates the link as usual, but typesets the alternate text instead. It can also take several options which changes its default behavior (see the documentation).
+
+    \glssymbol{<label>}
+    This command prints what ever is defined in symbol=, \glssymbol{ed} renders as ED.
+
+    \glsdesc{<label>}
+    This command prints what ever is defined in description=, \glsdesc{ed} will write Term defining the word.
+    \end{minted}
+    \caption{All options}
+\end{code}
+
 \subsubsection{Acronym} \label{acronym}
 It is possible to create a list of acronyms that can be reused in the document.
-To do this, you must enter your acronyms in the file \verb=acronyms.tex= in the following way:
+To do this, you must enter your acronyms in the file \textbf{acronyms.tex} in the following way:
 \begin{code}
     \inputminted{latex}{./acronyms.tex}
     \caption{Definition of an acronym}
 \end{code}
 
 If an acronym is used several times in the document and the spelling of this acronym must be changed
-this can be done easily and throughout the document by modifying it in \verb=acronyms.tex=.
+this can be done easily and throughout the document by modifying it in \textbf{acronyms.tex}.
 To call this acronym, we use the same way as for the dictionary, \ref{dictionary} page \pageref{dictionary} :
 \begin{code}
     \begin{minted}{latex}
@@ -112,19 +154,31 @@ To call this acronym, we use the same way as for the dictionary, \ref{dictionary
     \caption{Use of an acronym}
 \end{code}
 
-If this is the first time the acronym is called, the definition in the \verb=first= option appears: \gls{acr}.
+If this is the first time the acronym is called, the definition in the \textbf{first} option appears: \gls{acr}.
 A footnote also appears. \newline
 If it's not the first time: \gls{acr}. This is the acronym that appears and there is no footnote. \newline
 
-It is possible to display the list of defined acronyms. Here it is in a table sorted alphabetically.
-
-\setglossarysection{paragraph} % Type of title
-\printglossary[type=\acronymtype,style=superheaderborder ,title={Definitions, acronyms and abbreviations}]
-\glsaddallunused \newline % Even unused acronyms are displayed
+It is possible to display the list of defined acronyms. Here, page \pageref{acronyms}, a table sorted alphabetically.
 
 There are other options for acronyms, see \href{https://fr.overleaf.com/learn/latex/Glossaries}{Overleaf}.
 
-\subsubsection{PlantUML}
+\paragraph{All options}
+
+\begin{code}
+    \begin{minted}{latex}
+    \acrlong{<label>}
+    Displays the phrase which the acronyms stands for. Put the label of the acronym inside the braces. In the example, \acrlong{gcd} prints Greatest Common Divisor.
+
+    \acrshort{<label>} or \gls{<label>}
+    Prints the acronym whose label is passed as parameter. For instance, \acrshort{acr} renders as ACR.
+
+    \acrfull{<label>}
+    Prints both, the acronym and its definition. In the example the output of \acrfull{acr} is Definition of the acronym (ACR). Different of first option
+    \end{minted}
+    \caption{All options}
+\end{code}
+
+\subsubsection{PlantUML} \label{plamtuml}
 For the generation of PlantUMLs in images it is necessary to have installed:
 \begin{itemize}
     \item PlantUML, program allowing to draw UML diagrams, using a simple textual description
@@ -147,8 +201,8 @@ To delete all the files generated by the diagrams:
     \caption{Cleaning diagrams}
 \end{code}
 
-The command will recover all the \verb=.plantuml= files
-in the \verb=schémas/= folder to convert them into \verb=.eps=.
+The command will recover all the \textbf{.plantuml} files
+in the \textbf{schemas/} folder to convert them into \textbf{.eps}.
 It is a vector image format supported by \gls{latex},
 guaranteeing a great image quality whatever the size.
 
@@ -172,11 +226,11 @@ It is possible to store the diagrams in subfolders whose relative path must be s
 \end{figure}
 
 \subsubsection{Minted}
-Il est possible de mettre des extraits de code dans le document via le paquetage Minted.
-Ce paquetage utilise la librairie Python \verb=Pygments=.
-Cette librairie doit être installée via le paquet \verb=python3-pygments=.
+It is possible to put code fragments in the document via the Minted package.
+This package uses the Python library \textbf{Pygments}.
+This library must be installed via the package \textbf{python3-pygments}.
 
-Les extraits de code seront colorisés en fonction du langage mit en paramètre comme ci-dessous :
+The code snippets will be colorized according to the language set as parameter as below:
 
 \begin{code}
     \begin{minted}{c}
@@ -198,7 +252,7 @@ Les extraits de code seront colorisés en fonction du langage mit en paramètre 
     \caption{Hello World en Java}
 \end{code}
 
-The code extracts are put in an environment created for the occasion: \verb=code=.
+The code extracts are put in an environment created for the occasion: \textbf{code}.
 The aim is to add legends and a particular layout and to list them at the end of the document,
 page \pageref{TableOfCode}.
 It is possible to add a source code file directly into the document, via the command :
@@ -240,7 +294,7 @@ Here is an example of a table with 5 columns:
     \caption{Example table}
 \end{code}
 
-Ce qui donnera le résultat :
+This will give the result:
 \begin{xltabular}{\linewidth}{|l|X|r|c|p{0.15\linewidth}|}
     % l = left, X = remaining space and line break, r = right, c = center, p = space
     % If no size is given to the columns, it is done according to the text in the column
@@ -266,7 +320,7 @@ Ce qui donnera le résultat :
     Left & \lipsum[5] & Right & Center & Fixed Size\\ \hline
 \end{xltabular}
 
-If no size is given in the columns \verb=Left Right Center=, the width of the column
+If no size is given in the columns \textbf{Left Right Center}, the width of the column
 will be made according to the text that is put in the column. There is a risk of having
 tables that are too wide and that protrude from the page like here :
 \begin{xltabular}{\linewidth}{|l|X|r|c|p{0.15\linewidth}|}
@@ -338,7 +392,7 @@ more than one page length, it also overflows.
 
 \subsubsection{Biblatex}
 It is possible to create a bibliography that can be reused in the document.
-To do this, you must enter the references in the file \verb=biblio.bib= in the following way:
+To do this, you must enter the references in the file \textbf{biblio.bib} in the following way:
 \begin{code}
     \begin{minted}{latex}
         @article{key to call,
@@ -363,7 +417,7 @@ To do this, you must enter the references in the file \verb=biblio.bib= in the f
 
 If a reference, is used several times in the document and the spelling of this reference
 needs to be changed; this can be done easily and throughout the document by modifying it in
-\verb=biblio.bib=.
+\textbf{biblio.bib}.
 To call this reference can use different ways:
 \begin{code}
     \begin{minted}{latex}
@@ -377,8 +431,56 @@ This gives the following result where we add the footnote \autocite{CitekeyArtic
 And here we have it appearing: \cite{CitekeyArticle}. \newline
 
 In our example we display the author's name and the title. There are other ways to display other information.
-See \href{https://mirror.ibcp.fr/pub/CTAN/macros/latex/contrib/biblatex/doc/biblatex.pdf#subsection.3.9}{documantation CTAN}, or \href{https://fr.overleaf.com/learn/latex/Bibliography_management_with_bibtex}{Overleaf}. \newline
+See \href{https://mirror.ibcp.fr/pub/CTAN/macros/latex/contrib/biblatex/doc/biblatex.pdf#subsection.3.9}{documentation CTAN}, or \href{https://fr.overleaf.com/learn/latex/Bibliography_management_with_bibtex}{Overleaf}. \newline
 
-In the file \verb=biblio.bib= you will find, as an example, the set of reference categories that exists.
+In the file \textbf{biblio.bib} you will find, as an example, the set of reference categories that exists.
 Depending on the category, the information requested is different and their display is also different,
 see page \pageref{bibliography}.
+
+\subsubsection{Csquote}
+We may need to quote some excerpts from a document. Here is an example of a quote.
+\begin{displayquote}[\cite{CitekeyArticle}]
+    It is now known that the truth or falsity of the continuum hypothesis
+    and other related conjecture cannot be determined by set theory as we know it today.
+\end{displayquote}
+
+For this we use the displayquote environment. This one allows to have a particular layout.
+By adding the biblatex reference as an option, we can make the link with the references.
+\begin{code}
+    \begin{minted}{latex}
+        \begin{displayquote}[\cite{CitekeyArticle}]
+            It is now known that the truth or falsity of the continuum hypothesis
+            and other related conjecture cannot be determined by set theory as we know it today.
+        \end{displayquote}
+\end{minted}
+    \caption{Use of displayquote}
+\end{code}
+Otherwise, we can simply add the quote in the text as here. \enquote{It is now known that the truth or falsity of the continuum hypothesis
+    and other related conjecture cannot be determined by set theory as we know it today.}\autocite{CitekeyArticle}
+\begin{code}
+    \begin{minted}{latex}
+\enquote{It is now known that the truth or falsity of the continuum hypothesis and other related conjecture cannot be determined by set theory as we know it today.}\autocite{CitekeyArticle}
+\end{minted}
+    \caption{Use of enquote}
+\end{code}
+
+It is interesting to note that this package manages quotes within quotes.
+And when depending on the language chosen with the \textbf{language} parameter, see \ref{language} page \pageref{language}
+the quotation marks will not be the same. They will follow the typography rules of the language.
+
+\enquote{quotes \enquote{quotes within quotes}}
+
+\begin{landscape}
+    \subsubsection{Landscape}
+    Depending on the needs, it may be necessary to have a longer line length. In particular to display images.
+    It is very easy to do thanks to the package pdflscape which offers the landscape environment. Environment where you can put what you want as with a normal page
+    As here for example:
+    \begin{code}
+        \begin{minted}{latex}
+            \begin{landscape}
+                Texts, images, tables, etc.
+            \end{landscape}
+    \end{minted}
+        \caption{Use of landscape}
+    \end{code}
+\end{landscape}
