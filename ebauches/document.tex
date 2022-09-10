@@ -92,7 +92,9 @@ of its owner.
 
 \input{sections/exemple.tex}
 
-\setglossarysection{section} % Type of title
+\printglossary[type=\acronymtype] \label{acronyms}
+\glsaddallunused % Even unused acronyms are displayed
+
 \printglossary[] \label{domaindictionary} % Display the glossary
 \glsaddallunused % Even unused words are displayed
 
