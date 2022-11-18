@@ -12,8 +12,6 @@
 \DeclareStringOption[]{keywords}[]
 \DeclareStringOption[utf8]{encoding}[]
 \DeclareStringOption[french]{language}[]
-\DeclareStringOption[thorkelBlue]{colorTitle}[]
-\DeclareStringOption[thorkelBlue]{ruleColor}[]
 
 \ProcessKeyvalOptions*
 
@@ -89,6 +87,9 @@
 \definecolor{ESEOWhite}{RGB}{1,1,1}
 \definecolor{thorkelBlue}{RGB}{0, 0, 60}
 
+\colorlet{ruleColor}{thorkelBlue}
+\colorlet{colorTitle}{thorkelBlue}
+
 % itemize personalization
 \setlist[itemize]{label=\textcolor{black}{\textbullet}}
 
@@ -114,7 +115,7 @@
 \fancyhead[CO]{\rightmark} % Current subsection
 \fancyhead[RO]{{\@author}}
 \def\headrule{{\if@fancyplain\let\headrulewidth\plainheadrulewidth\fi
-            \color{\Parameter@ruleColor}\hrule\@height\headrulewidth\@width\headwidth \vskip-\headrulewidth}}
+            \color{ruleColor}\hrule\@height\headrulewidth\@width\headwidth \vskip-\headrulewidth}}
 
 % footer
 \ifx\Parameter@imageFooterLeft\empty
@@ -128,7 +129,7 @@
 \fancyfoot[RO]{Page \thepage /\pageref*{LastPage}}
 \def\footrule{{\if@fancyplain\let\footrulewidth\plainfootrulewidth\fi
             \vskip-\footruleskip\vskip-\footrulewidth
-            \color{\Parameter@ruleColor}\hrule\@width\headwidth\@height\footrulewidth\vskip\footruleskip}}
+            \color{ruleColor}\hrule\@width\headwidth\@height\footrulewidth\vskip\footruleskip}}
 
 \makeatother
 
@@ -147,7 +148,7 @@
     {0em}                                         % indentation
     {1em}                                         % before the title
     {1em}                                         % after the title
-    {\normalsize\hspace{6em}\color{\Parameter@colorTitle}} % style (overloaded by the title format)
+    {\normalsize\hspace{6em}\color{colorTitle}} % style (overloaded by the title format)
 }
 \newcommand\l@subsubparagraph{\@dottedtocline{6}{13em}{6em}}
 \newcommand{\subsubparagraphmark}[1]{}
@@ -157,11 +158,11 @@
 \setcounter{secnumdepth}{6} % Allows the numbering of the sub-paragraph
 
 % title format
-\titleformat{\section}[block]{\normalfont\bfseries\LARGE\color{\Parameter@colorTitle}}{{\thesection}}{1em}{}{}
-\titleformat{\subsection}[block]{\Large\hspace{2em}\Large\color{\Parameter@colorTitle}}{{\thesubsection}}{1em}{}{}
-\titleformat{\subsubsection}[block]{\hspace{3em}\large\color{\Parameter@colorTitle}}{{\thesubsubsection}}{1em}{}{}
-\titleformat{\paragraph}[block]{\normalsize\bfseries\hspace{4em}\color{\Parameter@colorTitle}}{{\theparagraph}}{1em}{}{}
-\titleformat{\subparagraph}[block]{\normalsize\hspace{5em}\color{\Parameter@colorTitle}}{{\thesubparagraph}}{1em}{}{}
+\titleformat{\section}[block]{\normalfont\bfseries\LARGE\color{colorTitle}}{{\thesection}}{1em}{}{}
+\titleformat{\subsection}[block]{\Large\hspace{2em}\Large\color{colorTitle}}{{\thesubsection}}{1em}{}{}
+\titleformat{\subsubsection}[block]{\hspace{3em}\large\color{colorTitle}}{{\thesubsubsection}}{1em}{}{}
+\titleformat{\paragraph}[block]{\normalsize\bfseries\hspace{4em}\color{colorTitle}}{{\theparagraph}}{1em}{}{}
+\titleformat{\subparagraph}[block]{\normalsize\hspace{5em}\color{colorTitle}}{{\thesubparagraph}}{1em}{}{}
 
 \makeatother
 

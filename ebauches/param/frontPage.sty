@@ -15,12 +15,13 @@
 \DeclareStringOption[]{projectName}[]
 \DeclareStringOption[]{subject}[]
 \DeclareStringOption[]{enterpriseName}[]
-\DeclareStringOption[thorkelBlue]{textColor}[]
-\DeclareStringOption[thorkelBlue]{ruleColor}[]
 \DeclareStringOption[]{revision}[]
 \DeclareStringOption[]{version}[]
 
 \ProcessKeyvalOptions*
+
+\colorlet{ruleColor}{thorkelBlue}
+\colorlet{textColor}{thorkelBlue}
 
 \fancypagestyle{} % No header and footer for this page
 {
@@ -46,11 +47,11 @@
     \end{figure}
 
     \vspace*{\fill}
-    \noindent\textcolor{\FrontPage@ruleColor}{\rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{3.2pt} % Thick horizontal rule
+    \noindent\textcolor{ruleColor}{\rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{3.2pt} % Thick horizontal rule
 	\rule{\textwidth}{0.4pt}}\\
 
     \begin{center}
-        \textcolor{\FrontPage@textColor}{
+        \textcolor{textColor}{
             {\Huge \textsc{\bf \@title}}
             \vspace{0.5cm}\\
             \ifx\FrontPage@subject\empty
@@ -60,7 +61,7 @@
         }
     \end{center}
 
-    \noindent\textcolor{\FrontPage@ruleColor}{\rule{\textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt} % Thin horizontal rule
+    \noindent\textcolor{ruleColor}{\rule{\textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt} % Thin horizontal rule
 	\rule{\textwidth}{1.6pt}}\\
     \vspace*{\fill}
 
@@ -74,9 +75,9 @@
     \vspace*{\fill}
 
     \noindent
-    \textcolor{\FrontPage@ruleColor}{\vrule}\hspace{0.25cm}\begin{minipage}[b]{0.5\textwidth-0.25cm}
+    \textcolor{ruleColor}{\vrule}\hspace{0.25cm}\begin{minipage}[b]{0.5\textwidth-0.25cm}
         \raggedright
-        \textcolor{\FrontPage@textColor}{
+        \textcolor{textColor}{
             \textbf{\@author}
             \ifx\FrontPage@projectName\empty
             \else
@@ -91,7 +92,7 @@
     \hspace*{\fill}
     \begin{minipage}[b]{0.5\textwidth-0.25cm}
         \raggedleft
-        \textcolor{\FrontPage@textColor}{
+        \textcolor{textColor}{
             \ifx\FrontPage@version\empty
             \else
                 Version : {\FrontPage@version}\\
