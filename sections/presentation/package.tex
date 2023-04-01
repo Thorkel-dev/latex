@@ -208,20 +208,20 @@ guaranteeing a great image quality whatever the size.
 
 The files are of the following form:
 \begin{code}
-    \inputminted{vim}{../schemas/example.plantuml}
+    \inputminted{vim}{schemas/example.plantuml}
     \caption{Example PlantUMLs file}
 \end{code}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=2cm]{example}
+    \includegraphics[width=2cm]{./schemas/example}
     \caption{Example UML diagram}
 \end{figure}
 
-It is possible to store the diagrams in subfolders whose relative path must be specified.
+It is possible to store the diagrams in subfolder whose relative path must be specified.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=2cm]{example/exampleFolder}
+    \includegraphics[width=2cm]{./schemas/example/exampleFolder}
     \caption{Example UML diagram in a subfolder}
 \end{figure}
 
@@ -264,8 +264,8 @@ It is possible to add a source code file directly into the document, via the com
 \end{code}
 
 \subsubsection{Xltabular}
-It is possible to create tables so that they can be spread over the whole page and over several pages.
-The objective is to place the table on several pages without splitting a line in two.
+It is possible to create tables so that they can be spread over the whole page and over several
+pages. The objective is to place the table on several pages without splitting a line in two.
 Here is an example of a table with 5 columns:
 \begin{code}
     \begin{minted}{latex}
@@ -300,13 +300,15 @@ This will give the result:
     % If no size is given to the columns, it is done according to the text in the column
 
     % Front page title
-    \hline \textbf{Left} & \textbf{Back to Line} & \textbf{Right} & \textbf{Center} & \textbf{Fixed Size}\\\hline
+    \hline \textbf{Left} & \textbf{Back to Line} & \textbf{Right} & \textbf{Center} &
+    \textbf{Fixed Size}\\\hline
     \endfirsthead
 
     \multicolumn{5}{l}% Merging of columns and text on the left
     {\textbf{\dots\space continued from previous page}}\\
     % Titre seconde page et plus
-    \hline \textbf{Left} & \textbf{Back to Line} & \textbf{Right} & \textbf{Center} & \textbf{Fixed Size}\\\hline
+    \hline \textbf{Left} & \textbf{Back to Line} & \textbf{Right} & \textbf{Center} &
+    \textbf{Fixed Size}\\\hline
     \endhead
 
     \multicolumn{5}{r}% Merging of columns and text on the right
@@ -328,13 +330,15 @@ tables that are too wide and that protrude from the page like here :
     % If no size is given to the columns, it is done according to the text in the column
 
     % Front page title
-    \hline \textbf{Left} & \textbf{Back to Line} & \textbf{Right} & \textbf{Center} & \textbf{Fixed Size}\\\hline
+    \hline \textbf{Left} & \textbf{Back to Line} & \textbf{Right} & \textbf{Center} &
+    \textbf{Fixed Size}\\\hline
     \endfirsthead
 
     \multicolumn{5}{l}% Merging of columns and text on the left
     {\textbf{\dots\space continued on next page}}\\
     % Title second page and more
-    \hline \textbf{Left} & \textbf{Back to Line} & \textbf{Right} & \textbf{Center} & \textbf{Fixed Size}\\\hline
+    \hline \textbf{Left} & \textbf{Back to Line} & \textbf{Right} & \textbf{Center} &
+    \textbf{Fixed Size}\\\hline
     \endhead
 
     \multicolumn{5}{r}% Merging of columns and text on the right
@@ -345,7 +349,8 @@ tables that are too wide and that protrude from the page like here :
     \lipsum[1] & Back to Line & Right & Center & Fixed Size\\ \hline
 \end{xltabular}
 
-Except in certain cases, see page \pageref{TableOfVersion}, it is preferable to fix everything as here:
+Except in certain cases, see page \pageref{TableOfVersion}, it is preferable to fix everything as
+here:
 \begin{code}
     \begin{minted}{latex}
         \begin{xltabular}{\linewidth}{|p{0.6\linewidth}|X|}
@@ -387,8 +392,8 @@ Except in certain cases, see page \pageref{TableOfVersion}, it is preferable to 
     \lipsum[1] & \lipsum[2] \\ \hline
 \end{xltabular}
 
-This way, overflow is avoided. Note that if a column is not wide enough and the text inside is more than one page long
-more than one page length, it also overflows.
+This way, overflow is avoided. Note that if a column is not wide enough and the text inside is more
+than one page long more than one page length, it also overflows.
 
 \subsubsection{Biblatex}
 It is possible to create a bibliography that can be reused in the document.
@@ -430,12 +435,15 @@ To call this reference can use different ways:
 This gives the following result where we add the footnote \autocite{CitekeyArticle}.
 And here we have it appearing: \cite{CitekeyArticle}. \newline
 
-In our example we display the author's name and the title. There are other ways to display other information.
-See \href{https://mirror.ibcp.fr/pub/CTAN/macros/latex/contrib/biblatex/doc/biblatex.pdf#subsection.3.9}{documentation CTAN}, or \href{https://fr.overleaf.com/learn/latex/Bibliography_management_with_bibtex}{Overleaf}. \newline
+In our example we display the author's name and the title. There are other ways to display other
+information. See
+\href{https://mirror.ibcp.fr/pub/CTAN/macros/latex/contrib/biblatex/doc/biblatex.pdf#subsection.3.9}{documentation CTAN},
+or \href{https://fr.overleaf.com/learn/latex/Bibliography_management_with_bibtex}{Overleaf}.
+\newline
 
-In the file \textbf{biblio.bib} you will find, as an example, the set of reference categories that exists.
-Depending on the category, the information requested is different and their display is also different,
-see page \pageref{bibliography}.
+In the file \textbf{biblio.bib} you will find, as an example, the set of reference categories that
+exists. Depending on the category, the information requested is different and their display is also
+different, see page \pageref{bibliography}.
 
 \subsubsection{Csquote}
 We may need to quote some excerpts from a document. Here is an example of a quote.
@@ -455,25 +463,30 @@ By adding the biblatex reference as an option, we can make the link with the ref
 \end{minted}
     \caption{Use of displayquote}
 \end{code}
-Otherwise, we can simply add the quote in the text as here. \enquote{It is now known that the truth or falsity of the continuum hypothesis
-    and other related conjecture cannot be determined by set theory as we know it today.}\autocite{CitekeyArticle}
+Otherwise, we can simply add the quote in the text as here. \enquote{It is now known that the truth
+    or falsity of the continuum hypothesis and other related conjecture cannot be determined by set
+    theory as we know it today.}\autocite{CitekeyArticle}
 \begin{code}
     \begin{minted}{latex}
-\enquote{It is now known that the truth or falsity of the continuum hypothesis and other related conjecture cannot be determined by set theory as we know it today.}\autocite{CitekeyArticle}
+\enquote{It is now known that the truth or falsity of the continuum hypothesis and other related
+conjecture cannot be determined by set theory as we know it today.}\autocite{CitekeyArticle}
 \end{minted}
     \caption{Use of enquote}
 \end{code}
 
 It is interesting to note that this package manages quotes within quotes.
-And when depending on the language chosen with the \textbf{language} parameter, see \ref{language} page \pageref{language}
-the quotation marks will not be the same. They will follow the typography rules of the language.
+And when depending on the language chosen with the \textbf{language} parameter, see \ref{language}
+page \pageref{language} the quotation marks will not be the same. They will follow the typography
+rules of the language.
 
 \enquote{quotes \enquote{quotes within quotes}}
 
 \begin{landscape}
     \subsubsection{Landscape}
-    Depending on the needs, it may be necessary to have a longer line length. In particular to display images.
-    It is very easy to do thanks to the package pdflscape which offers the landscape environment. Environment where you can put what you want as with a normal page
+    Depending on the needs, it may be necessary to have a longer line length. In particular to
+    display images.
+    It is very easy to do thanks to the package pdflscape which offers the landscape environment.
+    Environment where you can put what you want as with a normal page
     As here for example:
     \begin{code}
         \begin{minted}{latex}

@@ -1,4 +1,4 @@
-SRC_PLANTUML = $(realpath ../schemas/)
+SRC_PLANTUML = $(realpath ./schemas/)
 
 DEPEND_PLANTUML = .temp/.dependPlantUML
 OUTPUT_PLANTUML = $(SRC_PLANTUML)

@@ -9,7 +9,7 @@
 
 # The first parameter is the name of one of the system's environment variables for search paths.
 # The remaining parameters are values that should be in the variable
-ensure_path("TEXINPUTS", "./param//:", "./../figures//", , "./schemas//:");
+ensure_path("TEXINPUTS", "./param//:", "./figures//", , "./schemas//:");
 
 # Build directory
 $out_dir = ".temp";
@@ -26,7 +26,8 @@ $pdf_previewer = "start xdg-open %S";
 # use pdflatex command
 $pdf_mode = 1;
 
-# Increase the number of rules, required by the use of pgfgantt, so the compilation succeeded at the first attempt
+# Increase the number of rules, required by the use of pgfgantt, so the compilation succeeded at the
+# first attempt
 $max_repeat = 10;
 
 # Argument passed to all *latex commands

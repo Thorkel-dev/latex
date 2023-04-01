@@ -7,7 +7,8 @@ There are other ways to do this that you can find on your own.
 
 \subsection{Minimal installation}
 Some packages are necessary to generate the document correctly.
-The idea here is to install only the packages that will be useful to us rather than installing the whole package.
+The idea here is to install only the packages that will be useful to us rather than installing the
+whole package.
 \begin{itemize}
     \item latexmk, To automate file compilations
     \item texlive-latex-base, contains packages that are mandated by the core team of \gls{latex}
@@ -22,7 +23,7 @@ The idea here is to install only the packages that will be useful to us rather t
 \end{itemize}
 
 \subsubsection{Use}
-To compile the desired document, you must execute,in the directory \textbf{ebauches/}, the command :
+To compile the desired document, you must execute the command :
 \begin{code}
     \begin{minted}{bash}
     make
@@ -32,13 +33,14 @@ To compile the desired document, you must execute,in the directory \textbf{ebauc
     \caption{Generation of document}
 \end{code}
 
-A file with the format \textbf{.pdf} is generated is generated in the \textbf{output/} folder.
+A file with the format \textbf{.pdf} is generated is generated in the \textbf{bin/} folder.
 Using the \textbf{make} or \textbf{latexmk} command gives the same result.
-\textbf{make} will launch the \textbf{latexmk} command which will itself launch the \textbf{make eps} command, see \ref{plamtuml}, page \pageref{plamtuml}.\newline
+\textbf{make} will launch the \textbf{latexmk} command which will itself launch the
+\textbf{make eps} command, see \ref{plamtuml}, page \pageref{plamtuml}.\newline
 
-A \textbf{build/} folder is created, it contains all the intermediate compilation files of \gls{latex}.
-A file \textbf{.dependPlantUML} are created in which the compilation dependencies are listed.
-They will allow to speed up the next compilations, by compiling only the modified files.
+A \textbf{build/} folder is created, it contains all the intermediate compilation files of
+\gls{latex}. A file \textbf{.dependPlantUML} are created in which the compilation dependencies are
+listed. They will allow to speed up the next compilations, by compiling only the modified files.
 
 \paragraph{Template customization}
 The template uses its own packages for the layout.
@@ -46,7 +48,8 @@ They are located in the \textbf{param/} folder.
 One is for the front page and the other for the document layout.
 
 These two packages have their own options that will allow you to customize the document.
-However, some information must absolutely be filled in. Indeed, they are reused by the packages afterwards.
+However, some information must absolutely be filled in. Indeed, they are reused by the packages
+afterwards.
 \begin{itemize}
     \item \verb=\author{ }=, defines the author of the document
     \item \verb=\title{ }=, defines the title of the document
@@ -54,7 +57,8 @@ However, some information must absolutely be filled in. Indeed, they are reused 
 \end{itemize}
 
 \subparagraph{FrontPage}
-Allows customization of the front page. If the parameters are optional, an empty space is put in place
+Allows customization of the front page. If the parameters are optional, an empty space is put in
+place
 The parameters are :
 \begin{itemize}
     \item logoRight, optional, image on top right
@@ -65,8 +69,12 @@ The parameters are :
     \item enterpriseName, optional, the name of the enterprise, is at the bottom left
     \item revision, optional, the revision number of the document, located at the bottom right
     \item version, optional, the version number of the document, located at the bottom right
-    \item textColor, The font color of the cover page. By default the color is 0, 0, 60, in rgb. To change the color, edit line 24 in the file \textbf{frontPage.sty}. See \textbf{xcolor} \ref{color}, page \pageref{color} to change the color
-    \item ruleColor, The rule color of the cover page. By default the color is 0, 0, 60, in rgb. To change the color, edit line 23 in the file \textbf{frontPage.sty}. See \textbf{xcolor} \ref{color}, page \pageref{color} to change the color
+    \item textColor, The font color of the cover page. By default the color is 0, 0, 60, in rgb.
+          To change the color, edit line 24 in the file \textbf{frontPage.sty}. See \textbf{xcolor}
+          \ref{color}, page \pageref{color} to change the color
+    \item ruleColor, The rule color of the cover page. By default the color is 0, 0, 60, in rgb. To
+          change the color, edit line 23 in the file \textbf{frontPage.sty}. See \textbf{xcolor}
+          \ref{color}, page \pageref{color} to change the color
 \end{itemize}
 
 \subparagraph{Parameter}
@@ -77,10 +85,15 @@ The parameters are :
     \item imageHeaderLeft, optional, image on top left in the header
     \item subject, optional, the subject of the document, will be in the document metadata
     \item keywords, optional, the keywords of the document, will be in the document metadata
-    \item language, choice of language for culturally determined typographic rules, by default in french \label{language}
+    \item language, choice of language for culturally determined typographic rules, by default in
+          french \label{language}
     \item encoding, the encoding of the document, by default in utf8
-    \item colorTitle, The font color of the title. By default the color is 0, 0, 60, in rgb. To change the color, edit line 91 in the file \textbf{parameter.sty}. See \textbf{xcolor} \ref{color}, page \pageref{color} to change the color
-    \item ruleColor, The rule color of the cover page. By default the color is 0, 0, 60, in rgb. To change the color, edit line 90 in the file \textbf{parameter.sty}. See \textbf{xcolor} \ref{color}, page \pageref{color} to change the color
+    \item colorTitle, The font color of the title. By default the color is 0, 0, 60, in rgb. To
+          change the color, edit line 91 in the file \textbf{parameter.sty}. See \textbf{xcolor}
+          \ref{color}, page \pageref{color} to change the color
+    \item ruleColor, The rule color of the cover page. By default the color is 0, 0, 60, in rgb. To
+          change the color, edit line 90 in the file \textbf{parameter.sty}. See \textbf{xcolor}
+          \ref{color}, page \pageref{color} to change the color
 \end{itemize}
 
 \paragraph{Add figures}
