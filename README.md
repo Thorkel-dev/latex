@@ -8,7 +8,7 @@ All the documents of the project are written in LaTeX.
 To generate these documents, it is necessary to install LaTeX.
 Here is a minimal configuration for this project;
 
-- For the generation of the PlantUMLs in :
+- For the generation of the PlantUML in :
   - PlantUML, component that allows to draw quickly diagrams
   - Graphviz, generates a graph from a textual description of PlantUML
 - For the generation of LaTeX in PDF :
