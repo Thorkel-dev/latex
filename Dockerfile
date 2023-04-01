@@ -26,6 +26,8 @@ RUN apt-get install texlive-lang-french -y
 RUN apt-get install texlive-lang-english -y
 RUN apt-get install texlive-bibtex-extra -y
 RUN apt-get install biber -y
+RUN apt-get install git -y
+RUN apt-get install git-lfs -y
 
 # Create a new user and log the shell on the new user
 RUN useradd -ms /bin/bash docker
