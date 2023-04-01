@@ -5,6 +5,8 @@
 */**/output
 .depend*
 .fuse_*
+bin/
+.temp/
 
 ## Core latex/pdflatex auxiliary files:
 *.aux
