@@ -6,24 +6,194 @@ in this document.
 There are other ways to do this that you can find on your own.
 
 \subsection{Minimal installation}
-Some packages are necessary to generate the document correctly.
+Some packages are necessary to generate the document correctly. You can install them easily via your
+package manager. Some packages may have different names depending on the manager, here are the
+package names for Ubuntu. For example : \mintinline{bash}{apt-get install latexmk}.\newline
 The idea here is to install only the packages that will be useful to us rather than installing the
 whole package.
 \begin{itemize}
     \item latexmk, To automate file compilations
     \item texlive-latex-base, contains packages that are mandated by the core team of \gls{latex}
     \item texlive-latex-extra, contains a very large collection of complementary packages
-    \item texlive-font-tools, for image transformation and manipulation
+    \item texlive-font-utils, for image transformation and manipulation
+    \item texlive-extra-utils, These are various useful supplementary programmes
     \item texlive-lang-french, French language support
     \item texlive-lang-english, English language support
     \item biber, bibliographic for \gls{latex}
     \item texlive-bibtex-extra, addition of different style for BibLaTeX
-    \item pygments, a generic syntax highlighter adapted to code hosting
+    \item python3-pygments, a generic syntax highlighter adapted to code hosting
     \item plantuml, component that allows to draw quickly diagrams
 \end{itemize}
 
-\subsubsection{Use}
-To compile the desired document, you must execute the command :
+\subsubsection{Use in a project}
+This is a common template for writing documents. You don't have to modify only the indicated files.
+
+In your git repository, add the git submodule containing the template.
+Copy the following files to the directory where you want to write your document:
+\begin{itemize}
+    \item makefile
+    \item latexmkrc
+    \item document.tex
+    \item tableVersion.tex
+    \item acronyms.tex
+    \item glossary.tex
+    \item biblio.bib
+    \item README.md
+    \item .gitignore
+\end{itemize}
+
+Some files may not be necessary for your document and some may need to be adapted.
+
+\paragraph{Makefile}
+The Makefile will recover all the \textbf{.plantuml} to convert them into \textbf{.eps}. See
+\ref{plamtuml}, page \pageref{plamtuml} to know how to use it.
+Some pathways to files must be adapted to your project.
+
+In the Makefile change the line:
+\begin{code}
+    \begin{minted}{Makefile}
+    SRC_PLANTUML = $(realpath ./schemas)
+    to
+    SRC_PLANTUML = $(realpath ./<project/path/folder>/schemas)
+\end{minted}
+    \caption{Makefile change}
+\end{code}
+
+\emph{./<project/path/folder>/schemas} is the path to the folder where you will store the various
+UML diagrams.\newline
+
+In case this schemas are not needed, you can delete this file, and remove the following line in the
+\textbf{latexmkrc} :
+\begin{code}
+    \begin{minted}{perl}
+        # at the start of compilation
+        $compiling_cmd = "make eps";
+    \end{minted}
+    \caption{Delete Makefile}
+\end{code}
+
+
+\paragraph{latexmkrc}
+The \textbf{latexmkrc} compiles the file \gls{latex}. See \ref{use}, page \pageref{use} to know how
+to use it.
+Some pathways to files must be adapted to your project.
+
+In the \textbf{latexmkrc} change the line :
+\begin{code}
+    \begin{minted}{perl}
+    ensure_path("TEXINPUTS", "./param//:", "./figures//");
+    to
+    ensure_path("TEXINPUTS", "./<project/path/submodule>/param//:", "./<project/path/folder>/submodule/figures//:", "/<project/path/folder>/schemas//:", "/<project/path/folder>/figures//:");
+\end{minted}
+    \caption{latexmkrc change}
+\end{code}
+
+\emph{./<project/path/folder>} is the path to the folders where there are all the Latex source
+files, images, ...,.
+You can add as many folders as you like as long as they are filled in as above.
+
+\paragraph{document.tex}
+This is the central file of your document, the entry point for compilation.
+You can rename this file if you wish, but remember to change the following line in the
+\textbf{latexmkrc}:
+
+\begin{code}
+    \begin{minted}{perl}
+        @default_files = ("document.tex");
+    \end{minted}
+    \caption{Rename file \gls{latex}}
+\end{code}
+
+Inside are the parameters given to the \textbf{Parameter} package. See \ref{customization}, page
+\pageref{customization} to know how to use it.
+The following lines should be replaced by your \gls{latex} files.
+
+\begin{code}
+    \begin{minted}{latex}
+        %-----------------------------------------
+        %            Presentation
+        %-----------------------------------------
+
+        % INFO : Add your documentation
+        \input{sections/exemple.tex}
+    \end{minted}
+    \caption{Delete document part}
+\end{code}
+
+It is recommended that you use multiple files to separate the different parts rather than putting
+everything in one file.
+
+\paragraph{tableVersion.tex}
+This file contains a table listing the different versions of the documents. See \ref{Xltabular},
+page \pageref{Xltabular} to know how to use it.
+In this table, add the versions and their information.
+This table will be put in the document.\newline
+
+In case this table is not needed, you can delete this file, and remove the following line in the
+\textbf{document.tex}:
+\begin{code}
+    \begin{minted}{latex}
+        \section*{Table of versions}
+        \input{tablesVersion.tex} \label{TableOfVersion} % Add the page with the version tables
+        \clearpage
+    \end{minted}
+    \caption{Delete versions table}
+\end{code}
+
+\paragraph{acronyms.tex}
+This file contains the list of acronyms used in the document. See \ref{acronym}, page
+\pageref{acronym} to know how to use it.
+This acronyms will be put in the document.\newline
+
+In case this acronyms is not needed, you can delete this file, and remove the following line in the
+\textbf{document.tex}:
+\begin{code}
+    \begin{minted}{latex}
+        \loadglsentries{acronyms.tex} % We load the acronyms
+        and
+        \printglossary[type=\acronymtype, style=superheaderborder] \label{acronyms}
+        \glsaddallunused % Even unused acronyms are displayed
+    \end{minted}
+    \caption{Delete acronyms}
+\end{code}
+
+\paragraph{glossary.tex}
+This file contains the list of definition used in the document. See \ref{dictionary}, page
+\pageref{dictionary} to know how to use it.
+This dictionary will be put in the document.\newline
+
+In case this dictionary is not needed, you can delete this file, and remove the following line in
+the \textbf{document.tex}:
+\begin{code}
+    \begin{minted}{latex}
+        \loadglsentries{glossary.tex} % We load the dictionary
+        and
+        \printglossary[] \label{DomainDictionary} % Display the glossary
+        \glsaddallunused % Even unused words are displayed
+    \end{minted}
+    \caption{Delete dictionary}
+\end{code}
+
+\paragraph{biblio.bib}
+This file contains the list of reference used in the document. See \ref{Biblatex}, page
+\pageref{Biblatex} to know how to use it.
+This references will be put in the document.\newline
+
+In case this reference is not needed, you can delete this file, and remove the following line in the
+\textbf{document.tex}:
+\begin{code}
+    \begin{minted}{latex}
+        \addbibresource{biblio.bib}   % Load the bibliography
+        and
+        \printbibliography[heading=bibnumbered] \label{bibliography} % Display the bibliography
+        \nocite{*} % Even unused references are displayed
+    \end{minted}
+    \caption{Delete reference}
+\end{code}
+
+\subsubsection{Use} \label{use}
+To compile the desired document, you must execute,in the directory with the \mintinline{bash}{make}
+or the \mintinline{bash}{latexmk}, the command :
 \begin{code}
     \begin{minted}{bash}
     make
@@ -33,75 +203,49 @@ To compile the desired document, you must execute the command :
     \caption{Generation of document}
 \end{code}
 
-A file with the format \textbf{.pdf} is generated in the \textbf{bin/} folder.
-Using the \mintinline{bash}{make} or \mintinline{bash}{latexmk} command gives the same result.
-\textbf{make} will launch the \mintinline{bash}{latexmk} command which will itself launch the
-\mintinline{bash}{make eps} command, see \ref{plamtuml}, page \pageref{plamtuml}.\newline
+If you have deleted the Makefile, the \mintinline{bash}{make} command will not work, use the other
+command.\newline
 
-A \textbf{build/} folder is created, it contains all the intermediate compilation files of
-\gls{latex}. A file \textbf{.dependPlantUML} are created in which the compilation dependencies are
-listed. They will allow speeding up the next compilations, by compiling only the modified files.
+A file with the format \textbf{.pdf} is generated in the \textbf{bin/} folder. Using the
+\mintinline{bash}{make} or \mintinline{bash}{latexmk} command gives the same result.
+\mintinline{bash}{make} will launch the \mintinline{bash}{latexmk} command which will itself launch
+the \mintinline{bash}{make eps} command, see \ref{plamtuml}, page \pageref{plamtuml}.\newline
 
-\paragraph{Template customization}
+A \textbf{.temp/} folder is created, it contains all the intermediate compilation files of
+\gls{latex}.
+A file \textbf{.dependPlantUML} are created in which the compilation dependencies are listed.
+They will allow to speed up the next compilations, by compiling only the modified files.
+
+\paragraph{Template customization} \label{customization}
 The template uses its own packages for the layout.
 They are located in the \textbf{param/} folder.
-One is for the front page and the other for the document layout.
+One is for the front page and the other for the document layout. These two packages have their own
+options that will allow you to customize the document.
+By filling in the options of \textbf{Parameter} package you also fill in those of
+\textbf{FrontPage}. \newline
 
-These two packages have their own options that will allow you to customize the document.
 However, some information must absolutely be filled in. Indeed, they are reused by the packages
 afterwards.
 \begin{itemize}
-    \item \mintinline{latex}{\author{Name}}, defines the author of the document
-    \item \mintinline{latex}{\title{Title}}, defines the title of the document
-    \item \mintinline{latex}{\date{Date}}, defines the date of the document, today's date is set as
-          default
+    \item \verb=\title{ }=, defines the title of the document
+    \item \verb=\date{ }=, defines the date of the document, today's date is set as default\newline
 \end{itemize}
 
-\subparagraph{Front-page}
-Allows customization of the front page. If the parameters are optional, an empty space is put in
-place
-The parameters are :
-\begin{itemize}
-    \item \mintinline{latex}{logoRight}, optional, image on top right
-    \item \mintinline{latex}{logoLeft}, optional, image on top left
-    \item \mintinline{latex}{logoCenter}, optional, image in the center
-    \item \mintinline{latex}{subject}, optional, the subject of the document or the subtitle
-    \item \mintinline{latex}{projectName}, optional, the name of the project, is at the bottom left
-    \item \mintinline{latex}{enterpriseName}, optional, the name of the enterprise, is at the bottom
-          left
-    \item \mintinline{latex}{revision}, optional, the revision number of the document, located at
-          the bottom right
-    \item \mintinline{latex}{version}, optional, the version number of the document, located at the
-          bottom right
-    \item \mintinline{latex}{textColor}, The font color of the cover page. By default, the colour is
-          0, 0, 60, in RGB. To change the color, edit line 24 in the file \textbf{frontPage.sty}.
-          See \textbf{xcolor} \ref{color}, page \pageref{color} to change the colour
-    \item \mintinline{latex}{ruleColor}, The rule color of the cover page. By default, the colour is
-          0, 0, 60, in RGB. To change the color, edit line 23 in the file \textbf{frontPage.sty}.
-          See \textbf{xcolor} \ref{color}, page \pageref{color} to change the colour
-\end{itemize}
-
-\subparagraph{Parameter}
 Allows you to customize the footer, header, title...
-The parameters are :
 \begin{itemize}
-    \item \mintinline{latex}{imageFooterLeft}, optional, image at the bottom left in the footer
-    \item \mintinline{latex}{imageHeaderLeft}, optional, image on top left in the header
-    \item \mintinline{latex}{subject}, optional, the subject of the document, will be in the
-          document metadata
-    \item \mintinline{latex}{keywords}, optional, the keywords of the document, will be in the
-          document metadata
-    \item \mintinline{latex}{language}, choice of language for culturally determined typographic
-          rules, by default in French \label{language}
-    \item \mintinline{latex}{encoding}, the encoding of the document, by default in utf8
-    \item \mintinline{latex}{colorTitle}, The font color of the title. By default, the colour is
-          0, 0, 60, in RGB. To change the colour, edit line 91 in the file \textbf{parameter.sty}.
-          See \textbf{xcolor} \ref{color}, page \pageref{color} to change the colour
-    \item \mintinline{latex}{ruleColor}, The rule color of the cover page. By default, the colour is
-          0, 0, 60, in RGB. To change the colour, edit line 90 in the file \textbf{parameter.sty}.
-          See \textbf{xcolor} \ref{color}, page \pageref{color} to change the colour
+    \item version, optional, define the current version of the document
+    \item reference, optional, define the reference of the document
+    \item status, optional, define the status of the document
+    \item subject, optional, the subject of the document, will be in the document metadata
+    \item keywords, optional, the keywords of the document, will be in the document metadata
+    \item language, choice of language for culturally determined typographic rules, by default in
+          french \label{language}
+    \item encoding, the encoding of the document, by default in utf8
+    \item projectName,  optional, the name of the document
+    \item disclaimer,  optional, path for a file with the disclaimer applicable for the document.
+          It could a \gls{latex} file or a text file. It is printed in the front page
+    \item sign,  optional, path for the table of signature. the file \textbf{./signature.tex} is
+          provided. It is printed in the front page
 \end{itemize}
-
-\paragraph{Add figures}
 
 \input{sections/presentation/package.tex}

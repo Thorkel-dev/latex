@@ -42,4 +42,4 @@ All LaTeX documents follow the same tree structure:
 To compile the desired LaTeX document, you need to run the command ``make`` in the corresponding
 directory.
 
-A .pdf file is generated at the same level as the makefile.
+A .pdf file is generated in ``bin/`` folder at the same level as the makefile.
