@@ -104,11 +104,13 @@ To call this word, we use the same way as for acronyms, \ref{acronym} page \page
     \caption{Use of the dictionary}
 \end{code}
 
-If it is the first time that the word is called it is the definition in the option \textbf{first}
-that appears: \gls{ed}. A footnote also appears with the definition. \newline
-If it's not the first time: \gls{ed}. It is the word in the \textbf{text} option that appears and
-there is no footnote.
-If the \textbf{first} option is not filled, the \textbf{name} text is displayed.
+If it is the first time that the word is called it is the definition in the option
+\mintinline{latex}{first} that appears: \gls{ed}. A footnote also appears with the definition.
+\newline
+If it's not the first time: \gls{ed}. It is the word in the \mintinline{latex}{text} option that
+appears and there is no footnote.
+If the \mintinline{latex}{first} option is not filled, the \mintinline{latex}{name} text is
+displayed.
 
 It is possible to display the list of definitions, only the name and description appear. Here it is
 at the end of the document, page \pageref{domaindictionary}, sorted alphabetically.
@@ -166,8 +168,8 @@ To call this acronym, we use the same way as for the dictionary, \ref{dictionary
     \caption{Use of an acronym}
 \end{code}
 
-If this is the first time the acronym is called, the definition in the \textbf{first} option
-appears: \gls{acr}.
+If this is the first time the acronym is called, the definition in the \mintinline{latex}{first}
+option appears: \gls{acr}.
 A footnote also appears. \newline
 If it's not the first time: \gls{acr}. This is the acronym that appears and there is no footnote.
 \newline
@@ -268,7 +270,7 @@ The code snippets will be colourized according to the language set as parameter 
     \caption{Hello World en Java}
 \end{code}
 
-The code extracts are put in an environment created for the occasion: \textbf{code}.
+The code extracts are put in an environment created for the occasion: \mintinline{latex}{code}.
 The aim is to add legends and a particular layout and to list them at the end of the document,
 page \pageref{TableOfCode}.
 It is possible to add a source code file directly into the document, via the command :
@@ -479,6 +481,7 @@ By adding the biblatex reference as an option, we can make the link with the ref
 \end{minted}
     \caption{Use of displayquote}
 \end{code}
+
 Otherwise, we can simply add the quote in the text as here. \enquote{It is now known that the truth
     or falsity of the continuum hypothesis and other related conjecture cannot be determined by set
     theory as we know it today.} \autocite{CitekeyArticle}
@@ -490,10 +493,10 @@ conjecture cannot be determined by set theory as we know it today.}\autocite{Cit
     \caption{Use of enquote}
 \end{code}
 
-It is interesting to note that this package manages quotes within quotes.
-And when depending on the language chosen with the \textbf{language} parameter, see \ref{language}
-page \pageref{language} the quotation marks will not be the same. They will follow the typography
-rules of the language.
+It is interesting to note that this package manages quotes within quotes. And when depending on the
+language chosen with the \mintinline{latex}{language} parameter, see \ref{language} page
+\pageref{language} the quotation marks will not be the same. They will follow the typography rules
+of the language.
 
 \enquote{Quotes \enquote{quotes within quotes}}
 
