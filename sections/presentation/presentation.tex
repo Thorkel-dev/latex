@@ -62,7 +62,7 @@ In the Makefile change the line:
 \emph{./<project/path/folder>/schemas} is the path to the folder where you will store the various
 UML diagrams.\newline
 
-In case this schemas are not needed, you can delete this file, and remove the following line in the
+In case these schemas are not needed, you can delete this file, and remove the following line in the
 \textbf{latexmkrc} :
 \begin{code}
     \begin{minted}{perl}
@@ -143,9 +143,9 @@ In case this table is not needed, you can delete this file, and remove the follo
 \paragraph{acronyms.tex}
 This file contains the list of acronyms used in the document. See \ref{acronym}, page
 \pageref{acronym} to know how to use it.
-This acronyms will be put in the document.\newline
+These acronyms will be put in the document.\newline
 
-In case this acronyms is not needed, you can delete this file, and remove the following line in the
+In case these acronyms is not needed, you can delete this file, and remove the following line in the
 \textbf{document.tex}:
 \begin{code}
     \begin{minted}{latex}
@@ -192,7 +192,7 @@ In case this reference is not needed, you can delete this file, and remove the f
 \end{code}
 
 \subsubsection{Use} \label{use}
-To compile the desired document, you must execute,in the directory with the \mintinline{bash}{make}
+To compile the desired document, you must execute, in the directory with the \mintinline{bash}{make}
 or the \mintinline{bash}{latexmk}, the command :
 \begin{code}
     \begin{minted}{bash}
@@ -214,7 +214,7 @@ the \mintinline{bash}{make eps} command, see \ref{plamtuml}, page \pageref{plamt
 A \textbf{.temp/} folder is created, it contains all the intermediate compilation files of
 \gls{latex}.
 A file \textbf{.dependPlantUML} are created in which the compilation dependencies are listed.
-They will allow to speed up the next compilations, by compiling only the modified files.
+They will allow speeding up the next compilations, by compiling only the modified files.
 
 \paragraph{Template customization} \label{customization}
 The template uses its own packages for the layout.
@@ -239,13 +239,9 @@ Allows you to customize the footer, header, title...
     \item subject, optional, the subject of the document, will be in the document metadata
     \item keywords, optional, the keywords of the document, will be in the document metadata
     \item language, choice of language for culturally determined typographic rules, by default in
-          french \label{language}
+          French \label{language}
     \item encoding, the encoding of the document, by default in utf8
     \item projectName,  optional, the name of the document
-    \item disclaimer,  optional, path for a file with the disclaimer applicable for the document.
-          It could a \gls{latex} file or a text file. It is printed in the front page
-    \item sign,  optional, path for the table of signature. the file \textbf{./signature.tex} is
-          provided. It is printed in the front page
 \end{itemize}
 
 \input{sections/presentation/package.tex}
