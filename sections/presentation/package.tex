@@ -1,4 +1,4 @@
-\subsection{Packages}
+\section{Packages}
 
 \begin{itemize}
     \item \href{https://www.ctan.org/pkg/babel}{babel} This package manages the culturally
@@ -63,7 +63,7 @@
           for inline and display quotations.
 \end{itemize}
 
-\subsubsection{Dictionary} \label{dictionary}
+\subsection{Dictionary} \label{dictionary}
 It is possible to create a dictionary that can be reused in the document.
 To do this, you must enter its definitions in the file \textbf{glossary.tex} in the following way:
 \begin{code}
@@ -118,7 +118,7 @@ at the end of the document, page \pageref{domaindictionary}, sorted alphabetical
 There are other options for the glossary, see
 \href{https://fr.overleaf.com/learn/latex/Glossaries}{Overleaf}.
 
-\paragraph{All options}
+\subsubsection{All options}
 
 \begin{code}
     \begin{minted}{latex}
@@ -149,7 +149,7 @@ There are other options for the glossary, see
     \caption{All options}
 \end{code}
 
-\subsubsection{Acronym} \label{acronym}
+\subsection{Acronym} \label{acronym}
 It is possible to create a list of acronyms that can be reused in the document.
 To do this, you must enter your acronyms in the file \textbf{acronyms.tex} in the following way:
 \begin{code}
@@ -180,7 +180,7 @@ sorted alphabetically.
 There are other options for acronyms, see
 \href{https://fr.overleaf.com/learn/latex/Glossaries}{Overleaf}.
 
-\paragraph{All options}
+\subsubsection{All options}
 
 \begin{code}
     \begin{minted}{latex}
@@ -196,7 +196,7 @@ There are other options for acronyms, see
     \caption{All options}
 \end{code}
 
-\subsubsection{PlantUML} \label{plamtuml}
+\subsection{PlantUML} \label{plamtuml}
 For the generation of PlantUML in images it is necessary to have installed:
 \begin{itemize}
     \item PlantUML, program allowing to draw UML diagrams, using a simple textual description
@@ -243,7 +243,7 @@ It is possible to store the diagrams in subfolder whose relative path must be sp
     \caption{Example UML diagram in a subfolder}
 \end{figure}
 
-\subsubsection{Minted}
+\subsection{Minted}
 It is possible to put code fragments in the document via the Minted package.
 This package uses the Python library \textbf{Pygments}.
 This library must be installed via the package \textbf{python3-pygments}.
@@ -281,7 +281,7 @@ It is possible to add a source code file directly into the document, via the com
     \caption{Example of integration of source code file}
 \end{code}
 
-\subsubsection{Xltabular} \label{Xltabular}
+\subsection{Xltabular} \label{Xltabular}
 It is possible to create tables so that they can be spread over the whole page and over several
 pages. The objective is to place the table on several pages without splitting a line in two.
 Here is an example of a table with 5 columns:
@@ -413,7 +413,7 @@ here:
 This way, overflow is avoided. Note that if a column is not wide enough and the text inside is more
 than one page long more than one-page length, it also overflows.
 
-\subsubsection{Biblatex} \label{Biblatex}
+\subsection{Biblatex} \label{Biblatex}
 It is possible to create a bibliography that can be reused in the document.
 To do this, you must enter the references in the file \textbf{biblio.bib} in the following way:
 \begin{code}
@@ -455,7 +455,7 @@ And here we have it appearing: \cite{CitekeyArticle}. \newline
 
 In our example we display the author's name and the title. There are other ways to display other
 information. See
-\href{https://mirror.ibcp.fr/pub/CTAN/macros/latex/contrib/biblatex/doc/biblatex.pdf#subsection.3.9}{documentation CTAN},
+\href{https://mirror.ibcp.fr/pub/CTAN/macros/latex/contrib/biblatex/doc/biblatex.pdf}{documentation CTAN},
 or \href{https://fr.overleaf.com/learn/latex/Bibliography_management_with_bibtex}{Overleaf}.
 \newline
 
@@ -463,7 +463,7 @@ In the file \textbf{biblio.bib} you will find, as an example, the set of referen
 exists. Depending on the category, the information requested is different, and their display is also
 different, see page \pageref{bibliography}.
 
-\subsubsection{Csquote}
+\subsection{Csquote}
 We may need to quote some excerpts from a document. Here is an example of a quote.
 \begin{displayquote}[\cite{CitekeyArticle}]
     It is now known that the truth or falsity of the continuum hypothesis
@@ -501,7 +501,7 @@ of the language.
 \enquote{Quotes \enquote{quotes within quotes}}
 
 \begin{landscape}
-    \subsubsection{Landscape}
+    \subsection{Landscape}
     Depending on the needs, it may be necessary to have a longer line length. In particular to
     display images.
     It is very easy to do thanks to the package pdflscape which offers the landscape environment.

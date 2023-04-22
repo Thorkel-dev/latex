@@ -22,7 +22,7 @@
 \usepackage[T1]{fontenc}
 \usepackage[\Parameter@encoding]{inputenc}
 \usepackage[\Parameter@language]{babel}
-\usepackage[pdftex]{graphicx}
+\usepackage{graphicx}
 \usepackage{xspace}
 \usepackage{lastpage}
 \usepackage{hyperref}
@@ -67,6 +67,9 @@
     citecolor   = black
 }
 
+\let\oldhref\href
+\renewcommand{\href}[2]{\oldhref{#1}{#2}\footnote{\url{#1}}}
+
 % Adding metadata
 \makeatletter
 \AtBeginDocument{
@@ -97,8 +100,10 @@
 \setlist[itemize]{label=\textcolor{black}{\textbullet}}
 
 % Does not work on all Debian distributions
-\newcommand{\sectionbreak}{\clearpage} % New page for each section
-
+\AddToHook{cmd/part/before}{\clearpage} % New page for each section
+\makeatletter
+\@addtoreset{section}{part}
+\makeatother
 %-----------------------------------------------
 %   Settings for header and footer
 %-----------------------------------------------
@@ -115,7 +120,7 @@
 \fi
 
 \renewcommand{\headrulewidth}{1pt}
-\fancyhead[CO]{\rightmark} % Current subsection
+\fancyhead[CO]{\leftmark} % Current subsection
 \fancyhead[RO]{{\@author}}
 \def\headrule{{\if@fancyplain\let\headrulewidth\plainheadrulewidth\fi
             \color{ruleColor}\hrule\@height\headrulewidth\@width\headwidth \vskip-\headrulewidth}}
@@ -128,6 +133,7 @@
         \parbox{\wd0}{\box0}\endgroup}
 \fi
 
+% \fancyfoot[CO]{\@date}
 \renewcommand{\footrulewidth}{1pt}
 \fancyfoot[RO]{Page \thepage /\pageref*{LastPage}}
 \def\footrule{{\if@fancyplain\let\footrulewidth\plainfootrulewidth\fi
@@ -161,10 +167,11 @@
 \setcounter{secnumdepth}{6} % Allows the numbering of the sub-paragraph
 
 % title format
-\titleformat{\section}[block]{\normalfont\bfseries\LARGE\color{colorTitle}}{{\thesection}}{1em}{}{}
-\titleformat{\subsection}[block]{\Large\hspace{2em}\Large\color{colorTitle}}{{\thesubsection}}{1em}{}{}
+\titleformat{\part}[block]{\bfseries\Huge\color{colorTitle}}{{\thepart}}{1em}{}{}
+\titleformat{\section}[block]{\normalfont\hspace{1em}\bfseries\LARGE\color{colorTitle}}{{\thesection}}{1em}{}{}
+\titleformat{\subsection}[block]{\hspace{2em}\bfseries\Large\color{colorTitle}}{{\thesubsection}}{1em}{}{}
 \titleformat{\subsubsection}[block]{\hspace{3em}\large\color{colorTitle}}{{\thesubsubsection}}{1em}{}{}
-\titleformat{\paragraph}[block]{\normalsize\bfseries\hspace{4em}\color{colorTitle}}{{\theparagraph}}{1em}{}{}
+\titleformat{\paragraph}[block]{\normalsize\hspace{4em}\color{colorTitle}}{{\theparagraph}}{1em}{}{}
 \titleformat{\subparagraph}[block]{\normalsize\hspace{5em}\color{colorTitle}}{{\thesubparagraph}}{1em}{}{}
 
 \makeatother
@@ -322,19 +329,17 @@
 
 \usepackage[
     backend=biber,
-    citestyle=verbose-note,     % Citation style
-    style=reading,              % Style of the bibliography
-    entrykey = false,           % The key is not displayed
+    style=nature,              % Style of the bibliography
     sorting = nty,              % Sort by name, title, year
     hyperref = true,            % Link between the citation and the bibliography
     backref = false,            % Do not display the citations page
 ]{biblatex}
 
-\AtEveryCite{}
+\AtEveryCite{\color{darkgray}}
 \renewbibmacro*{prenote}{%
     \iffieldundef{prenote}
-    {\itshape\bfseries}
-    {\printfield{prenote}}%
+        {\printtext{Ref :}}
+        {\printfield{prenote}}%
     \setunit{\prenotedelim}%
 }
 
@@ -351,3 +356,16 @@
 {\begingroup\csq@getcargs{\csq@bdquote{\itshape\color{darkgray}}{}}}
 {\\\raggedleft\csq@edquote\endgroup}
 \makeatother
+
+%-----------------------------------------------
+% Text format and font personalization
+%-----------------------------------------------
+
+\usepackage{ae}
+% \usepackage{lmodern} % Vector font loads which fontenc does not allow, to load before this one
+\usepackage{fontspec}
+\setmainfont[Path=fonts/,
+    ItalicFont = arial_italic.ttf,
+    BoldFont = arial_bold.ttf,
+    BoldItalicFont = arial_bold_italic.ttf]{arial.ttf}
+\setlength{\parindent}{0pt} % Size of the indent when start a new paragraph
