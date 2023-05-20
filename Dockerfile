@@ -1,35 +1,31 @@
-FROM debian:stable-slim
+FROM alpine:latest
 
-LABEL org.opencontainers.image.title="Docker Image of TeXLive"
+LABEL org.opencontainers.image.title="Docker Image of TeXLive for report"
 LABEL org.opencontainers.image.description="Docker image to build PDF file with LaTeX"
-LABEL org.opencontainers.image.url="ghcr.io/thorkel-dev/latex/debian-texlive"
+LABEL org.opencontainers.image.url="ghcr.io/thorkel-dev/latex/alpine-texlive-report"
 LABEL org.opencontainers.image.authors.name="Thorkel-dev"
 LABEL org.opencontainers.image.authors.web="https://github.com/Thorkel-dev"
 LABEL org.opencontainers.image.created =$buildDate
-LABEL org.opencontainers.image.base.name="debian:stable-slim"
-LABEL org.opencontainers.image.base.source="https://hub.docker.com/_/debian/?tab=tags"
+LABEL org.opencontainers.image.base.name="alpine:latest"
+LABEL org.opencontainers.image.base.source="https://hub.docker.com/_/alpine/?tab=tags"
 
 ENV TZ=Europe/Paris
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ >/etc/timezone
 
-RUN apt-get update && apt autoclean
+RUN apk update
 
-RUN apt-get install plantuml -y
-RUN apt-get install graphviz -y
-RUN apt-get install build-essential -y
-RUN apt-get install latexmk -y
-RUN apt-get install python3-pygments -y
-RUN apt-get install texlive-latex-base -y
-RUN apt-get install texlive-latex-extra -y
-RUN apt-get install texlive-font-utils -y
-RUN apt-get install texlive-lang-french -y
-RUN apt-get install texlive-lang-english -y
-RUN apt-get install texlive-bibtex-extra -y
-RUN apt-get install biber -y
-RUN apt-get install git -y
-RUN apt-get install git-lfs -y
+RUN apk add --no-cache plantuml
+RUN apk add --no-cache graphviz
+RUN apk add --no-cache make
+RUN apk add --no-cache py3-pygments
+RUN apk add --no-cache texlive
+RUN apk add --no-cache biber
+RUN apk add --no-cache texmf-dist-bibtexextra
+RUN apk add --no-cache texmf-dist-latexextra
+RUN apk add --no-cache git
+RUN apk add --no-cache git-lfs
 
 # Create a new user and log the shell on the new user
-RUN useradd -ms /bin/bash docker
-# Switch the docker image to the new user
+RUN adduser -D docker
+# # Switch the docker image to the new user
 USER docker

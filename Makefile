@@ -12,9 +12,17 @@ eps : $(DEPEND_PLANTUML)
 	@echo -e "\n================================================================================\n"
 	@$(MAKE) $(patsubst $(SRC)/%.plantuml,$(OUTPUT)/%.$@,$(shell ls -1t $(SRC_FILES)))
 
+png :
+	@echo -e "\n================================================================================\n"
+	@echo "                               Start to generate PNG file"
+	@echo -e "\n================================================================================\n"
+	@$(MAKE) $(patsubst $(SRC)/%.plantuml,$(OUTPUT)/%.$@,$(shell ls -1t $(SRC_FILES)))
 
 $(OUTPUT)/%.eps: $(SRC)/%.plantuml
 	plantuml -charset UTF-8 -teps -stdrpt:1 -recursive -teps $< -o $(OUTPUT)
+
+$(OUTPUT)/%.png: $(SRC)/%.plantuml
+	plantuml -charset UTF-8 -teps -stdrpt:1 -recursive -tpng $< -o $(OUTPUT)
 
 $(DEPEND_PLANTUML): $(SRC_FILES)
 	@find_includes() { \

@@ -1,11 +1,11 @@
-name: Makefile CI
+name: LaTex CI
 
 on:
   push:
     tags:
       - "*"
     branches:
-      - 'master'
+      - "master"
   pull_request:
     types: [opened, synchronize, reopened]
 
@@ -13,7 +13,7 @@ jobs:
   build_latex:
     runs-on: ubuntu-latest
     container:
-      image: ghcr.io/thorkel-dev/latex/debian-texlive:latest
+      image: ghcr.io/thorkel-dev/latex/alpine-texlive:latest
       options: --user root
       credentials:
         username: ${{ github.actor }}
@@ -27,14 +27,29 @@ jobs:
       - name: build pdf
         run: make all
 
+      - name: Build schemas
+        run: make png
+
       # Create an artifact that contains the output folder
-      - name: Archive output folder
-        if: github.event_name != 'push' # it's not a push
-        uses: actions/upload-artifact@v2 # https://github.com/actions/upload-artifact
+      - name: Archive PDF and schemas
+        uses: actions/upload-artifact@v3 # https://github.com/actions/upload-artifact
+        if: ${{ success() }}
         with:
           name: output
-          path: bin/*.pdf
-          retention-days: 7
+          path: |
+            bin/*.pdf
+            schemas/**/*.png
+          retention-days: 14
+
+      - name: Archive log
+        uses: actions/upload-artifact@v3 # https://github.com/actions/upload-artifact
+        if: ${{ failure() }}
+        with:
+          name: output
+          path: |
+            .temp/*.pdf
+            .temp/*.log
+          retention-days: 14
 
       # Create a release that contains the generated PDF, named according to the name of the tag
       # The release is created only if the trigger is a pushed tag
