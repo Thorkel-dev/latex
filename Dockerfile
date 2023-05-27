@@ -24,6 +24,8 @@ RUN apk add --no-cache texmf-dist-bibtexextra
 RUN apk add --no-cache texmf-dist-latexextra
 RUN apk add --no-cache git
 RUN apk add --no-cache git-lfs
+RUN apk add --no-cache msttcorefonts-installer fontconfig
+RUN update-ms-fonts
 
 # Create a new user and log the shell on the new user
 RUN adduser -D docker
