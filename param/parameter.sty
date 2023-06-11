@@ -41,6 +41,8 @@
 \usepackage[outdir=./.temp/epstopdf/, update]{epstopdf}
 \usepackage{pdflscape}
 \usepackage[pages=some]{background} % He is prevented from posting any
+\usepackage{etoolbox}
+\usepackage{bigfoot}
 %-----------------------------------------------
 %   Customize margins
 %-----------------------------------------------
@@ -109,7 +111,7 @@
 % header
 \ifx\Parameter@imageHeaderLeft\empty
 \else
-\fancyhead[LO]{\includegraphics[height=15pt]{\Parameter@imageHeaderLeft}}
+    \fancyhead[LO]{\includegraphics[height=15pt]{\Parameter@imageHeaderLeft}}
 \fi
 
 \renewcommand{\headrulewidth}{1pt}
@@ -122,8 +124,8 @@
 \ifx\Parameter@imageFooterLeft\empty
 \else
     \fancyfoot[LO]{\begingroup
-    \setbox0=\hbox{\includegraphics[height=15pt]{\Parameter@imageFooterLeft}}%
-    \parbox{\wd0}{\box0}\endgroup}
+        \setbox0=\hbox{\includegraphics[height=15pt]{\Parameter@imageFooterLeft}}%
+        \parbox{\wd0}{\box0}\endgroup}
 \fi
 
 \renewcommand{\footrulewidth}{1pt}
@@ -231,6 +233,47 @@
 }
 
 %-----------------------------------------------
+%   Footnote personalization
+%-----------------------------------------------
+
+\DeclareNewFootnote{default}
+\DeclareNewFootnote{A}
+\DeclareNewFootnote{B}
+\DeclareNewFootnote{C}
+
+\MakeSortedPerPage{footnoteA}
+\MakeSortedPerPage{footnoteB}
+\MakeSortedPerPage{footnoteC}
+
+\makeatletter
+\let\oldfootnote\footnote
+\let\oldfootnoteA\footnoteA
+\let\oldfootnoteB\footnoteB
+\patchcmd{\MFL@makemark}{#2{#1}}{\setcounter{#1}{1}}{}{}
+\renewcommand{\thefootnoteA}{\arabic{footnote}.\arabic{footnoteA}}
+\renewcommand{\thefootnoteB}{\arabic{footnote}.\arabic{footnoteA}.\arabic{footnoteB}}
+
+\def\footnote{%
+    \footnotenew%
+}
+\def\footnotenew#1{%
+    \oldfootnote{\let\footnote\footnoteA#1}%
+}
+\def\footnoteA{%
+    \footnotenewA%
+}
+\def\footnotenewA#1{%
+    \oldfootnoteA{\let\footnote\footnoteB#1}%
+}
+\def\footnoteB{%
+    \footnotenewB%
+}
+\def\footnotenewB#1{%
+    \oldfootnoteB{\let\footnote\footnoteC#1}%
+}
+\makeatother
+
+%-----------------------------------------------
 %   Minted personalization
 %-----------------------------------------------
 
@@ -290,8 +333,8 @@
 \AtEveryCite{}
 \renewbibmacro*{prenote}{%
     \iffieldundef{prenote}
-        {\itshape\bfseries}
-        {\printfield{prenote}}%
+    {\itshape\bfseries}
+    {\printfield{prenote}}%
     \setunit{\prenotedelim}%
 }
 
@@ -300,11 +343,11 @@
 %-----------------------------------------------
 
 \usepackage[autostyle=true
-            ]{csquotes}
+]{csquotes}
 
 \makeatletter
 %Take the original environment definition and change the font style to italic and bold
 \renewenvironment*{displayquote}
-    {\begingroup\csq@getcargs{\csq@bdquote{\itshape\color{darkgray}}{}}}
-    {\\\raggedleft\csq@edquote\endgroup}
+{\begingroup\csq@getcargs{\csq@bdquote{\itshape\color{darkgray}}{}}}
+{\\\raggedleft\csq@edquote\endgroup}
 \makeatother
