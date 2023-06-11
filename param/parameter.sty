@@ -178,6 +178,11 @@
     \tocfile{\listfigurename}{lof}
     \endgroup}
 
+\renewcommand{\listoftables}{\begingroup
+    \tocsection
+    \tocfile{\listtablename}{lot}
+    \endgroup}
+
 \newcounter{@secnumdepth}
 \let\oldsection\section
 \RenewDocumentCommand{\section}{s o m}{%
