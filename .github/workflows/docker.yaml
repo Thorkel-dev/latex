@@ -6,7 +6,7 @@ on:
     paths:
       - "Dockerfile"
   schedule:
-    - cron: "* * 1 */6 *" # Execute every 6 month at the 1
+    - cron: "12 0 1 */6 *" # Execute every 6 month at the 1
 
 env:
   IMAGE_NAME: alpine-texlive
