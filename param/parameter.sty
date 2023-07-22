@@ -258,34 +258,30 @@
 \let\oldfootnoteA\footnoteA
 \let\oldfootnoteB\footnoteB
 \let\oldfootnoteC\footnoteC
-\patchcmd{\MFL@makemark}{#2{#1}}{\setcounter{#1}{1}}{}{}
-\renewcommand{\thefootnoteA}{\arabic{footnote}.\arabic{footnoteA}}
-\renewcommand{\thefootnoteB}{\arabic{footnote}.\arabic{footnoteA}.\arabic{footnoteB}}
-\renewcommand{\thefootnoteC}{\arabic{footnote}.\arabic{footnoteA}.\arabic{footnoteB}.\arabic{footnoteC}}
 
 \def\footnote{%
-    \footnotenew%
+    \stepcounter{footnote}%
+    \kernel@ifnextchar[{\footnotenew}{\footnotenew[\c@footnote]}%
 }
-\def\footnotenew#1{%
-    \oldfootnote{\let\footnote\footnoteA#1}%
+\def\footnotenew[#1]#2{%
+    \oldfootnote[#1]{\let\footnote\footnoteA#2}%
 }
 \def\footnoteA{%
-    \footnotenewA%
+    \stepcounter{footnote}%
+    \kernel@ifnextchar[{\footnotenewA}{\footnotenewA[\c@footnote]}%
 }
-\def\footnotenewA#1{%
-    \oldfootnoteA{\let\footnote\footnoteB#1}%
+\def\footnotenewA[#1]#2{%
+    \oldfootnoteA[#1]{\let\footnote\footnoteB#2}%
 }
 \def\footnoteB{%
-    \footnotenewB%
+    \stepcounter{footnote}%
+    \kernel@ifnextchar[{\footnotenewB}{\footnotenewB[\c@footnote]}%
 }
-\def\footnotenewB#1{%
-    \oldfootnoteB{\let\footnote\footnoteC#1}%
+\def\footnotenewB[#1]#2{%
+    \oldfootnoteB[#1]{\let\footnote\footnoteC#2}%
 }
-\def\footnoteC{%
-    \footnotenewC%
-}
-\def\footnotenewC#1{%
-    \oldfootnoteC{\let\footnote\footnoteD#1}%
+\def\footnotenewC[#1]#2{%
+    \oldfootnoteC[#1]{\let\footnote\footnoteD#2}%
 }
 \makeatother
 
