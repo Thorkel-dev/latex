@@ -48,7 +48,7 @@
 
     \vspace*{\fill}
     \noindent\textcolor{ruleColor}{\rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{3.2pt} % Thick horizontal rule
-	\rule{\textwidth}{0.4pt}}\\
+	\rule{\textwidth}{0.4pt}}\newline
 
     \begin{center}
         \textcolor{textColor}{
@@ -62,7 +62,7 @@
     \end{center}
 
     \noindent\textcolor{ruleColor}{\rule{\textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt} % Thin horizontal rule
-	\rule{\textwidth}{1.6pt}}\\
+	\rule{\textwidth}{1.6pt}}\newline
     \vspace*{\fill}
 
     \ifx\FrontPage@logoCenter\empty
@@ -81,11 +81,11 @@
             \textbf{\@author}
             \ifx\FrontPage@projectName\empty
             \else
-                \\{\FrontPage@projectName}
+                \newline{\FrontPage@projectName}
             \fi
             \ifx\FrontPage@enterpriseName\empty
             \else
-                \\{\FrontPage@enterpriseName}
+                \newline{\FrontPage@enterpriseName}
             \fi
         }
     \end{minipage}

@@ -8,7 +8,7 @@ All the documents of the project are written in LaTeX.
 To generate these documents, it is necessary to install LaTeX.
 Here is a minimal configuration for this project;
 
-- For the generation of the PlantUMLs in :
+- For the generation of the PlantUML in :
   - PlantUML, component that allows to draw quickly diagrams
   - Graphviz, generates a graph from a textual description of PlantUML
 - For the generation of LaTeX in PDF :
@@ -27,18 +27,19 @@ All LaTeX documents follow the same tree structure:
 
 ```text
 ├── figures/, images in ``.png``, ``.jep`` format
-├── ebauche/
-    ├── param/
-    |   ├── frontPage.tex
-    |   └── parameter.tex
-    ├── acronyms.tex
-    ├── document.tex
-    ├── glossary.tex
-    ├── Makefile
-    └── tablesVersion.tex
-└── schemas/, file ``.plantuml``
+├── param/
+|   ├── frontPage.sty
+|   └── parameter.sty
+├── schemas/, file ``.plantuml``
+├── sections/, file ``.tex``
+├── acronyms.tex
+├── document.tex
+├── glossary.tex
+├── Makefile
+└── tablesVersion.tex
 ```
 
-To compile the desired LaTeX document, you need to run the command ``make`` in the corresponding directory as in the following example:
+To compile the desired LaTeX document, you need to run the command ``make`` in the corresponding
+directory.
 
-A .pdf file is generated at the same level as the makefile.
+A .pdf file is generated in ``bin/`` folder at the same level as the makefile.

@@ -22,7 +22,7 @@
 \usepackage[T1]{fontenc}
 \usepackage[\Parameter@encoding]{inputenc}
 \usepackage[\Parameter@language]{babel}
-\usepackage[pdftex]{graphicx}
+\usepackage{graphicx}
 \usepackage{xspace}
 \usepackage{lastpage}
 \usepackage{hyperref}
@@ -35,11 +35,15 @@
 \usepackage{xltabular}
 \usepackage{enumitem}
 \usepackage[nottoc,numbib]{tocbibind}
-\usepackage[outputdir=build/, newfloat]{minted}
+\usepackage[outputdir=.temp/, newfloat]{minted}
 \usepackage{caption}
-\usepackage[outdir=build/epstopdf/, update]{epstopdf}
+\DeclareCaptionListFormat{myfmt}{#1.#2}
+\usepackage[list=true, listformat=myfmt]{subcaption}
+\usepackage[outdir=./.temp/epstopdf/, update]{epstopdf}
 \usepackage{pdflscape}
 \usepackage[pages=some]{background} % He is prevented from posting any
+\usepackage{etoolbox}
+\usepackage{bigfoot}
 %-----------------------------------------------
 %   Customize margins
 %-----------------------------------------------
@@ -49,7 +53,6 @@
     top=2.5cm,
     bottom=2.5cm
 ]{geometry}
-\geometry{body={160mm,230mm},headheight=42pt,top=3cm}
 
 %-----------------------------------------------
 %   Variables
@@ -108,7 +111,7 @@
 % header
 \ifx\Parameter@imageHeaderLeft\empty
 \else
-\fancyhead[LO]{\includegraphics[height=15pt]{\Parameter@imageHeaderLeft}}
+    \fancyhead[LO]{\includegraphics[height=15pt]{\Parameter@imageHeaderLeft}}
 \fi
 
 \renewcommand{\headrulewidth}{1pt}
@@ -121,8 +124,8 @@
 \ifx\Parameter@imageFooterLeft\empty
 \else
     \fancyfoot[LO]{\begingroup
-    \setbox0=\hbox{\includegraphics[height=15pt]{\Parameter@imageFooterLeft}}%
-    \parbox{\wd0}{\box0}\endgroup}
+        \setbox0=\hbox{\includegraphics[height=15pt]{\Parameter@imageFooterLeft}}%
+        \parbox{\wd0}{\box0}\endgroup}
 \fi
 
 \renewcommand{\footrulewidth}{1pt}
@@ -175,6 +178,11 @@
     \tocfile{\listfigurename}{lof}
     \endgroup}
 
+\renewcommand{\listoftables}{\begingroup
+    \tocsection
+    \tocfile{\listtablename}{lot}
+    \endgroup}
+
 \newcounter{@secnumdepth}
 \let\oldsection\section
 \RenewDocumentCommand{\section}{s o m}{%
@@ -201,7 +209,7 @@
 %   Glossary customization
 %-----------------------------------------------
 
-\usepackage[acronym, numberedsection, nonumberlist, automake]{glossaries-extra} % To make a glossary
+\usepackage[acronym, symbols, numberedsection, nonumberlist, automake]{glossaries-extra} % To make a glossary
 
 \glstocfalse
 \glsenablehyper
@@ -230,8 +238,75 @@
 }
 
 %-----------------------------------------------
+%   Footnote personalization
+%-----------------------------------------------
+
+\DeclareNewFootnote{default}
+\DeclareNewFootnote{A}
+\DeclareNewFootnote{B}
+\DeclareNewFootnote{C}
+\DeclareNewFootnote{D}
+
+\MakeSortedPerPage{footnoteA}
+\MakeSortedPerPage{footnoteB}
+\MakeSortedPerPage{footnoteC}
+\MakeSortedPerPage{footnoteD}
+
+\makeatletter
+\let\oldfootnote\footnote
+\let\oldfootnoteA\footnoteA
+\let\oldfootnoteB\footnoteB
+\let\oldfootnoteC\footnoteC
+
+\def\footnote{%
+    \stepcounter{footnote}%
+    \kernel@ifnextchar[{\footnotenew}{\footnotenew[\c@footnote]}%
+}
+\def\footnotenew[#1]#2{%
+    \oldfootnote[#1]{\let\footnote\footnoteA#2}%
+}
+\def\footnoteA{%
+    \stepcounter{footnote}%
+    \kernel@ifnextchar[{\footnotenewA}{\footnotenewA[\c@footnote]}%
+}
+\def\footnotenewA[#1]#2{%
+    \oldfootnoteA[#1]{\let\footnote\footnoteB#2}%
+}
+\def\footnoteB{%
+    \stepcounter{footnote}%
+    \kernel@ifnextchar[{\footnotenewB}{\footnotenewB[\c@footnote]}%
+}
+\def\footnotenewB[#1]#2{%
+    \oldfootnoteB[#1]{\let\footnote\footnoteC#2}%
+}
+\def\footnotenewC[#1]#2{%
+    \oldfootnoteC[#1]{\let\footnote\footnoteD#2}%
+}
+\makeatother
+
+%-----------------------------------------------
 %   Minted personalization
 %-----------------------------------------------
+
+% Added a break line/word command for mintedlines
+\makeatletter
+\renewcommand{\minted@inputpyg}{%
+    \expandafter\let\expandafter\minted@PYGstyle%
+    \csname PYG\minted@get@opt{style}{default}\endcsname
+    \VerbatimPygments{\PYG}{\minted@PYGstyle}%
+    \ifthenelse{\boolean{minted@isinline}}%
+    {\ifthenelse{\equal{\minted@get@opt{breaklines}{false}}{true}}%
+        {\let\FV@BeginVBox\relax
+            \let\FV@EndVBox\relax
+            \def\FV@BProcessLine##1{%
+                \FancyVerbFormatLine{%
+                    \FV@BreakByTokenAnywhereHook
+                    \FancyVerbFormatText{\FancyVerbBreakStart##1\FancyVerbBreakStop}}}%
+            \minted@inputpyg@inline}%
+        {\minted@inputpyg@inline}}%
+    {\minted@inputpyg@block}%
+}
+\makeatother
 
 \definecolor{vs}{RGB}{255,250,250}
 \setminted{
@@ -269,8 +344,8 @@
 \AtEveryCite{}
 \renewbibmacro*{prenote}{%
     \iffieldundef{prenote}
-        {\itshape\bfseries}
-        {\printfield{prenote}}%
+    {\itshape\bfseries}
+    {\printfield{prenote}}%
     \setunit{\prenotedelim}%
 }
 
@@ -279,11 +354,11 @@
 %-----------------------------------------------
 
 \usepackage[autostyle=true
-            ]{csquotes}
+]{csquotes}
 
 \makeatletter
 %Take the original environment definition and change the font style to italic and bold
 \renewenvironment*{displayquote}
-    {\begingroup\csq@getcargs{\csq@bdquote{\itshape\color{darkgray}}{}}}
-    {\\\raggedleft\csq@edquote\endgroup}
+{\begingroup\csq@getcargs{\csq@bdquote{\itshape\color{darkgray}}{}}}
+{\\\raggedleft\csq@edquote\endgroup}
 \makeatother

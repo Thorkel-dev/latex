@@ -9,10 +9,10 @@
 
 # The first parameter is the name of one of the system's environment variables for search paths.
 # The remaining parameters are values that should be in the variable
-ensure_path("TEXINPUTS", "./param//:", "./../figures//", , "./schemas//:");
+ensure_path("TEXINPUTS", "./param//:", "./figures//", , "./schemas//:");
 
 # Build directory
-$out_dir = "build";
+$out_dir = ".temp";
 
 # Whether to show CPU time used.
 $show_time = 4;
@@ -26,7 +26,8 @@ $pdf_previewer = "start xdg-open %S";
 # use pdflatex command
 $pdf_mode = 1;
 
-# Increase the number of rules, required by the use of pgfgantt, so the compilation succeeded at the first attempt
+# Increase the number of rules, required by the use of pgfgantt, so the compilation succeeded at the
+# first attempt
 $max_repeat = 10;
 
 # Argument passed to all *latex commands
@@ -48,10 +49,10 @@ sub makeglo2gls {
 # for latexmk -c
 $clean_ext = "bbl lol synctex.gz run.xml glg glo gls ist out aux dvi log tex~ glo-abr out.ps ac, acr alg acn fdb_latexmk";
 # for latexmk -C
-$clean_full_ext = "output/* synctex.gz";
+$clean_full_ext = "bin/* synctex.gz";
 
 # Create the build folder before the start of the compilation
-system("mkdir -p build/epstopdf");
+system("mkdir -p .temp/epstopdf");
 
 #
 # Post process hooks
@@ -63,4 +64,4 @@ $compiling_cmd = "make eps";
 # t the of an otherwise successful compilation that gives warnings
 # $ warning_cmd = "";
 # at the end of a completely successful compilation
-$success_cmd = "mkdir -p output && mv build/*.pdf output/"; # Move PDF
+$success_cmd = "mkdir -p bin && mv .temp/*.pdf bin/"; # Move PDF
