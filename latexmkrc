@@ -23,11 +23,10 @@ $silent = 1;
 # Default PDF viewer -- system dependent setting
 $pdf_previewer = "start xdg-open %S";
 
-# use pdflatex command
-$pdf_mode = 1;
+# use XeTeX command
+$pdf_mode = 5;
 
-# Increase the number of rules, required by the use of pgfgantt, so the compilation succeeded at the
-# first attempt
+# Increase the number of rules, so the compilation succeeded at the first attempt
 $max_repeat = 10;
 
 # Argument passed to all *latex commands

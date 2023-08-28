@@ -17,14 +17,16 @@
             ]{Parameter}
 
 \usepackage[
-            logoRight       =   {thorkel.png},                  % Optional
-            logoLeft        =   {eseo.png},                     % Optional
-            logoCenter      =   {latex.png},                    % Optional
-            subject         =   {{Subject of the document}},    % Optional
-            projectName     =   {Project Name},                 % Optional
-            enterpriseName  =   {Entreprise Name},              % Optional
-            % revision        =   {},                             % Optional
-            version         =   {3},                            % Optional
+            logoCompany     =   {thorkel.png},                  % Mandatory
+            logoEseo        =   {eseo.png},                     % Mandatory
+            stageType       =   {{Type of Stage}},              % Mandatory
+            companyName     =   {{Company Name}},               % Mandatory
+            subject         =   {{Internship subject}},         % Mandatory
+            tutor           =   {{Tutor Company}},              % Mandatory
+            option          =   {{ESEO Option}},                % Mandatory
+            privacyLevel    =   {Level},                        % Mandatory
+            domain          =   {{Domaine}},                    % Mandatory
+            date            =   {{From ... to ...}},            % Mandatory
             ]{FrontPage}
 
 \makeglossaries
@@ -36,18 +38,8 @@
 %      Variables
 %-----------------------------------------
 \author{Thorkel-dev}        % Mandatory
-\title{Template \LaTeX}     % Mandatory
+\title{Internship report}   % Mandatory
 \date{\normalsize\today}    % Mandatory, today's date
-
-% We prepare a background page.
-\backgroundsetup{
-    scale=1,
-    opacity=0.05,
-    angle=0,
-    contents={%
-            \includegraphics[width=\textwidth]{thorkel-logo.png}
-        }%
-}
 
 %-----------------------------------------
 %      Document
@@ -57,7 +49,6 @@
 
 \maketitle
 
-\BgThispage % We use the background for this page only
 \vspace*{\fill}
 \noindent
 DISCLAIMER \newline
@@ -67,35 +58,41 @@ may not be distributed or copied without the written authorization of its owner.
 \vspace*{\fill}
 \clearpage
 
-\section*{Table of versions}
-\input{tablesVersion.tex} \label{TableOfVersion} % Add the page with the version tables
-\clearpage
 
-\tableofcontents % The table of contents
+\tableofcontents \label{TableOfContent} % The table of contents
 
 %------------------------------------------------------
 %            Presentation
 %------------------------------------------------------
-
+\clearpage
 \input{sections/presentation/presentation.tex}
 
 %------------------------------------------------------
 %            Example
 %------------------------------------------------------
-
+\clearpage
 \input{sections/exemple.tex}
 
+%------------------------------------------------------
+%            Annex
+%------------------------------------------------------
+
+\part{Annex}
 \printglossary[type=\acronymtype] \label{acronyms}
 \glsaddallunused % Even unused acronyms are displayed
 
+\clearpage
 \printglossary[] \label{domaindictionary} % Display the glossary
 \glsaddallunused % Even unused words are displayed
 
+\clearpage
 \listoffigures \label{TableOfFigure} % The table of figures
 
+\clearpage
 \listoflistings \label{TableOfCode} % Source code table
 
-\printbibliography[heading=bibnumbered, label=bibliography] % Display the bibliography
+\clearpage
+\printbibliography[heading=bibnumbered] \label{bibliography} % Display the bibliography
 \nocite{*} % Even unused references are displayed
 
 % Add an empty page
@@ -103,5 +100,4 @@ may not be distributed or copied without the written authorization of its owner.
 \null
 \thispagestyle{empty}%
 \addtocounter{page}{-1}%
-\BgThispage
 \end{document}

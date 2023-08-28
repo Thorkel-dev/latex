@@ -19,6 +19,7 @@ Here is a minimal configuration for this project;
   - texlive-lang-french, French language support
   - biber, bibliography for LaTeX
   - texlive-bibtex-extra, adding different styles for BibLaTeX
+  - texlive-xetex, for XeTeX, an extension of TeX with built-in support for Unicode and OpenType
   - pygments, a generic syntax highlighter adapted to code hosting
 
 ## Project
