@@ -9,7 +9,7 @@ on:
     - cron: "12 0 1 */6 *" # Execute every 6 month at the 1
 
 env:
-  IMAGE_NAME: alpine-texlive-report
+  IMAGE_NAME: alpine-texlive-internship-report
 
 jobs:
   docker_login_build_and_push:

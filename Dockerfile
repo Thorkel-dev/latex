@@ -2,7 +2,7 @@ FROM alpine:latest
 
 LABEL org.opencontainers.image.title="Docker Image of TeXLive for report"
 LABEL org.opencontainers.image.description="Docker image to build PDF file with LaTeX"
-LABEL org.opencontainers.image.url="ghcr.io/thorkel-dev/latex/alpine-texlive-report"
+LABEL org.opencontainers.image.url="ghcr.io/thorkel-dev/latex/alpine-texlive-internship-report"
 LABEL org.opencontainers.image.authors.name="Thorkel-dev"
 LABEL org.opencontainers.image.authors.web="https://github.com/Thorkel-dev"
 LABEL org.opencontainers.image.created =$buildDate
