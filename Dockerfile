@@ -19,9 +19,11 @@ RUN apk add --no-cache graphviz
 RUN apk add --no-cache make
 RUN apk add --no-cache py3-pygments
 RUN apk add --no-cache texlive
+RUN apk add --no-cache texlive-xetex
 RUN apk add --no-cache biber
 RUN apk add --no-cache texmf-dist-bibtexextra
 RUN apk add --no-cache texmf-dist-latexextra
+RUN apk add --no-cache ghostscript
 RUN apk add --no-cache git
 RUN apk add --no-cache git-lfs
 RUN apk add --no-cache msttcorefonts-installer fontconfig

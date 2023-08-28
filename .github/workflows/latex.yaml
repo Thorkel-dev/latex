@@ -13,7 +13,7 @@ jobs:
   build_latex:
     runs-on: ubuntu-latest
     container:
-      image: ghcr.io/thorkel-dev/latex/alpine-texlive:latest
+      image: ghcr.io/thorkel-dev/latex/alpine-texlive-internship-report:latest
       options: --user root
       credentials:
         username: ${{ github.actor }}

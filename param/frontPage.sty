@@ -9,19 +9,18 @@
 \usepackage{colortbl}
 \RequirePackage[export]{adjustbox} % http://ctan.org/pkg/adjustbox
 
-\DeclareStringOption[]{logoRight}[]
-\DeclareStringOption[]{logoLeft}[]
-\DeclareStringOption[]{logoCenter}[]
-\DeclareStringOption[]{projectName}[]
+\DeclareStringOption[]{logoCompany}[]
+\DeclareStringOption[]{logoEseo}[]
+\DeclareStringOption[]{stageType}[]
+\DeclareStringOption[]{companyName}[]
 \DeclareStringOption[]{subject}[]
-\DeclareStringOption[]{enterpriseName}[]
-\DeclareStringOption[]{revision}[]
-\DeclareStringOption[]{version}[]
+\DeclareStringOption[]{tutor}[]
+\DeclareStringOption[]{option}[]
+\DeclareStringOption[]{privacyLevel}[]
+\DeclareStringOption[]{domain}[]
+\DeclareStringOption[]{date}[]
 
 \ProcessKeyvalOptions*
-
-\colorlet{ruleColor}{thorkelBlue}
-\colorlet{textColor}{thorkelBlue}
 
 \fancypagestyle{} % No header and footer for this page
 {
@@ -30,86 +29,64 @@
 }
 
 \makeatletter
+
 \renewcommand\maketitle{
-    \addtocounter{page}{-1} % Not count as page 1
     \thispagestyle{empty}
 
-    \begin{figure}[t]
-        \ifx\FrontPage@logoLeft\empty
-        \else
-            \includegraphics[height=50pt, valign=t]{\FrontPage@logoLeft}
-        \fi
-        \hspace*{\fill}
-        \ifx\FrontPage@logoRight\empty
-        \else
-            \includegraphics[height=50pt, valign=t]{\FrontPage@logoRight}
-        \fi
-    \end{figure}
+    \begin{minipage}{.59\linewidth}
+        \raggedright
+        \includegraphics[width=0.75\textwidth]{\FrontPage@logoEseo}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{.25\linewidth}
+        \Large
+        \raggedleft
+        \textbf{\@author}
+    \end{minipage}
 
-    \vspace*{\fill}
-    \noindent\textcolor{ruleColor}{\rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{3.2pt} % Thick horizontal rule
-	\rule{\textwidth}{0.4pt}}\newline
+    \vspace{\fill}
 
     \begin{center}
-        \textcolor{textColor}{
-            {\Huge \textsc{\bf \@title}}
-            \vspace{0.5cm}\\
-            \ifx\FrontPage@subject\empty
-            \else
-                {\large\bf {\FrontPage@subject}}\\
-            \fi
-        }
+        \rule{\linewidth}{1pt}\\
+        \vspace{1em}
+        {\huge\textbf{\@title}}\\
+        \vspace{1em}
+        {\footnotesize\textit{\FrontPage@stageType}}\\
+        \rule{\linewidth}{1pt}
     \end{center}
 
-    \noindent\textcolor{ruleColor}{\rule{\textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt} % Thin horizontal rule
-	\rule{\textwidth}{1.6pt}}\newline
-    \vspace*{\fill}
+    \vspace{1em}
 
-    \ifx\FrontPage@logoCenter\empty
-    \else
-        \begin{figure}[ht]
-            \centering
-            \includegraphics[height=0.2\linewidth]{\FrontPage@logoCenter}
-        \end{figure}
-    \fi
-    \vspace*{\fill}
+    \begin{table}[H]
+        \begin{tabularx}{\textwidth}{lX}
+            \textbf{Entreprise}        & \FrontPage@companyName \\
+            \textbf{Dates}             & \FrontPage@date \\
+            \textbf{Sujet de stage}             & \FrontPage@subject        \\
+            \textbf{Tuteur Entreprise} & \FrontPage@tutor          \\
+        \end{tabularx}
+    \end{table}
 
-    \noindent
-    \textcolor{ruleColor}{\vrule}\hspace{0.25cm}\begin{minipage}[b]{0.5\textwidth-0.25cm}
-        \raggedright
-        \textcolor{textColor}{
-            \textbf{\@author}
-            \ifx\FrontPage@projectName\empty
-            \else
-                \newline{\FrontPage@projectName}
-            \fi
-            \ifx\FrontPage@enterpriseName\empty
-            \else
-                \newline{\FrontPage@enterpriseName}
-            \fi
-        }
-    \end{minipage}
-    \hspace*{\fill}
-    \begin{minipage}[b]{0.5\textwidth-0.25cm}
-        \raggedleft
-        \textcolor{textColor}{
-            \ifx\FrontPage@version\empty
-            \else
-                Version : {\FrontPage@version}\\
-            \fi
-            \ifx\FrontPage@revision\empty
-            \else
-                Revison : {\FrontPage@revision}\\
-            \fi
-            \@date
-        }
-    \end{minipage}
+    \vfill
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.6\textwidth]{\FrontPage@logoCompany}
+    \end{figure}
+
+    \vfill
+
+    \begin{table}[b]
+        \centering
+        \begin{tabularx}{\textwidth}{lX}
+            \textbf{Option}             & \FrontPage@option                                      \\
+            \textbf{Confidentialité}    & Rapport confidentiel de niveau \FrontPage@privacyLevel \\
+            \textbf{Domaine Entreprise} & \FrontPage@domain                                      \\
+        \end{tabularx}
+    \end{table}
+
+    \vspace{3em}
     \clearpage
-    % Add an empty page, for printing
-    % \null
-    % \thispagestyle{empty}%
-    % \addtocounter{page}{-1}%
-    % \newpage
+    \pagenumbering{arabic} % restart the page numbering
 }
 
 \makeatother
